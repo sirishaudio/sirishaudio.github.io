@@ -1,0 +1,1890 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+
+const gameSD = [
+  { title: "Spongebob: Krusty Cook-Off", studio: "Nukebox Studios", year: "2018–2022", desc: "Parameter-driven adaptive music + SFX via Unity & FMOD. 29M+ downloads. Google Play Users' Choice 2020.", tags: ["FMOD","Unity","Adaptive Audio"], note: "200M+ players globally" },
+  { title: "Food Truck Chef", studio: "Nukebox Studios", year: "2018–2022", desc: "Full audio pipeline — adaptive music, SFX, and UI sounds for a globally distributed casual title.", tags: ["FMOD","Unity","SFX Pipeline"], note: "" },
+  { title: "Room Flip: Home Decor", studio: "Nukebox Studios", year: "2018–2022", desc: "Modular SFX architecture and reactive audio state management for casual mobile.", tags: ["Unity","Modular SFX"], note: "" },
+  { title: "Angry Birds Match 3", studio: "Gear Inc. · Tilting Point", year: "2022", desc: "Adaptive audio for a globally distributed IP. High-retention casual gameplay loop design.", tags: ["FMOD","Adaptive Audio"], note: "Global IP" },
+  { title: "M&M's Adventure", studio: "Gear Inc. · Tilting Point", year: "2022", desc: "Audio systems for a branded casual title. Applied adaptive audio to high-engagement match-3 gameplay.", tags: ["FMOD","Adaptive Audio"], note: "Global IP" },
+  { title: "Milli Match", studio: "Giga Fun Studios", year: "2023–2025", desc: "Modular SFX architecture and parameter-driven music design for match-3 mobile.", tags: ["Unity","Param-Driven"], note: "" },
+  { title: "Rani's Case Files", studio: "Giga Fun Studios", year: "2023–2025", desc: "Reactive audio state management and middleware integration for a puzzle mobile title.", tags: ["Unity","Wwise","SFX"], note: "" },
+  { title: "Travel Match India", studio: "Giga Fun Studios", year: "2023–2025", desc: "Full audio pipeline for a culturally-themed casual title targeting Indian market.", tags: ["Unity","Adaptive Audio"], note: "" },
+  { title: "Ludo Hero", studio: "Qila Games", year: "2023–2025", desc: "Audio design and implementation for a multiplayer mobile board game.", tags: ["Unity","Multiplayer Audio"], note: "" },
+];
+
+const gameMusic = [
+  { title: "Beat Kingdom", studio: "Sound Designer & Composer", year: "2025–Present", desc: "Real-time adaptive music system with 80–200 BPM dynamic ramping. Parameter-driven states: Combo, Perfect, Strike — designed for scalable emotional player feedback.", tags: ["Procedural Music","Param-Driven","Adaptive"], note: "Active" },
+];
+
+const film = [
+  { title: "Cinemabandi", studio: "D2R Productions", year: "2019–2020", desc: "Full score, sound design, and foley for an award-winning Telugu feature film. Solo audio director across drama and comedy genres.", tags: ["Film Score","Foley","ADR","Mixing"], note: "Award-winning" },
+  { title: "Anthele Kadha Anthele", studio: "Sakala Entertainment", year: "2021–2022", desc: "Composition, SFX, and foley. Full audio production as sole audio director.", tags: ["Film Score","SFX","Foley"], note: "" },
+  { title: "Kavyam", studio: "Swaraj Studios", year: "2022–2023", desc: "Background score, sound design, and mixing & mastering for a Telugu drama feature.", tags: ["Film Score","Sound Design","Mixing"], note: "" },
+  { title: "Seetharam Sithralu", studio: "Raising Hands Productions", year: "2023", desc: "Solo audio producer — songs, background score, sound design, and M&M.", tags: ["Score","Songs","SFX"], note: "" },
+  { title: "E3 (working title)", studio: "Telugu Indie", year: "2024–Present", desc: "Ongoing. Serving as solo producer across songs, background score, sound design, and mixing & mastering.", tags: ["Score","Songs","SFX","Mixing"], note: "Ongoing" },
+];
+
+const aiAudio = [
+  { title: "Gita Gurukul — AI Sanskrit Eval", studio: "AI Audio Developer", year: "2025–Present", desc: "Web prototype for AI-assisted Sanskrit pronunciation evaluation. Phonetic segmentation and alignment for real-time learner feedback.", tags: ["ML Pipelines","IPA Mapping","Speech Eval","Phonetic Align"], note: "Active" },
+  { title: "Sanskrit Phonetics Library", studio: "AI Phonetics Researcher", year: "2026–Present", desc: "Structured IPA-mapped phonetic dataset with articulation features for an API-ready speech and pronunciation platform.", tags: ["IPA Mapping","Dataset","API","Phonetics"], note: "Active" },
+];
+
+const reels = [
+  { title: "Showreel",        sub: "Scripted · Best of Work",      color: "#3A8A65" },
+  { title: "Game Audio",      sub: "Adaptive Music & SFX",         color: "#3A8A65" },
+  { title: "UI Sound Design", sub: "One Sound at a Time",          color: "#4F7EF7" },
+  { title: "UI FX & Motion",  sub: "Effects & Motion Graphics",    color: "#4F7EF7" },
+  { title: "Film & Cinematic",sub: "Movie Works",                  color: "#8A9BB0" },
+];
+---
+
+<Layout>
+
+<style>
+  /* ── RESET ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── VIEWPORT LOCK ── */
+  :root {
+    --nav-h: 4.5rem;
+    --panel-h: 44dvh;
+    --panel-w: calc(var(--panel-h) * 16 / 9);
+    --content-w: var(--panel-w);
+  }
+  html { scroll-snap-type: y mandatory; }
+
+  /* ── INFO TAGS ── */
+  .itag-wrap { position: relative; }
+  .itag { position: absolute; bottom: 8px; right: 8px; z-index: 100; }
+  .itag-btn {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 1px solid currentColor;
+    background: rgba(19,30,42,0.9);
+    font-size: 10px; font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: transform 0.15s;
+    line-height: 1;
+  }
+  .itag-btn:hover { transform: scale(1.2); }
+  .itag-tooltip {
+    display: none; position: absolute;
+    bottom: 28px; right: 0;
+    background: rgba(19,30,42,0.97);
+    border: 1px solid #243447; border-radius: 6px;
+    padding: 10px 14px; width: 240px;
+    font-family: 'Lato', sans-serif; font-size: 11px;
+    line-height: 1.7; color: #8A9BB0;
+    white-space: pre-wrap; backdrop-filter: blur(8px);
+    z-index: 200;
+  }
+  .itag-tooltip strong { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  .itag:hover .itag-tooltip { display: block; }
+
+  /* ── HERO ── */
+  #hero-outer {
+    position: relative; height: 100dvh; overflow: hidden;
+    display: flex; align-items: center;
+    scroll-snap-align: start;
+  }
+  #hero-bg {
+    position: absolute; inset: -20%;
+    will-change: transform;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(45,106,79,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 10% 70%, rgba(26,86,219,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 100% at 50% 50%, #0D1823 0%, #131E2A 100%);
+  }
+  /* studio light glow simulation */
+  #hero-bg::before {
+    content: '';
+    position: absolute; top: -10%; right: 5%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(58,138,101,0.12) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+  #hero-bg::after {
+    content: '';
+    position: absolute; bottom: 10%; left: 5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(79,126,247,0.09) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+  /* waveform overlay */
+  #hero-wave {
+    position: absolute; inset: 0;
+    opacity: 0.06; pointer-events: none;
+  }
+  /* grain texture */
+  #hero-grain {
+    position: absolute; inset: 0;
+    opacity: 0.03; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+  }
+  #hero-content { position: relative; z-index: 2; will-change: transform; }
+
+  /* image placeholder label */
+  .img-ph-label {
+    position: absolute; top: 12px; left: 12px;
+    font-size: 0.65rem; font-family: 'Lato', sans-serif;
+    font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(138,155,176,0.5);
+    border: 1px dashed rgba(138,155,176,0.2);
+    padding: 3px 8px; border-radius: 3px;
+    pointer-events: none;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── NAV ── */
+  #nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 1.1rem 2rem;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    transition: background 0.4s ease, border-color 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav-left { display: flex; align-items: center; }
+  .nav-icon { display: flex; align-items: center; text-decoration: none; opacity: 0.9; transition: opacity 0.2s; }
+  .nav-icon:hover { opacity: 1; }
+  .nav-center { display: flex; justify-content: center; }
+  .nav-wordmark { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.95rem; letter-spacing: 0.1em; color: #F4F6F8; text-decoration: none; }
+  .nav-wordmark span { color: #3A8A65; }
+  .nav-right { display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; }
+  .nav-links { display: flex; gap: 0.4rem; }
+  .toggle-wrap { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .nav-toggle { width: 36px; height: 36px; background: #0D1823; border: 1px solid #1C2B3A; border-radius: 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; box-shadow: inset 0 2px 3px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.03); transition: border-color 0.15s; flex-shrink: 0; }
+  .nav-toggle:hover { border-color: #243447; }
+  .nav-toggle:active { box-shadow: inset 0 3px 5px rgba(0,0,0,0.7); transform: translateY(0.5px); }
+  .toggle-icon { display: flex; align-items: center; justify-content: center; color: #4a5f78; transition: color 0.2s; }
+  .nav-toggle:hover .toggle-icon { color: #8A9BB0; }
+  #mode-toggle.mode-dark .toggle-icon { color: #F0F4F8; }
+  #mode-toggle.mode-dark:hover .toggle-icon { color: #8A9BB0; }
+  .toggle-led { width: 5px; height: 5px; border-radius: 50%; background: #060d15; border: 1px solid #0a1018; transition: background 0.25s, box-shadow 0.25s; flex-shrink: 0; }
+  .toggle-led.on-green { background: #22c55e; box-shadow: 0 0 4px rgba(34,197,94,0.9), 0 0 8px rgba(34,197,94,0.3); }
+  .toggle-led.on-white { background: rgba(240,244,248,0.92); box-shadow: 0 0 4px rgba(240,244,248,0.8), 0 0 10px rgba(240,244,248,0.2); }
+
+  /* ── NAV LINKS = ui-btn prefab ── */
+  .nav-links a {
+    display: inline-flex; align-items: center;
+    background: #0D1823;
+    border: 1px solid #1C2B3A;
+    border-radius: 5px;
+    padding: 0.3rem 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #4a5f78; text-decoration: none; cursor: pointer;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.5);
+    transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { color: #8A9BB0; border-color: #243447; }
+  .nav-links a.nav-active {
+    color: #3A8A65;
+    border-color: #2D6A4F;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.5), 0 0 6px rgba(45,106,79,0.55), 0 0 14px rgba(45,106,79,0.18);
+  }
+
+  /* ── REEL SELECTOR BUTTONS ── */
+  .reel-btn-row { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.875rem; }
+  .reel-btn {
+    background: #0D1823;
+    border: 1px solid #1C2B3A;
+    border-radius: 5px;
+    padding: 0.3rem 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #4a5f78; cursor: pointer;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.5);
+    transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  }
+  .reel-btn:hover { color: #8A9BB0; border-color: #243447; }
+  .reel-btn.active {
+    color: #3A8A65;
+    border-color: #2D6A4F;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.5),
+                0 0 6px rgba(45,106,79,0.55),
+                0 0 14px rgba(45,106,79,0.18);
+  }
+
+  /* ── REEL CAROUSEL ── */
+  .reel-carousel { overflow: hidden; border-radius: 8px; touch-action: pan-y; }
+  .reel-track { display: flex; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+  .reel-slide { min-width: 100%; }
+
+  /* ── KNOB ── */
+  .knob-zone { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; margin-top: 2rem; }
+  .knob-svg { cursor: grab; user-select: none; -webkit-user-select: none; }
+  .knob-svg:active { cursor: grabbing; }
+  #knob-indicator { transform-origin: 80px 72px; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+
+  /* ── REEL — fluid 44dvh layout ── */
+  #reel { padding-top: calc(var(--nav-h) + 1rem); }
+  #reel .section-inner {
+    width: var(--content-w);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  #reel .knob-zone { margin-top: 1rem; }
+
+  /* ── REEL DOTS ── */
+  .reel-dots { display: flex; gap: 1rem; align-items: flex-start; }
+  .reel-dot { width: 24px; display: flex; flex-direction: column; align-items: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 0; }
+  .dot-body { width: 8px; height: 8px; border-radius: 50%; background: #0D1823; border: 1px solid #1C2B3A; transition: border-color 0.2s, background 0.2s; }
+  .reel-dot.active .dot-body { background: #111d2b; border-color: #2D6A4F; }
+  .dot-led { width: 4px; height: 4px; border-radius: 50%; background: #060d15; transition: background 0.25s, box-shadow 0.25s; }
+  .reel-dot.active .dot-led { background: #3A8A65; box-shadow: 0 0 3px rgba(58,138,101,0.8); }
+  .dot-label { font-family: 'Montserrat', sans-serif; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #243447; transition: color 0.2s; white-space: nowrap; }
+  .reel-dot.active .dot-label { color: #3A8A65; }
+
+  /* ── HERO QUOTE ── */
+  .hero-quote { font-family: 'Lato', sans-serif; font-style: italic; font-size: 1rem; color: #B7D5C4; line-height: 1.6; padding-left: 1rem; border-left: 2px solid #2D6A4F; margin-bottom: 1.5rem; max-width: 400px; }
+  .hero-divider { border: none; border-top: 1px solid #1C2B3A; margin: 2rem 0; }
+
+  /* ── SECTION STRUCTURE ── */
+  .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  /* Each section = exactly one viewport. Content starts below nav. */
+  .section-pad {
+    height: 100dvh; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: var(--nav-h);
+    scroll-snap-align: start;
+  }
+  .section-alt { background: #1C2B3A; }
+  /* Sections with their own dense internal layouts — align to top, not centered */
+  #work, #skills { justify-content: flex-start; padding-top: calc(var(--nav-h) + 2.5rem); }
+  /* Work section inner = flex column so cards pane can fill remaining height */
+  #work .section-inner { height: 100%; display: flex; flex-direction: column; width: 100%; }
+  .eyebrow { font-size: 0.72rem; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #3A8A65; margin-bottom: 0.6rem; }
+  .section-h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 800; color: #F4F6F8; margin-bottom: 0.75rem; line-height: 1.1; }
+  .section-sub { font-family: 'Lato', sans-serif; font-size: 0.95rem; color: #8A9BB0; line-height: 1.85; max-width: 440px; }
+
+  /* ── WORK SECTION ── */
+  .work-hdr { flex-shrink: 0; margin-bottom: 0.5rem; }
+  .work-hdr .section-sub { margin-bottom: 1rem; }
+  /* Category buttons — button prefab, same row as reel-btn-row */
+  .work-btn-row { display: flex; gap: 0.4rem; flex-shrink: 0; margin-bottom: 1rem; }
+  .work-btn {
+    display: inline-flex; align-items: center;
+    background: #0D1823; border: 1px solid #1C2B3A; border-radius: 5px;
+    padding: 0.3rem 0.75rem;
+    font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #4a5f78; cursor: pointer; white-space: nowrap;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.5);
+    transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  }
+  .work-btn:hover { color: #8A9BB0; border-color: #243447; }
+  .work-btn.active {
+    color: #3A8A65; border-color: #2D6A4F;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.5), 0 0 6px rgba(45,106,79,0.55), 0 0 14px rgba(45,106,79,0.18);
+  }
+  /* Cards scroll area — fills remaining section height */
+  .work-cards-wrap {
+    flex: 1; min-height: 0;
+    position: relative; overflow: hidden;
+    width: 100%;
+  }
+  /* Panel crossfade */
+  .work-panels { height: 100%; width: 100%; transition: opacity 0.15s ease; }
+  .work-panels.fading { opacity: 0; }
+  /* Each category panel = horizontal scroll row */
+  .work-panel {
+    display: none; flex-direction: row;
+    gap: 1.25rem; height: 100%;
+    overflow-x: auto; overflow-y: hidden;
+    scrollbar-width: none;
+    padding-bottom: 0.75rem; align-items: stretch;
+  }
+  .work-panel.active { display: flex; }
+  .work-panel::-webkit-scrollbar { display: none; }
+  /* Project card — portrait, fixed width, fills panel height */
+  .proj-card-v {
+    flex-shrink: 0; width: 320px;
+    display: flex; flex-direction: column;
+    background: #131E2A; border: 1px solid #243447;
+    border-radius: 8px; overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+  }
+  .proj-card-v:hover { border-color: var(--cc); transform: translateY(-3px); }
+  .pcv-accent { height: 2px; background: var(--cc); opacity: 0.6; flex-shrink: 0; }
+  .pcv-thumb {
+    flex-shrink: 0; height: 120px; background: #0D1823;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pcv-thumb-icon { font-size: 1.6rem; opacity: 0.2; }
+  .pcv-thumb-label {
+    position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+    font-size: 0.58rem; font-family: 'Montserrat', sans-serif;
+    font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--cc); opacity: 0.35; white-space: nowrap;
+  }
+  .pcv-note {
+    position: absolute; top: 8px; right: 8px;
+    font-size: 0.58rem; font-family: 'Montserrat', sans-serif;
+    font-weight: 700; letter-spacing: 0.1em;
+    color: var(--cc); background: rgba(13,24,35,0.88);
+    padding: 2px 7px; border-radius: 3px; border: 1px solid var(--cc);
+  }
+  .pcv-body {
+    flex: 1; min-height: 0; padding: 0.9rem 1rem 1rem;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .pcv-meta { display: flex; justify-content: space-between; margin-bottom: 0.3rem; flex-shrink: 0; }
+  .pcv-studio { font-size: 0.68rem; font-family: 'Lato', sans-serif; color: #8A9BB0; }
+  .pcv-year { font-size: 0.65rem; font-family: 'Lato', sans-serif; color: #8A9BB0; }
+  .pcv-title { font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; color: #F4F6F8; margin-bottom: 0.4rem; line-height: 1.3; flex-shrink: 0; }
+  .pcv-desc {
+    font-size: 0.76rem; font-family: 'Lato', sans-serif; color: #8A9BB0;
+    line-height: 1.65; flex: 1; overflow: hidden;
+    display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;
+  }
+  .pcv-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.6rem; flex-shrink: 0; }
+  .pcv-tag { font-size: 0.62rem; font-family: 'Lato', sans-serif; padding: 0.18rem 0.45rem; background: #0D1823; border-radius: 3px; color: var(--ct); border: 1px solid #1C2B3A; }
+  /* Horizontal scroll glows — same ellipse pattern as Signal Path, rotated */
+  .work-glow {
+    position: absolute; top: 0; bottom: 0.75rem; width: 80px;
+    pointer-events: none; opacity: 0;
+    transition: opacity 1s ease; z-index: 2;
+  }
+  .work-glow.visible { opacity: 1; }
+  .work-glow-left {
+    left: 0;
+    background: radial-gradient(ellipse 100% 55% at -30% 50%, rgba(58,138,101,0.22) 0%, transparent 100%);
+  }
+  .work-glow-right {
+    right: 0;
+    background: radial-gradient(ellipse 100% 55% at 130% 50%, rgba(58,138,101,0.22) 0%, transparent 100%);
+  }
+  /* Work knob zone */
+  .work-knob-zone {
+    display: flex; justify-content: center; align-items: center;
+    padding: 0.35rem 0 0.15rem; flex-shrink: 0;
+  }
+
+  /* Light mode overrides */
+  html.light-mode .work-btn { background: var(--c-deep); border-color: var(--c-border); color: var(--c-text-3); }
+  html.light-mode .work-btn.active { color: var(--c-green); border-color: var(--c-green-dk); }
+  html.light-mode .proj-card-v { background: var(--c-surface); border-color: var(--c-border); }
+  html.light-mode .pcv-studio, html.light-mode .pcv-year, html.light-mode .pcv-desc { color: var(--c-text-2); }
+  html.light-mode .pcv-title { color: var(--c-text-1); }
+  html.light-mode .pcv-tag { background: var(--c-elevated); border-color: var(--c-border); color: var(--c-text-2); }
+
+  /* ── REEL / LISTEN ── */
+  .ph-video {
+    width: 100%; aspect-ratio: 16/9;
+    background: #0D1823; border: 1px dashed #243447;
+    border-radius: 8px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 1rem;
+    position: relative; overflow: hidden;
+  }
+  .ph-play {
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 1.5px solid currentColor;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1;
+    transition: transform 0.2s;
+  }
+  .ph-video:hover .ph-play { transform: scale(1.1); }
+  .ph-sc {
+    width: 100%; height: 160px; background: #0D1823;
+    border: 1px dashed #243447; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+  }
+
+  /* ── PROFILE AVATAR ── */
+  .ph-avatar {
+    width: 140px; height: 140px; border-radius: 50%;
+    background: #1C2B3A; border: 2px solid #243447;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem; font-weight: 800; color: #3A8A65;
+    flex-shrink: 0;
+  }
+
+  /* ── SIGNAL PATH ── */
+  .roadmap-wrap {
+    --rm-h: 16rem; /* LOCKED — track height = body height. Do not change without explicit request. */
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: 3.5rem; row-gap: 0.6rem;
+    margin-top: 3rem; align-items: start;
+  }
+  /* Row 1: year heading spans content col only — fader col stays empty */
+  .roadmap-year-num {
+    grid-column: 1 / 2; grid-row: 1 / 2;
+    font-family: 'Montserrat', sans-serif; font-size: clamp(3rem,6vw,4.5rem);
+    font-weight: 800; color: #3A8A65; line-height: 1;
+  }
+  /* Row 2: body + fader aligned together */
+  .roadmap-pane { grid-column: 1 / 2; grid-row: 2 / 3; transition: opacity 0.18s ease; position: relative; }
+  .roadmap-pane.fading { opacity: 0; }
+  /* Scroll glows — ellipse overlays, pointer-events off so they don't block text */
+  .rm-glow {
+    position: absolute; left: 0; right: 0; height: 72px;
+    pointer-events: none; opacity: 0;
+    transition: opacity 1s ease; z-index: 2;
+  }
+  .rm-glow.visible { opacity: 1; }
+  .rm-glow-top {
+    top: 0;
+    background: radial-gradient(ellipse 55% 100% at 50% -30%, rgba(58,138,101,0.22) 0%, transparent 100%);
+  }
+  .rm-glow-bot {
+    bottom: 0;
+    background: radial-gradient(ellipse 55% 100% at 50% 130%, rgba(58,138,101,0.22) 0%, transparent 100%);
+  }
+  /* Scrollable body — native scrollbar hidden, replaced by overlay */
+  .roadmap-body {
+    height: var(--rm-h); overflow-y: auto;
+    padding-right: 0.75rem;
+    scrollbar-width: none;
+  }
+  .roadmap-body::-webkit-scrollbar { display: none; }
+  /* Custom overlay scrollbar */
+  .rm-scrollbar {
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 2px; z-index: 4; pointer-events: none;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .rm-scrollbar.visible { opacity: 1; }
+  .rm-scrollbar-thumb {
+    position: absolute; right: 0; width: 2px;
+    background: #2D6A4F; border-radius: 1px;
+  }
+  html.light-mode .rm-scrollbar-thumb { background: var(--c-green-dk); }
+  .roadmap-era { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #8A9BB0; margin-bottom: 1rem; }
+  .roadmap-synopsis { font-family: 'Lato', sans-serif; font-size: 0.93rem; color: #8A9BB0; line-height: 1.85; margin-bottom: 1.75rem; max-width: 520px; }
+  .roadmap-skills { display: flex; flex-direction: column; gap: 1rem; }
+  :global(.roadmap-cat) { }
+  :global(.roadmap-cat-label) { font-family: 'Montserrat', sans-serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #3A8A65; margin-bottom: 0.4rem; }
+  :global(.roadmap-tags) { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  :global(.roadmap-tag) { font-size: 0.72rem; font-family: 'Lato', sans-serif; padding: 0.22rem 0.55rem; background: #131E2A; border: 1px solid #1C2B3A; border-radius: 3px; color: #8A9BB0; }
+
+  /* ── FADER: 3 columns (track | dots | years) — explicitly row 2, aligned with body ── */
+  .roadmap-fader { grid-column: 2 / 3; grid-row: 2 / 3; display: flex; flex-direction: row; align-items: flex-start; gap: 0.6rem; position: sticky; top: var(--nav-h); }
+
+  /* Col 1 — track + thumb. Height locked = --rm-h */
+  .rm-track-col {
+    position: relative; width: 17px; height: var(--rm-h);
+    flex-shrink: 0; cursor: grab;
+  }
+  .rm-track-col:active { cursor: grabbing; }
+  .roadmap-track-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: #1C2B3A; transform: translateX(-50%); border-radius: 1px; pointer-events: none; }
+  .roadmap-track-fill { position: absolute; left: 50%; bottom: 0; width: 2px; background: #2D6A4F; transform: translateX(-50%); border-radius: 1px; pointer-events: none; filter: url(#led-glow); transition: height 0.35s cubic-bezier(0.4,0,0.2,1); }
+  .rm-thumb {
+    position: absolute; left: 50%; transform: translate(-50%, -50%);
+    width: 17px; height: 40px;
+    background: #0D1823; border: 1px solid #1C2B3A; border-radius: 3px;
+    cursor: grab; z-index: 3;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    box-shadow: inset 0 0 0 1px rgba(36,52,71,0.6), 0 2px 8px rgba(0,0,0,0.6);
+    transition: top 0.35s cubic-bezier(0.4,0,0.2,1); touch-action: none;
+  }
+  .rm-thumb:active { cursor: grabbing; }
+  .rm-thumb-grip { width: 8px; height: 1px; background: #8A9BB0; border-radius: 1px; opacity: 0.5; }
+  .rm-thumb-grip:nth-child(2) { opacity: 0.85; }
+  .rm-thumb-grip:nth-child(3) { opacity: 0.5; }
+
+  /* Col 2 — dots */
+  .rm-dots-col {
+    display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+    height: var(--rm-h); width: 14px; flex-shrink: 0;
+  }
+  /* :global because dots + year labels are injected via JS and don't get Astro's scoped cid attr */
+  :global(.rm-dot) {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #8A9BB0; border: 1px solid #8A9BB0;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer; flex-shrink: 0;
+  }
+  :global(.rm-dot.active) {
+    background: #3A8A65; border-color: #2D6A4F;
+    box-shadow: 0 0 5px rgba(58,138,101,0.8), 0 0 12px rgba(58,138,101,0.4);
+  }
+
+  /* Col 3 — year buttons (matches nav/reel button prefab) */
+  .rm-years-col {
+    display: flex; flex-direction: column; justify-content: space-between;
+    height: var(--rm-h);
+  }
+  :global(.rm-year-label) {
+    display: inline-flex; align-items: center;
+    background: #0D1823; border: 1px solid #1C2B3A; border-radius: 5px;
+    padding: 0.3rem 0.75rem;
+    font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #4a5f78; cursor: pointer; white-space: nowrap;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.5);
+    transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  }
+  :global(.rm-year-label:hover) { color: #8A9BB0; border-color: #243447; }
+  :global(.rm-year-label.active) {
+    color: #3A8A65; border-color: #2D6A4F;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.5), 0 0 6px rgba(45,106,79,0.55), 0 0 14px rgba(45,106,79,0.18);
+  }
+
+  html.light-mode .rm-thumb { background: var(--c-deep); border-color: var(--c-border); box-shadow: inset 0 0 0 1px rgba(200,216,232,0.4), 0 2px 6px rgba(0,0,0,0.1); }
+  html.light-mode .rm-thumb-grip { background: var(--c-text-2); }
+  :global(html.light-mode .rm-dot) { background: var(--c-text-2); border-color: var(--c-text-2); }
+  :global(html.light-mode .rm-dot.active) { background: var(--c-green); border-color: var(--c-green-dk); }
+  :global(html.light-mode .rm-year-label) { background: var(--c-deep); border-color: var(--c-border); color: var(--c-text-3); }
+  :global(html.light-mode .rm-year-label.active) { color: var(--c-green); border-color: var(--c-green-dk); }
+
+  /* ── CONTACT ── */
+  .contact-cta {
+    display: inline-block; padding: 1rem 2.5rem;
+    background: #2D6A4F; color: #F4F6F8;
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .contact-cta:hover { background: #3A8A65; }
+
+  /* ── FOOTER ── */
+  footer { padding: 1.75rem 2rem; text-align: center; border-top: 1px solid #1C2B3A; }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-block; padding: 0.85rem 2rem;
+    background: #2D6A4F; color: #F4F6F8;
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-radius: 4px; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #3A8A65; }
+  .btn-ghost {
+    display: inline-block; padding: 0.85rem 2rem;
+    border: 1px solid #243447; color: #8A9BB0;
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-radius: 4px; transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: #3A8A65; color: #B7D5C4; }
+
+  /* ══════════════ LIGHT MODE OVERRIDES ══════════════ */
+  html.light-mode #hero-bg {
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(45,106,79,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 10% 70%, rgba(26,86,219,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 100% at 50% 50%, #F0F4F8 0%, #E8EEF6 100%);
+  }
+  html.light-mode #hero-bg::before {
+    background: radial-gradient(circle, rgba(45,106,79,0.07) 0%, transparent 65%);
+  }
+  html.light-mode #hero-bg::after {
+    background: radial-gradient(circle, rgba(26,86,219,0.05) 0%, transparent 65%);
+  }
+  html.light-mode .hero-quote { color: var(--c-text-2); border-left-color: var(--c-green-dk); }
+  html.light-mode .hero-divider { border-top-color: var(--c-border); }
+
+  html.light-mode .nav-wordmark { color: var(--c-text-1); }
+  html.light-mode .nav-toggle {
+    background: var(--c-deep);
+    border-color: var(--c-border);
+    box-shadow: inset 0 2px 3px var(--c-btn-shadow), 0 1px 0 rgba(255,255,255,0.5);
+  }
+  html.light-mode .nav-toggle:hover { border-color: var(--c-border-hi); }
+  html.light-mode .nav-toggle:active { box-shadow: inset 0 3px 5px var(--c-btn-shadow); }
+  html.light-mode .toggle-icon { color: var(--c-text-3); }
+  html.light-mode #mode-toggle.mode-dark .toggle-icon { color: #131E2A; }
+  html.light-mode #mode-toggle.mode-dark:hover .toggle-icon { color: var(--c-text-2); }
+  html.light-mode .toggle-led { background: var(--c-led-off); border-color: var(--c-led-off-b); }
+
+  html.light-mode .nav-links a {
+    background: var(--c-deep);
+    border-color: var(--c-border);
+    color: var(--c-text-3);
+    box-shadow: inset 0 2px 3px var(--c-btn-shadow);
+  }
+  html.light-mode .nav-links a:hover { color: var(--c-text-2); border-color: var(--c-border-hi); }
+  html.light-mode .nav-links a.nav-active {
+    box-shadow: inset 0 2px 3px var(--c-btn-shadow), 0 0 6px rgba(45,106,79,0.55), 0 0 14px rgba(45,106,79,0.18);
+  }
+
+  html.light-mode .section-alt { background: var(--c-surface); }
+  html.light-mode .section-h2 { color: var(--c-text-1); }
+  html.light-mode .section-sub { color: var(--c-text-2); }
+
+  html.light-mode .cat-header { border-bottom-color: var(--c-border-hi); }
+  html.light-mode .cat-count { color: var(--c-text-2); }
+
+  html.light-mode .proj-card { background: var(--c-surface); border-color: var(--c-border-hi); }
+  html.light-mode .proj-thumb { background: var(--c-bg); }
+  html.light-mode .proj-note { background: rgba(240,244,248,0.92); }
+  html.light-mode .proj-studio,
+  html.light-mode .proj-year  { color: var(--c-text-2); }
+  html.light-mode .proj-title { color: var(--c-text-1); }
+  html.light-mode .proj-desc  { color: var(--c-text-2); }
+  html.light-mode .proj-tag   { background: var(--c-elevated); color: var(--c-text-2) !important; }
+
+  html.light-mode .itag-btn { background: rgba(240,244,248,0.92); }
+  html.light-mode .itag-tooltip {
+    background: rgba(240,244,248,0.97);
+    border-color: var(--c-border-hi);
+    color: var(--c-text-2);
+  }
+
+  html.light-mode .reel-btn {
+    background: var(--c-deep);
+    border-color: var(--c-border);
+    color: var(--c-text-3);
+    box-shadow: inset 0 2px 3px var(--c-btn-shadow);
+  }
+  html.light-mode .reel-btn:hover { color: var(--c-text-2); border-color: var(--c-border-hi); }
+  html.light-mode .reel-btn.active {
+    box-shadow: inset 0 2px 3px var(--c-btn-shadow), 0 0 6px rgba(45,106,79,0.55), 0 0 14px rgba(45,106,79,0.18);
+  }
+
+  html.light-mode .dot-body { background: var(--c-deep); border-color: var(--c-border); }
+  html.light-mode .reel-dot.active .dot-body { background: var(--c-elevated); border-color: var(--c-green-dk); }
+  html.light-mode .dot-led { background: var(--c-led-off); }
+  html.light-mode .dot-label { color: var(--c-border-hi); }
+
+  html.light-mode .ph-video,
+  html.light-mode .ph-sc    { background: var(--c-deep); border-color: var(--c-border-hi); }
+  html.light-mode .ph-avatar { background: var(--c-surface); border-color: var(--c-border-hi); }
+
+  /* Hero inline overrides — need !important to beat inline styles */
+  html.light-mode h1 { color: var(--c-text-1) !important; }
+  html.light-mode h1 span { color: var(--c-green) !important; }
+  html.light-mode .hero-stats p:first-child { color: var(--c-text-1) !important; }
+  html.light-mode .hero-stats p:last-child  { color: var(--c-text-2) !important; }
+
+  html.light-mode .roadmap-era { color: var(--c-text-2); }
+  html.light-mode .roadmap-synopsis { color: var(--c-text-2); }
+  :global(html.light-mode .roadmap-tag) { background: var(--c-elevated); border-color: var(--c-border); color: var(--c-text-2); }
+  html.light-mode .roadmap-track-line { background: var(--c-border); }
+  html.light-mode .roadmap-body { scrollbar-color: var(--c-green-dk) var(--c-elevated); }
+  html.light-mode .rm-glow-top { background: radial-gradient(ellipse 55% 100% at 50% -30%, rgba(45,106,79,0.14) 0%, transparent 100%); }
+  html.light-mode .rm-glow-bot { background: radial-gradient(ellipse 55% 100% at 50% 130%, rgba(45,106,79,0.14) 0%, transparent 100%); }
+
+  html.light-mode .btn-ghost { border-color: var(--c-border-hi); color: var(--c-text-2); }
+
+  html.light-mode footer { border-top-color: var(--c-border); color: var(--c-text-2); }
+</style>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav id="nav">
+  <!-- Left: waveform icon -->
+  <div class="nav-left">
+    <a href="#home" class="nav-icon" aria-label="Home">
+      <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 9 C2 9 3 2 4.5 2 C6 2 7 16 8.5 16 C10 16 11 4 12.5 4 C14 4 15 14 16.5 14 C18 14 19 5 20.5 5 C22 5 23 13 24.5 13 C26 13 27 9 28 9" stroke="#3A8A65" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Center: wordmark -->
+  <div class="nav-center">
+    <a href="#home" class="nav-wordmark">SIRISH<span>AUDIO</span></a>
+  </div>
+
+  <!-- Right: links + toggles -->
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#reel">Reel</a>
+      <a href="#work">Work</a>
+      <a href="#listen">Listen</a>
+      <a href="#skills">Path</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div style="display:flex;gap:0.5rem;align-items:flex-start;">
+      <!-- Sound toggle -->
+      <div class="toggle-wrap">
+        <button class="nav-toggle" id="sound-toggle" aria-label="Toggle sound">
+          <div class="toggle-icon">
+            <svg id="icon-sound" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 5H4L7 2V12L4 9H2V5Z" stroke="currentColor" stroke-width="1.1" fill="none" stroke-linejoin="round"/>
+              <path id="sw1" d="M9 4.5C9.9 5.3 10.4 6.1 10.4 7S9.9 8.7 9 9.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+              <path id="sw2" d="M10.5 3C11.8 4.1 12.5 5.5 12.5 7S11.8 9.9 10.5 11" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+              <line id="sx1" x1="9" y1="4.5" x2="12.5" y2="9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" style="display:none"/>
+              <line id="sx2" x1="12.5" y1="4.5" x2="9" y2="9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" style="display:none"/>
+            </svg>
+          </div>
+        </button>
+        <div class="toggle-led" id="led-sound"></div>
+      </div>
+      <!-- Mode toggle -->
+      <div class="toggle-wrap">
+        <button class="nav-toggle" id="mode-toggle" aria-label="Toggle dark/light mode">
+          <div class="toggle-icon">
+            <svg id="icon-mode" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path id="moon" d="M11 8C10.3 8.4 9.5 8.6 8.6 8.6C6.1 8.6 4.1 6.6 4.1 4.1C4.1 3.2 4.4 2.4 4.9 1.7C2.8 2.4 1.3 4.4 1.3 6.7C1.3 9.6 3.6 11.9 6.5 11.9C8.8 11.9 10.8 10.4 11.5 8.3C11.3 8.2 11.2 8.1 11 8Z" fill="currentColor"/>
+              <g id="sun" style="display:none">
+                <circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.1" fill="none"/>
+                <line x1="7" y1="1" x2="7" y2="2.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                <line x1="7" y1="11.5" x2="7" y2="13" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                <line x1="1" y1="7" x2="2.5" y2="7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                <line x1="11.5" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                <line x1="2.8" y1="2.8" x2="3.9" y2="3.9" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                <line x1="10.1" y1="10.1" x2="11.2" y2="11.2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                <line x1="10.1" y1="3.9" x2="11.2" y2="2.8" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                <line x1="2.8" y1="11.2" x2="3.9" y2="10.1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+        </button>
+        <div class="toggle-led on-white" id="led-mode"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<div id="home" style="position:absolute;top:0;"></div>
+<div id="hero-outer">
+  <!-- Parallax background layers -->
+  <div id="hero-bg">
+    <div id="hero-grain"></div>
+
+    <!-- Waveform SVG -->
+    <svg id="hero-wave" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#B7D5C4" stroke-width="1" fill="none">
+        <!-- Main waveform -->
+        <polyline points="
+          0,400 50,395 70,380 90,320 110,240 130,200 150,240 170,310 190,370 210,395
+          230,400 250,398 270,385 290,340 310,280 330,250 350,265 370,300 390,360 410,392
+          430,400 450,396 470,382 490,350 510,300 530,265 550,280 570,320 590,375 610,398
+          630,400 650,397 670,386 690,355 710,305 730,268 750,282 770,322 790,376 810,399
+          830,400 850,396 870,383 890,345 910,285 930,255 950,270 970,308 990,365 1010,395
+          1030,400 1050,398 1070,384 1090,342 1110,278 1130,248 1150,264 1170,305 1190,362 1210,396
+          1230,400 1250,399 1270,388 1290,358 1310,308 1330,272 1350,285 1370,325 1400,400
+        " stroke-width="1.5" opacity="0.8"/>
+        <!-- Secondary waveform (offset) -->
+        <polyline points="
+          0,420 80,418 120,405 160,360 200,310 240,295 280,315 320,355 360,400 400,418
+          440,422 480,415 520,395 560,355 600,310 640,292 680,308 720,348 760,395 800,418
+          840,422 880,415 920,394 960,352 1000,308 1040,290 1080,307 1120,348 1160,396 1200,420
+          1240,422 1280,416 1320,398 1360,360 1400,420
+        " stroke-width="0.8" opacity="0.4"/>
+        <!-- Vertical tick marks -->
+        {Array.from({length: 28}, (_, i) => (
+          `<line x1="${i * 50}" y1="395" x2="${i * 50}" y2="405" stroke-width="0.5" opacity="0.3"/>`
+        ))}
+      </g>
+    </svg>
+  </div>
+
+  <!-- Hero content (counter-parallax) -->
+  <div id="hero-content" class="section-inner" style="width:100%;">
+    <div style="padding-top:5rem;max-width:680px;">
+      <p class="eyebrow reveal">Audio Architect · Sound Designer</p>
+      <h1 class="reveal reveal-delay-1" style="font-family:'Montserrat',sans-serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-0.025em;color:#F4F6F8;margin-bottom:1.25rem;">
+        Sirish <span style="color:#3A8A65;">Satyavolu</span>
+      </h1>
+
+      <blockquote class="hero-quote reveal reveal-delay-2">
+        "You can't close your ears. My work makes sure you never want to."
+      </blockquote>
+
+      <p class="reveal reveal-delay-2" style="font-family:'Lato',sans-serif;font-size:1rem;color:#8A9BB0;max-width:420px;line-height:1.9;margin-bottom:0;">
+        10+ years building adaptive, system-driven audio for games, film, and AI platforms.
+      </p>
+
+      <hr class="hero-divider reveal">
+
+      <!-- Stats -->
+      <div class="hero-stats reveal" style="display:flex;gap:3rem;flex-wrap:wrap;margin-bottom:2.5rem;">
+        {[["10+","Years"],["200M+","Players Reached"],["9","Shipped Titles"],["4","Feature Films"]].map(([n,l]) => (
+          <div>
+            <p style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:800;color:#F4F6F8;line-height:1;">{n}</p>
+            <p style="font-size:0.7rem;font-family:'Lato',sans-serif;color:#8A9BB0;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;">{l}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="reveal reveal-delay-3" style="display:flex;gap:0.875rem;flex-wrap:wrap;">
+        <a href="#reel" class="btn-primary">Watch Reel</a>
+        <a href="#work" class="btn-ghost">View Work</a>
+      </div>
+    </div>
+  </div>
+
+  <span class="img-ph-label">HERO BG — replace with atmospheric photo</span>
+</div>
+
+<!-- ══════════════════ REEL ══════════════════ -->
+<!-- ══════════════════ REEL ══════════════════ -->
+<section id="reel" class="section-pad">
+  <div class="section-inner">
+    <p class="eyebrow reveal">Showreels</p>
+    <h2 class="section-h2 reveal reveal-delay-1">Demo Reels</h2>
+    <p class="section-sub reveal reveal-delay-2" style="margin-bottom:2rem;">Five reels. One discipline at a time.</p>
+
+    <div class="reel-btn-row reveal">
+      {reels.map((r, i) => (
+        <button class={`reel-btn${i === 0 ? ' active' : ''}`} data-index={String(i)}>{r.title}</button>
+      ))}
+    </div>
+
+    <div class="reel-carousel reveal" id="reel-carousel">
+      <div class="reel-track" id="reel-track">
+        {reels.map((r, i) => (
+          <div class="reel-slide">
+            <div class="ph-video" style={`color:${r.color};`}>
+              <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,#1C2B3A 0%,#0D1823 100%);"></div>
+              <div class="ph-play" style={`color:${r.color};position:relative;z-index:1;`}>
+                <svg width="16" height="18" viewBox="0 0 16 18" fill={r.color}><path d="M0 0L16 9L0 18V0Z"/></svg>
+              </div>
+              <div style="position:relative;z-index:1;text-align:center;">
+                <p style="font-family:'Montserrat',sans-serif;font-size:0.82rem;font-weight:700;color:#F4F6F8;letter-spacing:0.1em;text-transform:uppercase;">{r.title}</p>
+                <p style={`font-size:0.72rem;color:${r.color};margin-top:0.3rem;font-family:'Lato',sans-serif;`}>{r.sub}</p>
+                <p style="font-size:0.65rem;color:#4a5f78;margin-top:0.6rem;font-family:'Lato',sans-serif;">vimeo.com/sirishaudio</p>
+              </div>
+              <span class="img-ph-label">VIMEO — {r.title}</span>
+            </div>
+          </div>
+        ))}
+        <div class="reel-slide" aria-hidden="true">
+          <div class="ph-video" style={`color:${reels[0].color};`}>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,#1C2B3A 0%,#0D1823 100%);"></div>
+            <div class="ph-play" style={`color:${reels[0].color};position:relative;z-index:1;`}>
+              <svg width="16" height="18" viewBox="0 0 16 18" fill={reels[0].color}><path d="M0 0L16 9L0 18V0Z"/></svg>
+            </div>
+            <div style="position:relative;z-index:1;text-align:center;">
+              <p style="font-family:'Montserrat',sans-serif;font-size:0.82rem;font-weight:700;color:#F4F6F8;letter-spacing:0.1em;text-transform:uppercase;">{reels[0].title}</p>
+              <p style={`font-size:0.72rem;color:${reels[0].color};margin-top:0.3rem;font-family:'Lato',sans-serif;`}>{reels[0].sub}</p>
+              <p style="font-size:0.65rem;color:#4a5f78;margin-top:0.6rem;font-family:'Lato',sans-serif;">vimeo.com/sirishaudio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="knob-zone reveal">
+      <svg class="knob-svg" id="knob-svg" width="160" height="110" viewBox="0 0 160 110" style="overflow:visible;">
+        <defs>
+          <filter id="led-glow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <circle class="knob-dot" data-index="0" cx="24"  cy="10" r="3.5" fill="#3A8A65" stroke="#2D6A4F" stroke-width="0.5" filter="url(#led-glow)" style="cursor:pointer;"/>
+        <circle class="knob-dot" data-index="1" cx="52"  cy="10" r="3.5" fill="#1C2B3A" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
+        <circle class="knob-dot" data-index="2" cx="80"  cy="10" r="3.5" fill="#1C2B3A" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
+        <circle class="knob-dot" data-index="3" cx="108" cy="10" r="3.5" fill="#1C2B3A" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
+        <circle class="knob-dot" data-index="4" cx="136" cy="10" r="3.5" fill="#1C2B3A" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
+        <path d="M 43.63 51.00 A 42 42 0 0 1 116.37 51.00" fill="none" stroke="#1C2B3A" stroke-width="2.5" stroke-linecap="round"/>
+        <path id="knob-progress" d="" fill="none" stroke="#2D6A4F" stroke-width="2.5" stroke-linecap="round" filter="url(#led-glow)"/>
+        <circle cx="80" cy="72" r="30" fill="#0D1823" stroke="#1C2B3A" stroke-width="1"/>
+        <circle cx="80" cy="72" r="30" fill="none" stroke="#243447" stroke-width="0.5" opacity="0.6"/>
+        <g id="knob-indicator">
+          <line x1="80" y1="72" x2="80" y2="46" stroke="#8A9BB0" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="80" cy="45" r="2" fill="#3A8A65"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ WORK ══════════════════ -->
+<section id="work" class="section-pad section-alt">
+  <div class="section-inner">
+
+    <!-- Header -->
+    <div class="work-hdr">
+      <p class="eyebrow reveal">Selected Work</p>
+      <h2 class="section-h2 reveal reveal-delay-1">Projects</h2>
+      <p class="section-sub reveal reveal-delay-2">Every shipped title, scored film, and active system.</p>
+    </div>
+
+    <!-- Category buttons -->
+    <div class="work-btn-row reveal reveal-delay-3">
+      <button class="work-btn active" data-cat="0">Game SD</button>
+      <button class="work-btn" data-cat="1">Game Music</button>
+      <button class="work-btn" data-cat="2">Film</button>
+      <button class="work-btn" data-cat="3">AI Audio</button>
+    </div>
+
+    <!-- Horizontal card scroll area -->
+    <div class="work-cards-wrap">
+      <div class="work-panels" id="work-panels">
+
+        <!-- Panel 0: Game Sound Design -->
+        <div class="work-panel active" data-panel="0">
+          {gameSD.map(p => (
+            <div class="proj-card-v" style="--cc:#3A8A65;--ct:#B7D5C4;">
+              <div class="pcv-accent"></div>
+              <div class="pcv-thumb">
+                <div style="position:absolute;inset:0;background:linear-gradient(150deg,#0D1823 0%,#1C2B3A 100%);"></div>
+                <span class="pcv-thumb-icon">🎮</span>
+                <span class="pcv-thumb-label">Game SD</span>
+                {p.note && <span class="pcv-note">{p.note}</span>}
+              </div>
+              <div class="pcv-body">
+                <div class="pcv-meta">
+                  <span class="pcv-studio">{p.studio}</span>
+                  <span class="pcv-year">{p.year}</span>
+                </div>
+                <h3 class="pcv-title">{p.title}</h3>
+                <p class="pcv-desc">{p.desc}</p>
+                <div class="pcv-tags">{p.tags.map(t => <span class="pcv-tag">{t}</span>)}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Panel 1: Game Music -->
+        <div class="work-panel" data-panel="1">
+          {gameMusic.map(p => (
+            <div class="proj-card-v" style="--cc:#4F7EF7;--ct:#C3D4E8;">
+              <div class="pcv-accent"></div>
+              <div class="pcv-thumb">
+                <div style="position:absolute;inset:0;background:linear-gradient(150deg,#0D1823 0%,#1A2840 100%);"></div>
+                <span class="pcv-thumb-icon">🎵</span>
+                <span class="pcv-thumb-label">Game Music</span>
+                {p.note && <span class="pcv-note">{p.note}</span>}
+              </div>
+              <div class="pcv-body">
+                <div class="pcv-meta">
+                  <span class="pcv-studio">{p.studio}</span>
+                  <span class="pcv-year">{p.year}</span>
+                </div>
+                <h3 class="pcv-title">{p.title}</h3>
+                <p class="pcv-desc">{p.desc}</p>
+                <div class="pcv-tags">{p.tags.map(t => <span class="pcv-tag">{t}</span>)}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Panel 2: Film -->
+        <div class="work-panel" data-panel="2">
+          {film.map(p => (
+            <div class="proj-card-v" style="--cc:#8A9BB0;--ct:#B7D5C4;">
+              <div class="pcv-accent"></div>
+              <div class="pcv-thumb">
+                <div style="position:absolute;inset:0;background:linear-gradient(150deg,#0D1823 0%,#1A1F2A 100%);"></div>
+                <span class="pcv-thumb-icon">🎬</span>
+                <span class="pcv-thumb-label">Film</span>
+                {p.note && <span class="pcv-note">{p.note}</span>}
+              </div>
+              <div class="pcv-body">
+                <div class="pcv-meta">
+                  <span class="pcv-studio">{p.studio}</span>
+                  <span class="pcv-year">{p.year}</span>
+                </div>
+                <h3 class="pcv-title">{p.title}</h3>
+                <p class="pcv-desc">{p.desc}</p>
+                <div class="pcv-tags">{p.tags.map(t => <span class="pcv-tag">{t}</span>)}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Panel 3: AI Audio -->
+        <div class="work-panel" data-panel="3">
+          {aiAudio.map(p => (
+            <div class="proj-card-v" style="--cc:#9B72CF;--ct:#D4C3E8;">
+              <div class="pcv-accent"></div>
+              <div class="pcv-thumb">
+                <div style="position:absolute;inset:0;background:linear-gradient(150deg,#0D1823 0%,#1A1430 100%);"></div>
+                <span class="pcv-thumb-icon">🤖</span>
+                <span class="pcv-thumb-label">AI Audio</span>
+                {p.note && <span class="pcv-note">{p.note}</span>}
+              </div>
+              <div class="pcv-body">
+                <div class="pcv-meta">
+                  <span class="pcv-studio">{p.studio}</span>
+                  <span class="pcv-year">{p.year}</span>
+                </div>
+                <h3 class="pcv-title">{p.title}</h3>
+                <p class="pcv-desc">{p.desc}</p>
+                <div class="pcv-tags">{p.tags.map(t => <span class="pcv-tag">{t}</span>)}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+      <!-- Horizontal scroll glows -->
+      <div class="work-glow work-glow-left"  id="wgl-left"></div>
+      <div class="work-glow work-glow-right" id="wgl-right"></div>
+    </div>
+
+    <!-- Work Knob -->
+    <div class="work-knob-zone">
+      <svg class="knob-svg" id="work-knob-svg" width="160" height="110" viewBox="0 0 160 110" style="overflow:visible;">
+        <defs>
+          <filter id="wk-led-glow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="wk-dim-glow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="1.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Dots / pill group — populated by JS -->
+        <g id="wk-dots-group"></g>
+        <!-- Base track arc -->
+        <path d="M 43.63 51.00 A 42 42 0 0 1 116.37 51.00" fill="none" stroke="#1C2B3A" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Inactive dashed arc — shown when not scrollable -->
+        <path id="wk-inactive-arc" d="M 43.63 51.00 A 42 42 0 0 1 116.37 51.00" fill="none" stroke="#4a5f78" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5" filter="url(#wk-dim-glow)"/>
+        <!-- Progress arc — active only, hidden initially -->
+        <path id="wk-progress" d="" fill="none" stroke="#2D6A4F" stroke-width="2.5" stroke-linecap="round" filter="url(#wk-led-glow)" style="display:none;"/>
+        <!-- Knob body -->
+        <circle id="wk-knob-body" cx="80" cy="72" r="30" fill="#0D1823" stroke="#1C2B3A" stroke-width="1" style="cursor:grab;"/>
+        <circle cx="80" cy="72" r="30" fill="none" stroke="#243447" stroke-width="0.5" opacity="0.6"/>
+        <!-- Indicator — starts pointing straight up (inactive/parked) -->
+        <g id="wk-indicator" style="transform-origin:80px 72px; transform:rotate(0deg);">
+          <line id="wk-indicator-line" x1="80" y1="72" x2="80" y2="46" stroke="#243447" stroke-width="1.5" stroke-linecap="round"/>
+          <circle id="wk-indicator-dot" cx="80" cy="45" r="2" fill="#4a5f78"/>
+        </g>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ LISTEN ══════════════════ -->
+<section id="listen" class="section-pad">
+  <div class="section-inner itag-wrap">
+    <p class="eyebrow reveal">Audio</p>
+    <h2 class="section-h2 reveal reveal-delay-1">Listen</h2>
+    <p class="section-sub reveal reveal-delay-2" style="margin-bottom:2.5rem;">Selected tracks — game audio, adaptive music, film score excerpts.</p>
+
+    <div class="itag-wrap reveal">
+      <div class="ph-sc">
+        <svg width="36" height="36" viewBox="0 0 32 24" fill="#ff5500"><path d="M0 17c0 1.1.9 2 2 2s2-.9 2-2v-6c0-1.1-.9-2-2-2s-2 .9-2 2v6zm4.5 1.5c0 1.1.9 2 2 2s2-.9 2-2v-9c0-1.1-.9-2-2-2s-2 .9-2 2v9zm4.5 1c0 1.1.9 2 2 2s2-.9 2-2V8c0-1.1-.9-2-2-2s-2 .9-2 2v11.5zm4.5.5c0 1.1.9 2 2 2s2-.9 2-2V6c0-1.1-.9-2-2-2s-2 .9-2 2v14zm4.5-1c0 1.1.9 2 2 2s2-.9 2-2V10c0-1.1-.9-2-2-2s-2 .9-2 2v9zm4.5 1c0 1.1.9 2 2 2s2-.9 2-2V13c0-1.1-.9-2-2-2s-2 .9-2 2v7z"/></svg>
+        <div>
+          <p style="font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:700;color:#8A9BB0;margin-bottom:0.25rem;">SoundCloud Player</p>
+          <p style="font-size:0.72rem;color:#ff5500;font-family:'Lato',sans-serif;">soundcloud.com/sirishaudio</p>
+          <p style="font-size:0.7rem;color:#8A9BB0;margin-top:0.25rem;font-family:'Lato',sans-serif;">→ Replace with embed iframe</p>
+        </div>
+      </div>
+      <span class="img-ph-label">SOUNDCLOUD EMBED</span>
+      <div class="itag"><button class="itag-btn" style="color:#ff5500;">i</button><div class="itag-tooltip"><strong style="color:#ff5500;">SOUNDCLOUD EMBED</strong>Height: 160px
+URL: soundcloud.com/sirishaudio
+Color: #2D6A4F
+Show user: true, hide related: true</div></div>
+    </div>
+
+    <div style="margin-top:1.5rem;">
+      <a href="https://soundcloud.com/sirishaudio" target="_blank" style="font-size:0.78rem;font-family:'Montserrat',sans-serif;font-weight:600;color:#8A9BB0;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid #243447;padding-bottom:2px;transition:all 0.2s;" onmouseover="this.style.color='#B7D5C4';this.style.borderColor='#3A8A65'" onmouseout="this.style.color='#8A9BB0';this.style.borderColor='#243447'">Full Profile on SoundCloud →</a>
+    </div>
+
+    <div class="itag"><button class="itag-btn" style="color:#ff5500;">i</button><div class="itag-tooltip"><strong style="color:#ff5500;">LISTEN SECTION</strong>BG: #131E2A
+Padding: 6rem 0</div></div>
+  </div>
+</section>
+
+<!-- ══════════════════ SKILLS ══════════════════ -->
+<section id="skills" class="section-pad section-alt">
+  <div class="section-inner">
+    <p class="eyebrow reveal">Signal Path</p>
+    <h2 class="section-h2 reveal reveal-delay-1">How I Got Here</h2>
+    <p class="section-sub reveal reveal-delay-2">Drag or click the track to move through time.</p>
+
+    <div class="roadmap-wrap reveal">
+      <!-- Row 1, Col 1 only: year heading -->
+      <div class="roadmap-year-num" id="rm-year">2026</div>
+
+      <!-- Row 2, Col 1: scrollable body -->
+      <div class="roadmap-pane" id="roadmap-pane">
+        <div class="roadmap-body" id="rm-body">
+          <div class="roadmap-era" id="rm-era">Current</div>
+          <p class="roadmap-synopsis" id="rm-synopsis"></p>
+          <div class="roadmap-skills" id="rm-skills"></div>
+        </div>
+        <div class="rm-glow rm-glow-top" id="rm-glow-top"></div>
+        <div class="rm-glow rm-glow-bot" id="rm-glow-bot"></div>
+        <div class="rm-scrollbar" id="rm-scrollbar"><div class="rm-scrollbar-thumb" id="rm-scrollbar-thumb"></div></div>
+      </div>
+
+      <!-- Fader: 3 columns — track | dots | years -->
+      <div class="roadmap-fader">
+        <!-- Col 1: track + thumb -->
+        <div class="rm-track-col" id="rm-track-zone">
+          <div class="roadmap-track-line"></div>
+          <div class="roadmap-track-fill" id="rm-fill"></div>
+          <div class="rm-thumb" id="rm-thumb">
+            <div class="rm-thumb-grip"></div>
+            <div class="rm-thumb-grip"></div>
+            <div class="rm-thumb-grip"></div>
+          </div>
+        </div>
+        <!-- Col 2: pagination dots (injected by JS) -->
+        <div class="rm-dots-col" id="rm-dots-col"></div>
+        <!-- Col 3: year labels (injected by JS) -->
+        <div class="rm-years-col" id="rm-years-col"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ ABOUT ══════════════════ -->
+<section id="about" class="section-pad">
+  <div class="section-inner itag-wrap">
+    <p class="eyebrow reveal">Background</p>
+    <h2 class="section-h2 reveal reveal-delay-1">About</h2>
+    <div class="reveal" style="display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start;margin-top:2.5rem;">
+
+      <div class="itag-wrap">
+        <div class="ph-avatar">SS</div>
+        <span class="img-ph-label" style="bottom:-24px;top:auto;left:50%;transform:translateX(-50%);white-space:nowrap;">PROFILE PHOTO</span>
+        <div class="itag"><button class="itag-btn" style="color:#3A8A65;">i</button><div class="itag-tooltip"><strong style="color:#3A8A65;">PROFILE PHOTO</strong>Shape: circle, 140px
+Replace with &lt;img&gt; border-radius:50%
+Placeholder: initials "SS" #3A8A65</div></div>
+      </div>
+
+      <div>
+        <p style="font-size:1rem;font-family:'Lato',sans-serif;color:#8A9BB0;line-height:1.9;margin-bottom:1.25rem;">Audio Architect with 10+ years building adaptive, system-driven audio for games, VR, film, and AI-driven platforms. Deep expertise in parameter-based music systems, procedural audio, and scalable pipelines.</p>
+        <p style="font-size:1rem;font-family:'Lato',sans-serif;color:#8A9BB0;line-height:1.9;margin-bottom:2rem;">M.S. Music Technology, Georgia Tech. Currently developing AI-assisted speech evaluation tools and adaptive game audio systems — a rare dual fluency in creative sound design and ML audio infrastructure.</p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <a href="mailto:sirishsatyavolu@gmail.com" style="font-size:0.78rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:0.06em;color:#3A8A65;text-decoration:none;border-bottom:1px solid #2D6A4F;padding-bottom:2px;">Email</a>
+          <a href="https://linkedin.com/in/sirishsatyavolu" target="_blank" style="font-size:0.78rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:0.06em;color:#8A9BB0;text-decoration:none;border-bottom:1px solid #243447;padding-bottom:2px;">LinkedIn</a>
+          <a href="https://soundcloud.com/sirishaudio" target="_blank" style="font-size:0.78rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:0.06em;color:#8A9BB0;text-decoration:none;border-bottom:1px solid #243447;padding-bottom:2px;">SoundCloud</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="itag"><button class="itag-btn" style="color:#B7D5C4;">i</button><div class="itag-tooltip"><strong style="color:#B7D5C4;">ABOUT SECTION</strong>Grid: auto 1fr, gap 3rem
+Avatar: 140px circle
+Body: Lato 400 / 1rem</div></div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section id="contact" class="section-pad section-alt">
+  <div class="itag-wrap" style="max-width:600px;margin:0 auto;padding:0 2rem;text-align:center;">
+    <p class="eyebrow reveal" style="justify-content:center;display:block;">Let's Talk</p>
+    <h2 class="section-h2 reveal reveal-delay-1" style="margin-bottom:1.25rem;">Open to Opportunities</h2>
+    <p class="reveal reveal-delay-2" style="font-family:'Lato',sans-serif;color:#8A9BB0;line-height:1.85;margin-bottom:2.5rem;font-size:0.95rem;">Actively seeking Sound Designer / Audio Architect roles at game studios — particularly in Finland and Sweden.</p>
+    <div class="reveal reveal-delay-3">
+      <a href="mailto:sirishsatyavolu@gmail.com" class="contact-cta">sirishsatyavolu@gmail.com</a>
+    </div>
+    <div class="reveal" style="display:flex;justify-content:center;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;">
+      {[["LinkedIn","https://linkedin.com/in/sirishsatyavolu"],["SoundCloud","https://soundcloud.com/sirishaudio"],["Vimeo","https://vimeo.com/sirishaudio"],["GitHub","https://github.com/sirishaudio"]].map(([l,h]) => (
+        <a href={h} target="_blank" style="font-size:0.75rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:0.06em;color:#8A9BB0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#B7D5C4'" onmouseout="this.style.color='#8A9BB0'">{l}</a>
+      ))}
+    </div>
+    <div class="itag"><button class="itag-btn" style="color:#B7D5C4;">i</button><div class="itag-tooltip"><strong style="color:#B7D5C4;">CONTACT SECTION</strong>BG: #1C2B3A
+CTA: Montserrat 700 / 0.82rem
+Max-width: 600px, centered</div></div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <p style="font-size:0.7rem;font-family:'Lato',sans-serif;color:#8A9BB0;letter-spacing:0.08em;">© 2026 Sirish Satyavolu · sirishaudio.com</p>
+</footer>
+
+<script>
+  // ── PARALLAX ──
+  const heroBg = document.getElementById('hero-bg');
+  const heroContent = document.getElementById('hero-content');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (heroBg) heroBg.style.transform = `translateY(${y * 0.45}px)`;
+      if (heroContent) heroContent.style.transform = `translateY(${y * 0.15}px)`;
+    }, { passive: true });
+  }
+
+  // ── SCROLL REVEAL ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // ── WORK: CATEGORY SWITCHING + SCROLL GLOWS ──
+  const workBtns   = document.querySelectorAll('.work-btn');
+  const workPanels = document.querySelectorAll('.work-panel');
+  const workPanelsWrap = document.getElementById('work-panels');
+  const wglLeft    = document.getElementById('wgl-left');
+  const wglRight   = document.getElementById('wgl-right');
+  let workCurrent  = 0;
+
+  function getActiveTrack() {
+    return workPanels[workCurrent];
+  }
+
+  function updateWorkGlows() {
+    const track = getActiveTrack();
+    if (!track) return;
+    const sl  = track.scrollLeft;
+    const max = track.scrollWidth - track.clientWidth;
+    if (wglLeft)  wglLeft.classList.toggle('visible',  sl > 8);
+    if (wglRight) wglRight.classList.toggle('visible', max > 8 && sl < max - 8);
+  }
+
+  workPanels.forEach(panel => {
+    panel.addEventListener('scroll', updateWorkGlows, { passive: true });
+  });
+
+  function setWorkCat(idx) {
+    if (idx === workCurrent) return;
+    workPanelsWrap.classList.add('fading');
+    // Reset glow state immediately
+    if (wglLeft)  wglLeft.classList.remove('visible');
+    if (wglRight) wglRight.classList.remove('visible');
+    setTimeout(() => {
+      workBtns.forEach((b, i)   => b.classList.toggle('active', i === idx));
+      workPanels.forEach((p, i) => p.classList.toggle('active', i === idx));
+      workPanelsWrap.classList.remove('fading');
+      workCurrent = idx;
+      requestAnimationFrame(() => {
+        updateWorkGlows();
+        setWkKnobState(workPanels[workCurrent]);
+      });
+    }, 150);
+  }
+
+  workBtns.forEach((btn, i) => btn.addEventListener('click', () => setWorkCat(i)));
+
+  // ── WORK KNOB ──
+  const wkSvg          = document.getElementById('work-knob-svg');
+  const wkDotsGroup    = document.getElementById('wk-dots-group');
+  const wkProgress     = document.getElementById('wk-progress');
+  const wkInactiveArc  = document.getElementById('wk-inactive-arc');
+  const wkIndicator    = document.getElementById('wk-indicator');
+  const wkIndicatorLine = document.getElementById('wk-indicator-line');
+  const wkIndicatorDot  = document.getElementById('wk-indicator-dot');
+  const wkKnobBody     = document.getElementById('wk-knob-body');
+  let wkActive = false;
+
+  function buildWkDots(panel) {
+    if (!wkDotsGroup) return false;
+    wkDotsGroup.innerHTML = '';
+    const scrollable = panel.scrollWidth > panel.clientWidth + 4;
+    if (!scrollable) {
+      // Single inactive pill
+      const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      rect.setAttribute('x', '56'); rect.setAttribute('y', '6.5');
+      rect.setAttribute('width', '48'); rect.setAttribute('height', '7');
+      rect.setAttribute('rx', '3.5');
+      rect.setAttribute('fill', '#1C2B3A');
+      rect.setAttribute('stroke', '#243447');
+      rect.setAttribute('stroke-width', '0.5');
+      wkDotsGroup.appendChild(rect);
+      return false;
+    }
+    const n = panel.querySelectorAll('.proj-card-v').length;
+    const spacing = n > 6 ? Math.max(12, Math.floor(128 / Math.max(n - 1, 1))) : 24;
+    const r = n > 6 ? 2.5 : 3.5;
+    const startX = 80 - (n - 1) * spacing / 2;
+    for (let i = 0; i < n; i++) {
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', String(startX + i * spacing));
+      c.setAttribute('cy', '10');
+      c.setAttribute('r', String(r));
+      c.setAttribute('fill', i === 0 ? '#3A8A65' : '#1C2B3A');
+      c.setAttribute('stroke', i === 0 ? '#2D6A4F' : '#243447');
+      c.setAttribute('stroke-width', '0.5');
+      c.dataset.wkDot = String(i);
+      wkDotsGroup.appendChild(c);
+    }
+    return true;
+  }
+
+  function setWkKnobState(panel) {
+    const scrollable = buildWkDots(panel);
+    wkActive = scrollable;
+    if (!scrollable) {
+      // Inactive appearance
+      if (wkProgress)    { wkProgress.setAttribute('d', ''); wkProgress.style.display = 'none'; }
+      if (wkInactiveArc) wkInactiveArc.style.display = '';
+      if (wkIndicator)   wkIndicator.style.transform = 'rotate(0deg)';
+      if (wkIndicatorLine) wkIndicatorLine.setAttribute('stroke', '#243447');
+      if (wkIndicatorDot)  wkIndicatorDot.setAttribute('fill', '#4a5f78');
+      if (wkKnobBody) wkKnobBody.setAttribute('stroke', '#1C2B3A');
+    } else {
+      // Active appearance
+      if (wkInactiveArc) wkInactiveArc.style.display = 'none';
+      if (wkProgress)    wkProgress.style.display = '';
+      if (wkIndicatorLine) wkIndicatorLine.setAttribute('stroke', '#8A9BB0');
+      if (wkIndicatorDot)  wkIndicatorDot.setAttribute('fill', '#3A8A65');
+      if (wkKnobBody) wkKnobBody.setAttribute('stroke', '#243447');
+      updateWkKnob(panel);
+    }
+  }
+
+  function updateWkKnob(panel) {
+    if (!wkActive || !panel) return;
+    const max = panel.scrollWidth - panel.clientWidth;
+    const progress = max > 0 ? panel.scrollLeft / max : 0;
+    // Map 0→1 to 300°→420° (same 120° arc as reel, going CW)
+    const angle = 300 + progress * 120;
+    if (wkIndicator) wkIndicator.style.transform = `rotate(${angle}deg)`;
+    // Progress arc
+    const sweepDeg = progress * 120;
+    if (wkProgress) wkProgress.setAttribute('d', sweepDeg > 0.5 ? buildArcPath(300, sweepDeg) : '');
+    // Update active dot
+    const dots = wkDotsGroup ? Array.from(wkDotsGroup.querySelectorAll('circle')) : [];
+    const n = dots.length;
+    if (n > 0) {
+      const activeIdx = Math.round(progress * (n - 1));
+      dots.forEach((d, i) => {
+        if (i === activeIdx) {
+          d.setAttribute('fill', '#3A8A65'); d.setAttribute('stroke', '#2D6A4F');
+          d.setAttribute('filter', 'url(#wk-led-glow)');
+        } else {
+          d.setAttribute('fill', '#1C2B3A'); d.setAttribute('stroke', '#243447');
+          d.removeAttribute('filter');
+        }
+      });
+    }
+  }
+
+  // Scroll → update knob
+  workPanels.forEach(panel => {
+    panel.addEventListener('scroll', () => {
+      updateWorkGlows();
+      if (wkActive) updateWkKnob(panel);
+    }, { passive: true });
+  });
+
+  // Drag knob → scroll active panel
+  let wkDragging = false;
+  let wkDragStartAngle = 0;
+  let wkDragStartScroll = 0;
+
+  function wkGetAngle(e) {
+    if (!wkSvg) return 0;
+    const rect = wkSvg.getBoundingClientRect();
+    const scaleX = 160 / rect.width;
+    const scaleY = 110 / rect.height;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const x = (clientX - rect.left) * scaleX - 80;
+    const y = (clientY - rect.top)  * scaleY - 72;
+    return Math.atan2(x, -y) * 180 / Math.PI; // 0° = up
+  }
+
+  if (wkKnobBody) {
+    wkKnobBody.addEventListener('mousedown', (e) => {
+      if (!wkActive) return;
+      e.preventDefault();
+      wkDragging = true;
+      wkDragStartAngle = wkGetAngle(e);
+      const panel = workPanels[workCurrent];
+      wkDragStartScroll = panel ? panel.scrollLeft : 0;
+    });
+    wkKnobBody.addEventListener('touchstart', (e) => {
+      if (!wkActive) return;
+      wkDragging = true;
+      wkDragStartAngle = wkGetAngle(e);
+      const panel = workPanels[workCurrent];
+      wkDragStartScroll = panel ? panel.scrollLeft : 0;
+    }, { passive: true });
+  }
+
+  document.addEventListener('mousemove', (e) => {
+    if (!wkDragging || !wkActive) return;
+    const panel = workPanels[workCurrent];
+    if (!panel) return;
+    const delta = wkGetAngle(e) - wkDragStartAngle;          // degrees rotated
+    const max = panel.scrollWidth - panel.clientWidth;
+    const scrollDelta = (delta / 120) * max;                  // 120° = full scroll range
+    panel.scrollLeft = Math.max(0, Math.min(max, wkDragStartScroll + scrollDelta));
+  });
+
+  document.addEventListener('touchmove', (e) => {
+    if (!wkDragging || !wkActive) return;
+    const panel = workPanels[workCurrent];
+    if (!panel) return;
+    const delta = wkGetAngle(e) - wkDragStartAngle;
+    const max = panel.scrollWidth - panel.clientWidth;
+    const scrollDelta = (delta / 120) * max;
+    panel.scrollLeft = Math.max(0, Math.min(max, wkDragStartScroll + scrollDelta));
+  }, { passive: true });
+
+  document.addEventListener('mouseup', () => { wkDragging = false; });
+  document.addEventListener('touchend', () => { wkDragging = false; });
+
+  requestAnimationFrame(() => {
+    updateWorkGlows();
+    setWkKnobState(workPanels[workCurrent]);
+  });
+
+  // ── NAV SCROLL STYLE ──
+  const nav = document.getElementById('nav');
+  function updateNavScroll() {
+    if (!nav) return;
+    const light = document.documentElement.classList.contains('light-mode');
+    if (window.scrollY > 60) {
+      nav.style.background = light ? 'rgba(240,244,248,0.96)' : 'rgba(13,24,35,0.96)';
+      nav.style.borderColor = light ? '#C8D8E8' : '#1C2B3A';
+      nav.style.backdropFilter = 'blur(14px)';
+    } else {
+      nav.style.background = 'transparent';
+      nav.style.borderColor = 'transparent';
+      nav.style.backdropFilter = 'none';
+    }
+    // Clear nav-active when back at hero
+    if (window.scrollY < window.innerHeight * 0.4) {
+      navLinks.forEach(l => l.classList.remove('nav-active'));
+    }
+  }
+  window.addEventListener('scroll', updateNavScroll, { passive: true });
+
+  // ── NAV ACTIVE STATE ──
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sectionIds = ['reel','work','listen','skills','about','contact'];
+  const sectionObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('nav-active'));
+        const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (a) a.classList.add('nav-active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sectionIds.forEach(id => { const el = document.getElementById(id); if (el) sectionObs.observe(el); });
+
+  // ── INTERCEPT NAV LINKS → no URL hash ──
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.getElementById(link.getAttribute('href').slice(1));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ── FORCE TOP ON LOAD ──
+  window.addEventListener('load', () => { window.scrollTo(0, 0); });
+
+  // ── SOUND TOGGLE ──
+  let soundOn = false;
+  document.getElementById('sound-toggle')?.addEventListener('click', () => {
+    soundOn = !soundOn;
+    const led = document.getElementById('led-sound');
+    const w1 = document.getElementById('sw1'), w2 = document.getElementById('sw2');
+    const x1 = document.getElementById('sx1'), x2 = document.getElementById('sx2');
+    if (led) led.className = soundOn ? 'toggle-led on-green' : 'toggle-led';
+    const icon = document.querySelector('#sound-toggle .toggle-icon');
+    if (icon) icon.style.color = soundOn ? '#3A8A65' : '';
+    if (soundOn) {
+      if (w1) { w1.style.display = ''; w2.style.display = ''; x1.style.display = 'none'; x2.style.display = 'none'; }
+    } else {
+      if (w1) { w1.style.display = 'none'; w2.style.display = 'none'; x1.style.display = ''; x2.style.display = ''; }
+    }
+  });
+
+  // ── MODE TOGGLE ──
+  let darkMode = true;
+  const modeToggleBtn = document.getElementById('mode-toggle');
+  if (modeToggleBtn) modeToggleBtn.classList.add('mode-dark'); // dark mode on by default
+  modeToggleBtn?.addEventListener('click', () => {
+    darkMode = !darkMode;
+    document.documentElement.classList.toggle('light-mode', !darkMode);
+    const led = document.getElementById('led-mode');
+    const moon = document.getElementById('moon'), sun = document.getElementById('sun');
+    if (led) led.className = darkMode ? 'toggle-led on-white' : 'toggle-led';
+    if (moon) moon.style.display = darkMode ? '' : 'none';
+    if (sun) sun.style.display = darkMode ? 'none' : '';
+    if (modeToggleBtn) modeToggleBtn.classList.toggle('mode-dark', darkMode);
+    updateNavScroll(); // re-apply nav bg with correct mode colors
+  });
+
+  // ── REEL KNOB + CAROUSEL ──
+  const STOP_ANGLES = [300, 330, 360, 390, 420]; // cumulative CW, 30° per step
+  const ARC_START = 300;
+  let currentReel = 0;
+  let isAnimating = false;
+
+  const knobIndicator = document.getElementById('knob-indicator');
+  const progressArc = document.getElementById('knob-progress');
+  const reelTrack = document.getElementById('reel-track');
+  const knobDots = document.querySelectorAll('.knob-dot');
+  const reelBtns = document.querySelectorAll('.reel-btn');
+
+  // center (80,72) for 160x110 viewBox
+  function p2xy(r, deg) {
+    const rad = (deg - 90) * Math.PI / 180;
+    return { x: 80 + r * Math.cos(rad), y: 72 + r * Math.sin(rad) };
+  }
+
+  function buildArcPath(startDeg, sweepDeg) {
+    if (sweepDeg <= 0.5) return '';
+    const s = p2xy(42, startDeg);
+    const endDeg = startDeg + sweepDeg;
+    const e = p2xy(42, endDeg % 360);
+    const large = sweepDeg > 180 ? 1 : 0;
+    return `M ${s.x.toFixed(2)} ${s.y.toFixed(2)} A 42 42 0 ${large} 1 ${e.x.toFixed(2)} ${e.y.toFixed(2)}`;
+  }
+
+  function updateKnobVisuals(idx) {
+    const cumAngle = STOP_ANGLES[idx];
+    if (knobIndicator) knobIndicator.style.transform = `rotate(${cumAngle}deg)`;
+    if (progressArc) progressArc.setAttribute('d', idx === 0 ? '' : buildArcPath(ARC_START, cumAngle - ARC_START));
+    knobDots.forEach((d, i) => {
+      if (i === idx) {
+        d.setAttribute('fill', '#3A8A65');
+        d.setAttribute('stroke', '#2D6A4F');
+        d.setAttribute('filter', 'url(#led-glow)');
+      } else {
+        d.setAttribute('fill', '#1C2B3A');
+        d.setAttribute('stroke', '#243447');
+        d.removeAttribute('filter');
+      }
+    });
+    reelBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
+  }
+
+  const TOTAL = 5;         // real slide count
+  const CAROUSEL_MS = 350; // matches CSS transition: transform 0.35s
+
+  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+  async function goToReel(target) {
+    if (isAnimating || target === currentReel) return;
+    isAnimating = true;
+
+    const wrappingForward  = currentReel === TOTAL - 1 && target === 0;
+    const wrappingBackward = currentReel === 0 && target === TOTAL - 1;
+    const steps    = (wrappingForward || wrappingBackward) ? TOTAL - 1 : Math.abs(target - currentReel);
+    const msPerStep = Math.round(CAROUSEL_MS / steps);
+
+    try {
+      if (wrappingForward) {
+        // Carousel → animate to clone at pos 5; slide 0 enters from right
+        if (reelTrack) reelTrack.style.transform = `translateX(-${TOTAL * 100}%)`;
+        // Buttons + dots → jump to 0 immediately
+        reelBtns.forEach((b, i) => b.classList.toggle('active', i === 0));
+        knobDots.forEach((d, i) => {
+          if (i === 0) { d.setAttribute('fill','#3A8A65'); d.setAttribute('stroke','#2D6A4F'); d.setAttribute('filter','url(#led-glow)'); }
+          else { d.setAttribute('fill','#1C2B3A'); d.setAttribute('stroke','#243447'); d.removeAttribute('filter'); }
+        });
+        // Knob → rewind 4→3→2→1→0 over CAROUSEL_MS
+        if (knobIndicator) knobIndicator.style.transitionDuration = `${msPerStep}ms`;
+        for (let i = TOTAL - 2; i >= 0; i--) {
+          knobIndicator.style.transform = `rotate(${STOP_ANGLES[i]}deg)`;
+          if (progressArc) progressArc.setAttribute('d', i === 0 ? '' : buildArcPath(ARC_START, STOP_ANGLES[i] - ARC_START));
+          await sleep(msPerStep);
+        }
+        // Silently snap track from clone (5) back to real pos 0
+        if (reelTrack) {
+          reelTrack.style.transition = 'none';
+          reelTrack.style.transform = 'translateX(0)';
+          reelTrack.offsetHeight;
+          reelTrack.style.transition = '';
+        }
+        currentReel = 0;
+
+      } else if (wrappingBackward) {
+        // Carousel → silently snap to clone pos 5, then animate to pos 4; slide 4 enters from left
+        if (reelTrack) {
+          reelTrack.style.transition = 'none';
+          reelTrack.style.transform = `translateX(-${TOTAL * 100}%)`;
+          reelTrack.offsetHeight;
+          reelTrack.style.transition = '';
+          reelTrack.style.transform = `translateX(-${(TOTAL - 1) * 100}%)`;
+        }
+        // Buttons + dots → jump to TOTAL-1 immediately
+        reelBtns.forEach((b, i) => b.classList.toggle('active', i === TOTAL - 1));
+        knobDots.forEach((d, i) => {
+          if (i === TOTAL - 1) { d.setAttribute('fill','#3A8A65'); d.setAttribute('stroke','#2D6A4F'); d.setAttribute('filter','url(#led-glow)'); }
+          else { d.setAttribute('fill','#1C2B3A'); d.setAttribute('stroke','#243447'); d.removeAttribute('filter'); }
+        });
+        // Knob → wind forward 0→1→2→3→4 over CAROUSEL_MS
+        if (knobIndicator) knobIndicator.style.transitionDuration = `${msPerStep}ms`;
+        for (let i = 1; i < TOTAL; i++) {
+          knobIndicator.style.transform = `rotate(${STOP_ANGLES[i]}deg)`;
+          if (progressArc) progressArc.setAttribute('d', buildArcPath(ARC_START, STOP_ANGLES[i] - ARC_START));
+          await sleep(msPerStep);
+        }
+        currentReel = TOTAL - 1;
+
+      } else {
+        // Normal → knob + carousel step in sync, total = CAROUSEL_MS
+        const dir = target > currentReel ? 1 : -1;
+        if (knobIndicator) knobIndicator.style.transitionDuration = `${msPerStep}ms`;
+        while (currentReel !== target) {
+          currentReel += dir;
+          updateKnobVisuals(currentReel);
+          if (reelTrack) reelTrack.style.transform = `translateX(-${currentReel * 100}%)`;
+          if (currentReel !== target) await sleep(msPerStep);
+        }
+      }
+    } finally {
+      // Always restore transition + unlock — prevents stuck state on any interruption
+      if (knobIndicator) knobIndicator.style.transitionDuration = '';
+      isAnimating = false;
+    }
+  }
+
+  // Set initial state
+  updateKnobVisuals(0);
+
+  // SVG dot clicks
+  knobDots.forEach((dot) => {
+    dot.addEventListener('click', () => goToReel(Number(dot.dataset.index)));
+  });
+
+  // Reel button clicks
+  reelBtns.forEach((btn) => {
+    btn.addEventListener('click', () => goToReel(Number(btn.dataset.index)));
+  });
+
+  // Carousel swipe — pointer events cover trackpad, mouse drag, and touch
+  const reelCarousel = document.getElementById('reel-carousel');
+  let swipeStartX = 0, swipeActive = false;
+  if (reelCarousel) {
+    reelCarousel.addEventListener('pointerdown', e => {
+      swipeStartX = e.clientX; swipeActive = true;
+      reelCarousel.setPointerCapture(e.pointerId);
+    });
+    reelCarousel.addEventListener('pointerup', e => {
+      if (!swipeActive) return;
+      swipeActive = false;
+      const dx = e.clientX - swipeStartX;
+      if (Math.abs(dx) > 40) {
+        const next = dx < 0
+          ? (currentReel === TOTAL - 1 ? 0 : currentReel + 1)
+          : (currentReel === 0 ? TOTAL - 1 : currentReel - 1);
+        goToReel(next);
+      }
+    });
+    reelCarousel.addEventListener('pointercancel', () => { swipeActive = false; });
+
+    // Two-finger trackpad swipe (Mac + Windows precision touchpad → wheel events)
+    let wheelAccum = 0, wheelCooldown = false;
+    reelCarousel.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      if (wheelCooldown) return;
+      wheelAccum += e.deltaX;
+      if (Math.abs(wheelAccum) > 60) {
+        const next = wheelAccum > 0
+          ? (currentReel === TOTAL - 1 ? 0 : currentReel + 1)
+          : (currentReel === 0 ? TOTAL - 1 : currentReel - 1);
+        goToReel(next);
+        wheelAccum = 0;
+        wheelCooldown = true;
+        setTimeout(() => { wheelCooldown = false; wheelAccum = 0; }, 800);
+      }
+    }, { passive: false });
+  }
+
+  // ── SIGNAL PATH ──
+  const rmStops = [
+    {
+      year: 2026, era: "Current",
+      synopsis: "Expanding into AI-assisted audio — building ML pipelines for speech evaluation and phonetic analysis while staying active across game audio and film.",
+      skills: [
+        { cat: "AI & Phonetics",  items: ["ML Pipelines","IPA Mapping","Phonetic Alignment","Speech Evaluation","Python","API Development"] },
+        { cat: "Game Audio",      items: ["FMOD Studio","Wwise","Adaptive Audio","Procedural Music","Param-Driven Design","Spatial Audio"] },
+        { cat: "Engine & Tools",  items: ["Unity Audio","Logic Pro","Pro Tools","Reaper"] },
+        { cat: "Film & Media",    items: ["Film Scoring","Foley","ADR","Mixing & Mastering"] },
+      ]
+    },
+    {
+      year: 2024, era: "Freelance Expansion",
+      synopsis: "Scaling across simultaneous titles at Giga Fun Studios and Qila Games. Broadened Wwise expertise alongside continued FMOD and Unity work.",
+      skills: [
+        { cat: "Game Audio",      items: ["FMOD Studio","Wwise","Adaptive Audio","Procedural Music","Param-Driven Design","Spatial Audio"] },
+        { cat: "Engine & Tools",  items: ["Unity Audio","Logic Pro","Pro Tools","Reaper"] },
+        { cat: "Film & Media",    items: ["Film Scoring","Foley","ADR","Mixing & Mastering"] },
+      ]
+    },
+    {
+      year: 2021, era: "Global Game Audio",
+      synopsis: "First steps into global game audio freelancing — working with Gear Inc. and Tilting Point on globally-distributed IPs including Angry Birds and M&M's.",
+      skills: [
+        { cat: "Game Audio",      items: ["FMOD Studio","Adaptive Audio","Param-Driven Design","Mobile SFX"] },
+        { cat: "Engine & Tools",  items: ["Unity Audio","Logic Pro","Pro Tools"] },
+        { cat: "Film & Media",    items: ["Film Scoring","Foley","ADR","Mixing & Mastering"] },
+      ]
+    },
+    {
+      year: 2018, era: "Game Audio & Feature Films",
+      synopsis: "Joined Nukebox Studios building adaptive audio for mobile titles, while simultaneously scoring and sound-designing the first feature-length film.",
+      skills: [
+        { cat: "Game Audio",      items: ["FMOD Studio","Adaptive Audio","Mobile SFX"] },
+        { cat: "Engine & Tools",  items: ["Unity Audio","Logic Pro","Pro Tools"] },
+        { cat: "Film & Media",    items: ["Film Scoring","Foley","ADR","Mixing & Mastering"] },
+      ]
+    },
+    {
+      year: 2015, era: "Georgia Tech MS",
+      synopsis: "Graduate studies in Music Technology at Georgia Tech — building the theoretical and technical foundation in DSP, MIR, and computational musicology.",
+      skills: [
+        { cat: "Theory & Research", items: ["DSP","Music Information Retrieval","Acoustics","Computational Musicology","Music Theory"] },
+        { cat: "Tools",             items: ["Max/MSP","MATLAB","Python","Pro Tools","Logic Pro"] },
+      ]
+    },
+  ];
+
+  const rmPane      = document.getElementById('roadmap-pane');
+  const rmYearEl    = document.getElementById('rm-year');
+  const rmEraEl     = document.getElementById('rm-era');
+  const rmSynEl     = document.getElementById('rm-synopsis');
+  const rmBody          = document.getElementById('rm-body');
+  const rmGlowTop       = document.getElementById('rm-glow-top');
+  const rmGlowBot       = document.getElementById('rm-glow-bot');
+  const rmScrollbar     = document.getElementById('rm-scrollbar');
+  const rmScrollThumb   = document.getElementById('rm-scrollbar-thumb');
+  let   rmScrollTimer   = null;
+
+  function updateScrollThumb() {
+    if (!rmBody || !rmScrollbar || !rmScrollThumb) return;
+    const { scrollTop, scrollHeight, clientHeight } = rmBody;
+    const trackH  = clientHeight;
+    const thumbH  = Math.max(24, (clientHeight / scrollHeight) * trackH);
+    const thumbY  = (scrollTop / (scrollHeight - clientHeight)) * (trackH - thumbH);
+    rmScrollThumb.style.height = thumbH + 'px';
+    rmScrollThumb.style.top    = thumbY + 'px';
+    // Show/hide the bar: only show if content overflows
+    const overflows = scrollHeight > clientHeight + 4;
+    if (overflows) {
+      rmScrollbar.classList.add('visible');
+      clearTimeout(rmScrollTimer);
+      rmScrollTimer = setTimeout(() => rmScrollbar.classList.remove('visible'), 2500);
+    }
+  }
+
+  function updateScrollGlows() {
+    if (!rmBody) return;
+    const st  = rmBody.scrollTop;
+    const max = rmBody.scrollHeight - rmBody.clientHeight;
+    if (rmGlowTop) rmGlowTop.classList.toggle('visible', st > 8);
+    if (rmGlowBot) rmGlowBot.classList.toggle('visible', max > 8 && st < max - 8);
+    updateScrollThumb();
+  }
+  rmBody.addEventListener('scroll', updateScrollGlows, { passive: true });
+  const rmSkillsEl  = document.getElementById('rm-skills');
+  const rmFill      = document.getElementById('rm-fill');
+  const rmThumb     = document.getElementById('rm-thumb');
+  const rmTrackZone = document.getElementById('rm-track-zone');
+  const rmDotsCol   = document.getElementById('rm-dots-col');
+  const rmYearsCol  = document.getElementById('rm-years-col');
+  let rmCurrent     = 0;
+
+  // Inject dots (col 2) + year labels (col 3)
+  rmStops.forEach((s, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'rm-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => setRmStop(i));
+    rmDotsCol.appendChild(dot);
+
+    const yr = document.createElement('div');
+    yr.className = 'rm-year-label' + (i === 0 ? ' active' : '');
+    yr.textContent = s.year;
+    yr.addEventListener('click', () => setRmStop(i));
+    rmYearsCol.appendChild(yr);
+  });
+
+  // Thumb position + fill — both derived from track height fraction
+  function updateThumbPos(idx) {
+    if (!rmThumb || !rmTrackZone) return;
+    const trackH = rmTrackZone.getBoundingClientRect().height;
+    const pct    = rmStops.length > 1 ? idx / (rmStops.length - 1) : 0;
+    rmThumb.style.top = (pct * trackH) + 'px';
+    if (rmFill) rmFill.style.height = ((1 - pct) * 100) + '%';
+  }
+
+  function setRmStop(idx) {
+    if (idx === rmCurrent) return;
+    rmPane.classList.add('fading');
+    setTimeout(() => {
+      const s = rmStops[idx];
+      rmYearEl.textContent = s.year;
+      rmEraEl.textContent  = s.era;
+      rmSynEl.textContent  = s.synopsis;
+      rmSkillsEl.innerHTML = s.skills.map(c =>
+        `<div class="roadmap-cat">
+          <div class="roadmap-cat-label">${c.cat}</div>
+          <div class="roadmap-tags">${c.items.map(t => `<span class="roadmap-tag">${t}</span>`).join('')}</div>
+        </div>`
+      ).join('');
+      rmDotsCol.querySelectorAll('.rm-dot').forEach((el, i) => el.classList.toggle('active', i === idx));
+      rmYearsCol.querySelectorAll('.rm-year-label').forEach((el, i) => el.classList.toggle('active', i === idx));
+      updateThumbPos(idx);
+      if (rmBody) rmBody.scrollTop = 0;
+      if (rmScrollbar) rmScrollbar.classList.remove('visible');
+      clearTimeout(rmScrollTimer);
+      rmCurrent = idx;
+      rmPane.classList.remove('fading');
+      requestAnimationFrame(updateScrollGlows);
+    }, 180);
+  }
+
+  // Drag on track zone (thumb captures inside it)
+  let rmDragging = false;
+  function rmIdxFromY(clientY) {
+    const rect = rmTrackZone.getBoundingClientRect();
+    const relY = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+    return Math.round(relY * (rmStops.length - 1));
+  }
+  rmTrackZone.addEventListener('pointerdown', e => {
+    rmDragging = true; rmTrackZone.setPointerCapture(e.pointerId);
+  });
+  rmTrackZone.addEventListener('pointermove', e => {
+    if (!rmDragging) return;
+    const idx = rmIdxFromY(e.clientY);
+    if (idx !== rmCurrent) setRmStop(idx);
+  });
+  rmTrackZone.addEventListener('pointerup',     () => { rmDragging = false; });
+  rmTrackZone.addEventListener('pointercancel', () => { rmDragging = false; });
+
+  // Init
+  (() => {
+    const s = rmStops[0];
+    rmYearEl.textContent = s.year;
+    rmEraEl.textContent  = s.era;
+    rmSynEl.textContent  = s.synopsis;
+    rmSkillsEl.innerHTML = s.skills.map(c =>
+      `<div class="roadmap-cat">
+        <div class="roadmap-cat-label">${c.cat}</div>
+        <div class="roadmap-tags">${c.items.map(t => `<span class="roadmap-tag">${t}</span>`).join('')}</div>
+      </div>`
+    ).join('');
+    requestAnimationFrame(() => {
+      updateThumbPos(0);
+      updateScrollGlows();
+      window.addEventListener('resize', () => updateThumbPos(rmCurrent), { passive: true });
+    });
+  })();
+
+  // Knob drag
+  const knobSvg = document.getElementById('knob-svg');
+  let isDragging = false, dragX = 0, dragAccum = 0;
+  if (knobSvg) {
+    knobSvg.addEventListener('mousedown', e => { isDragging = true; dragX = e.clientX; dragAccum = 0; e.preventDefault(); });
+    knobSvg.addEventListener('touchstart', e => { isDragging = true; dragX = e.touches[0].clientX; dragAccum = 0; }, { passive: true });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      dragAccum += (e.clientX - dragX) * 0.6; dragX = e.clientX;
+      const t = Math.max(0, Math.min(4, Math.round(currentReel + dragAccum / 45)));
+      if (t !== currentReel) { dragAccum = 0; goToReel(t); }
+    });
+    document.addEventListener('touchmove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      dragAccum += (e.touches[0].clientX - dragX) * 0.6; dragX = e.touches[0].clientX;
+      const t = Math.max(0, Math.min(4, Math.round(currentReel + dragAccum / 45)));
+      if (t !== currentReel) { dragAccum = 0; goToReel(t); }
+    }, { passive: false });
+    document.addEventListener('mouseup', () => { isDragging = false; });
+    document.addEventListener('touchend', () => { isDragging = false; });
+  }
+
+</script>
+
+</Layout>

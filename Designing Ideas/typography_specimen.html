@@ -1,0 +1,124 @@
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  .spec-wrap { font-family: 'Lato', sans-serif; padding: 0; }
+  .dark-slab { background: #131E2A; border-radius: 10px; padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+  .light-slab { background: var(--color-background-secondary); border-radius: 10px; padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+  .row { display: grid; grid-template-columns: 140px 1fr 180px; align-items: center; gap: 1rem; padding: 0.75rem 0; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
+  .row:last-child { border-bottom: none; }
+  .level-name { font-size: 11px; font-weight: 500; color: #8A9BB0; letter-spacing: 0.08em; text-transform: uppercase; }
+  .spec-meta { font-size: 11px; color: #4a5f78; line-height: 1.6; }
+  .spec-meta .val { color: #6a8aaa; font-family: monospace; font-size: 10.5px; }
+  .flag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+  .flag-warn { background: rgba(239,159,39,0.2); color: #EF9F27; }
+  .flag-new { background: rgba(58,138,101,0.2); color: #3A8A65; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #3A8A65; margin-bottom: 0.75rem; }
+</style>
+
+<div class="spec-wrap">
+
+<div class="section-label">On dark background — site palette</div>
+<div class="dark-slab">
+
+  <div class="row">
+    <div class="level-name">Display / H1</div>
+    <div style="font-family:'Montserrat',sans-serif;font-size:2.6rem;font-weight:800;color:#F4F6F8;line-height:1.05;letter-spacing:-0.025em;">Sirish Satyavolu</div>
+    <div class="spec-meta">Montserrat 800<br><span class="val">clamp(2.4→4rem)</span><br><span class="val">#F4F6F8 · ls -0.025em</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">H2 Section</div>
+    <div style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:800;color:#F4F6F8;line-height:1.1;">Tools &amp; Skills</div>
+    <div class="spec-meta">Montserrat 800<br><span class="val">clamp(1.7→2.4rem)</span><br><span class="val">#F4F6F8</span><span class="flag flag-warn">↑ bump to 2.5rem?</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">H3 Card</div>
+    <div style="font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:#F4F6F8;line-height:1.3;">Spongebob: Krusty Cook-Off</div>
+    <div class="spec-meta">Montserrat 700<br><span class="val">currently 0.95rem</span><br><span class="val">#F4F6F8</span><span class="flag flag-warn">↑ to 1rem?</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">Eyebrow</div>
+    <div style="font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;color:#3A8A65;letter-spacing:0.22em;text-transform:uppercase;">Audio Architect · Sound Designer</div>
+    <div class="spec-meta">Montserrat 700<br><span class="val">0.72rem · ls 0.22em</span><br><span class="val">#3A8A65 · UPPERCASE</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">Nav Link</div>
+    <div style="font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:600;color:#8A9BB0;letter-spacing:0.1em;text-transform:uppercase;">Home · Reel · Work · Contact</div>
+    <div class="spec-meta">Montserrat 600<br><span class="val">0.72rem · ls 0.1em</span><br><span class="val">#8A9BB0 · UPPERCASE</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">Sirish center<span class="flag flag-new">new</span></div>
+    <div style="font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;color:#C3D4E8;letter-spacing:0.14em;text-transform:uppercase;">Sirish Satyavolu</div>
+    <div class="spec-meta">Montserrat 700<br><span class="val">0.8rem · ls 0.14em</span><br><span class="val">#C3D4E8 · UPPERCASE</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">Body Lead</div>
+    <div style="font-family:'Lato',sans-serif;font-size:0.95rem;font-weight:400;color:#8A9BB0;line-height:1.9;max-width:380px;">10+ years building adaptive, system-driven audio for games, film, and AI platforms.</div>
+    <div class="spec-meta">Lato 400<br><span class="val">0.95rem · lh 1.9</span><br><span class="val">#8A9BB0</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">Body Default</div>
+    <div style="font-family:'Lato',sans-serif;font-size:0.875rem;font-weight:400;color:#8A9BB0;line-height:1.75;max-width:380px;">Parameter-driven adaptive music + SFX via Unity &amp; FMOD. 29M+ downloads.</div>
+    <div class="spec-meta">Lato 400<br><span class="val">currently 0.82rem</span><br><span class="val">#8A9BB0</span><span class="flag flag-warn">↑ to 0.875?</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">Button / CTA</div>
+    <div style="display:flex;gap:0.75rem;align-items:center;">
+      <span style="font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;background:#2D6A4F;color:#F4F6F8;padding:0.75rem 1.75rem;border-radius:4px;letter-spacing:0.1em;text-transform:uppercase;">Watch Reel</span>
+      <span style="font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;border:1px solid #243447;color:#8A9BB0;padding:0.75rem 1.75rem;border-radius:4px;letter-spacing:0.1em;text-transform:uppercase;">View Work</span>
+    </div>
+    <div class="spec-meta">Montserrat 700<br><span class="val">0.78rem · ls 0.1em</span><br><span class="val">UPPERCASE · r 4px</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">Tag / Badge</div>
+    <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+      <span style="font-family:'Lato',sans-serif;font-size:0.65rem;background:#131E2A;border:1px solid #1C2B3A;border-radius:3px;padding:0.2rem 0.5rem;color:#B7D5C4;">FMOD</span>
+      <span style="font-family:'Lato',sans-serif;font-size:0.65rem;background:#131E2A;border:1px solid #1C2B3A;border-radius:3px;padding:0.2rem 0.5rem;color:#B7D5C4;">Unity</span>
+      <span style="font-family:'Lato',sans-serif;font-size:0.65rem;background:#131E2A;border:1px solid #1C2B3A;border-radius:3px;padding:0.2rem 0.5rem;color:#C3D4E8;">Adaptive Audio</span>
+    </div>
+    <div class="spec-meta">Lato 400<br><span class="val">0.65rem</span><br><span class="val">#B7D5C4 or #C3D4E8</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">Stat Number</div>
+    <div style="display:flex;gap:2.5rem;">
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:800;color:#F4F6F8;line-height:1;">200M+</div>
+        <div style="font-family:'Lato',sans-serif;font-size:0.7rem;color:#8A9BB0;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;">Players Reached</div>
+      </div>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:800;color:#F4F6F8;line-height:1;">9</div>
+        <div style="font-family:'Lato',sans-serif;font-size:0.7rem;color:#8A9BB0;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;">Shipped Titles</div>
+      </div>
+    </div>
+    <div class="spec-meta">Number: Montserrat 800<br><span class="val">currently 1.9rem</span><br><span class="val">#F4F6F8</span><span class="flag flag-warn">↑ to 2rem?</span><br>Label: Lato 400<br><span class="val">0.7rem · ls 0.1em</span></div>
+  </div>
+
+  <div class="row">
+    <div class="level-name">Footer / Caption</div>
+    <div style="font-family:'Lato',sans-serif;font-size:0.7rem;color:#8A9BB0;letter-spacing:0.08em;">© 2026 Sirish Satyavolu · sirishaudio.com</div>
+    <div class="spec-meta">Lato 400<br><span class="val">0.7rem · ls 0.08em</span><br><span class="val">#8A9BB0</span></div>
+  </div>
+
+</div>
+
+<div class="section-label" style="margin-top:0.5rem;">Proposed changes summary</div>
+<div class="light-slab" style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+  <div style="background:#131E2A;border-radius:6px;padding:0.75rem 1rem;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#3A8A65;text-transform:uppercase;margin-bottom:0.5rem;">Bump up</div>
+    <div style="font-size:12px;color:#8A9BB0;line-height:1.8;">H2 max: 2.4 → <span style="color:#F4F6F8;">2.5rem</span><br>H3 card: 0.95 → <span style="color:#F4F6F8;">1rem</span><br>Body desc: 0.82 → <span style="color:#F4F6F8;">0.875rem</span><br>Stat num: 1.9 → <span style="color:#F4F6F8;">2rem</span></div>
+  </div>
+  <div style="background:#131E2A;border-radius:6px;padding:0.75rem 1rem;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#4F7EF7;text-transform:uppercase;margin-bottom:0.5rem;">New level</div>
+    <div style="font-size:12px;color:#8A9BB0;line-height:1.8;">Nav center name<br><span style="color:#C3D4E8;">Montserrat 700 · 0.8rem</span><br><span style="color:#C3D4E8;">#C3D4E8 · ls 0.14em · UC</span><br>Differentiates from nav links</div>
+  </div>
+</div>
+
+</div>

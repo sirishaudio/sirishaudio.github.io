@@ -1,0 +1,167 @@
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Lato:wght@400&display=swap" rel="stylesheet">
+<style>
+  .demo { background:#131E2A; border-radius:12px; padding:2.5rem; display:flex; gap:3rem; align-items:center; justify-content:center; flex-wrap:wrap; }
+  .toggle-group { display:flex; flex-direction:column; align-items:center; gap:0.6rem; }
+  .toggle-label { font-family:'Montserrat',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#4a5f78; }
+  .console-btn {
+    width:52px; height:56px;
+    background:#0D1823;
+    border:1px solid #1C2B3A;
+    border-radius:6px;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:6px; cursor:pointer;
+    position:relative;
+    transition:border-color 0.15s, background 0.15s;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .console-btn:active { transform:translateY(1px); box-shadow:inset 0 3px 6px rgba(0,0,0,0.7); }
+  .led {
+    width:7px; height:7px; border-radius:50%;
+    background:#1a2535;
+    border:1px solid #0a1018;
+    transition:background 0.2s, box-shadow 0.2s;
+    flex-shrink:0;
+  }
+  .led.green { background:#22c55e; box-shadow:0 0 5px #22c55e, 0 0 10px rgba(34,197,94,0.4); }
+  .led.amber { background:#F59E0B; box-shadow:0 0 5px #F59E0B, 0 0 10px rgba(245,158,11,0.4); }
+  .btn-icon { width:18px; height:18px; display:flex; align-items:center; justify-content:center; }
+  .console-btn.active { border-color:#243447; background:#111d2b; }
+
+  .divider { width:1px; height:70px; background:#1C2B3A; }
+
+  .states-row { display:flex; gap:2rem; align-items:flex-start; justify-content:center; flex-wrap:wrap; margin-top:2rem; }
+  .state-block { display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
+  .state-label { font-family:'Lato',sans-serif; font-size:0.72rem; color:#4a5f78; }
+
+  .note { font-family:'Lato',sans-serif; font-size:0.75rem; color:#4a5f78; text-align:center; margin-top:1.5rem; line-height:1.6; }
+  .note span { color:#8A9BB0; }
+</style>
+
+<div style="padding:0.5rem 0;">
+
+<div class="demo">
+
+  <!-- SOUND TOGGLE: OFF -->
+  <div class="toggle-group">
+    <div class="led" id="led-sound"></div>
+    <button class="console-btn" id="btn-sound" onclick="toggleSound()">
+      <div class="btn-icon">
+        <svg id="icon-sound" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M3 6.5H5.5L9 3V15L5.5 11.5H3V6.5Z" stroke="#4a5f78" stroke-width="1.2" fill="none" stroke-linejoin="round" id="speaker-body"/>
+          <path id="wave-1" d="M11 6C12 6.8 12.5 7.8 12.5 9C12.5 10.2 12 11.2 11 12" stroke="#4a5f78" stroke-width="1.2" stroke-linecap="round"/>
+          <path id="wave-2" d="M12.5 4.5C14 5.7 15 7.3 15 9C15 10.7 14 12.3 12.5 13.5" stroke="#4a5f78" stroke-width="1.2" stroke-linecap="round"/>
+          <line id="mute-x1" x1="11" y1="6.5" x2="15" y2="11.5" stroke="#4a5f78" stroke-width="1.3" stroke-linecap="round" style="display:none"/>
+          <line id="mute-x2" x1="15" y1="6.5" x2="11" y2="11.5" stroke="#4a5f78" stroke-width="1.3" stroke-linecap="round" style="display:none"/>
+        </svg>
+      </div>
+    </button>
+    <div class="toggle-label">Sound</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DARK MODE TOGGLE -->
+  <div class="toggle-group">
+    <div class="led amber" id="led-mode"></div>
+    <button class="console-btn active" id="btn-mode" onclick="toggleMode()">
+      <div class="btn-icon">
+        <svg id="icon-mode" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <!-- Moon (dark mode) -->
+          <path id="moon-path" d="M14 10.5C13.2 11 12.3 11.3 11.2 11.3C8.2 11.3 5.8 8.9 5.8 5.9C5.8 4.8 6.1 3.8 6.7 3C4.1 3.8 2.3 6.2 2.3 9C2.3 12.4 5.1 15.2 8.5 15.2C11.3 15.2 13.7 13.4 14.5 10.8C14.3 10.7 14.2 10.6 14 10.5Z" fill="#8A9BB0"/>
+          <!-- Sun (light mode) -->
+          <g id="sun-group" style="display:none">
+            <circle cx="9" cy="9" r="3" stroke="#8A9BB0" stroke-width="1.2" fill="none"/>
+            <line x1="9" y1="2" x2="9" y2="4" stroke="#8A9BB0" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="9" y1="14" x2="9" y2="16" stroke="#8A9BB0" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="2" y1="9" x2="4" y2="9" stroke="#8A9BB0" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="14" y1="9" x2="16" y2="9" stroke="#8A9BB0" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="3.9" y1="3.9" x2="5.3" y2="5.3" stroke="#8A9BB0" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12.7" y1="12.7" x2="14.1" y2="14.1" stroke="#8A9BB0" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12.7" y1="5.3" x2="14.1" y2="3.9" stroke="#8A9BB0" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="3.9" y1="14.1" x2="5.3" y2="12.7" stroke="#8A9BB0" stroke-width="1.2" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+    </button>
+    <div class="toggle-label">Mode</div>
+  </div>
+
+</div>
+
+<div class="states-row">
+  <div class="state-block">
+    <div style="display:flex;gap:6px;align-items:center;">
+      <div class="led green"></div>
+      <span class="state-label">Sound ON — green</span>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center;margin-top:4px;">
+      <div class="led"></div>
+      <span class="state-label">Sound OFF — dark</span>
+    </div>
+  </div>
+  <div style="width:1px;height:40px;background:#1C2B3A;"></div>
+  <div class="state-block">
+    <div style="display:flex;gap:6px;align-items:center;">
+      <div class="led amber"></div>
+      <span class="state-label">Dark mode — amber</span>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center;margin-top:4px;">
+      <div class="led"></div>
+      <span class="state-label">Light mode — off</span>
+    </div>
+  </div>
+</div>
+
+<p class="note">Click both buttons to toggle. <span>Sound and mode are unlinked placeholders.</span></p>
+
+</div>
+
+<script>
+  let soundOn = false;
+  let darkMode = true;
+
+  function toggleSound() {
+    soundOn = !soundOn;
+    const led = document.getElementById('led-sound');
+    const w1 = document.getElementById('wave-1');
+    const w2 = document.getElementById('wave-2');
+    const x1 = document.getElementById('mute-x1');
+    const x2 = document.getElementById('mute-x2');
+    const body = document.getElementById('speaker-body');
+    const col = soundOn ? '#3A8A65' : '#4a5f78';
+    if (soundOn) {
+      led.className = 'led green';
+      w1.style.display = ''; w2.style.display = '';
+      x1.style.display = 'none'; x2.style.display = 'none';
+      w1.setAttribute('stroke', '#3A8A65');
+      w2.setAttribute('stroke', '#3A8A65');
+    } else {
+      led.className = 'led';
+      w1.style.display = 'none'; w2.style.display = 'none';
+      x1.style.display = ''; x2.style.display = '';
+      x1.setAttribute('stroke', '#4a5f78');
+      x2.setAttribute('stroke', '#4a5f78');
+    }
+    body.setAttribute('stroke', col);
+  }
+
+  function toggleMode() {
+    darkMode = !darkMode;
+    const led = document.getElementById('led-mode');
+    const btn = document.getElementById('btn-mode');
+    const moon = document.getElementById('moon-path');
+    const sun = document.getElementById('sun-group');
+    if (darkMode) {
+      led.className = 'led amber';
+      btn.classList.add('active');
+      moon.style.display = '';
+      sun.style.display = 'none';
+    } else {
+      led.className = 'led';
+      btn.classList.remove('active');
+      moon.style.display = 'none';
+      sun.style.display = '';
+    }
+  }
+</script>

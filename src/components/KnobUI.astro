@@ -1,0 +1,138 @@
+---
+/**
+ * KnobUI — Pagination dots + rotary knob prefab
+ *
+ * Props:
+ *   count      — number of stops (3–6, default 5)
+ *   elementId  — unique id prefix for knob-svg, knob-progress, knob-indicator (default "knob")
+ *
+ * Geometry (fixed):
+ *   SVG viewBox : 160 × 110
+ *   Knob center : (80, 72)
+ *   Knob body r : 30
+ *   Arc radius  : 42
+ *   Arc sweep   : 120° clockwise, 300° → 60°
+ *   Dots        : flat horizontal row at y=10, x: 24 → 136 (evenly spaced)
+ *
+ * Glow filter  : #led-glow (feGaussianBlur stdDeviation=2.5)
+ *   — applied to active dot + progress arc (same as nav toggle LEDs)
+ *
+ * JS wiring (wire in page script):
+ *   const STOP_ANGLES = [300, 330, 360, 390, 420]; // per stop, cumulative CW
+ *   const ARC_START   = 300;
+ *
+ *   function p2xy(r, deg) {
+ *     const rad = (deg - 90) * Math.PI / 180;
+ *     return { x: 80 + r * Math.cos(rad), y: 72 + r * Math.sin(rad) };
+ *   }
+ *
+ *   function buildArcPath(startDeg, sweepDeg) {
+ *     if (sweepDeg <= 0.5) return '';
+ *     const s = p2xy(42, startDeg);
+ *     const e = p2xy(42, (startDeg + sweepDeg) % 360);
+ *     const large = sweepDeg > 180 ? 1 : 0;
+ *     return `M ${s.x.toFixed(2)} ${s.y.toFixed(2)} A 42 42 0 ${large} 1 ${e.x.toFixed(2)} ${e.y.toFixed(2)}`;
+ *   }
+ *
+ *   function updateKnobVisuals(idx) {
+ *     const cumAngle = STOP_ANGLES[idx];
+ *     knobIndicator.style.transform = `rotate(${cumAngle}deg)`;
+ *     progressArc.setAttribute('d', idx === 0 ? '' : buildArcPath(ARC_START, cumAngle - ARC_START));
+ *     knobDots.forEach((d, i) => {
+ *       if (i === idx) {
+ *         d.setAttribute('fill', '#3A8A65');
+ *         d.setAttribute('stroke', '#2D6A4F');
+ *         d.setAttribute('filter', 'url(#led-glow)');
+ *       } else {
+ *         d.setAttribute('fill', '#1C2B3A');
+ *         d.setAttribute('stroke', '#243447');
+ *         d.removeAttribute('filter');
+ *       }
+ *     });
+ *   }
+ *
+ * CSS dependencies:
+ *   .knob-svg   { cursor: grab; user-select: none; }
+ *   .knob-svg:active { cursor: grabbing; }
+ *   #knob-indicator { transform-origin: 80px 72px; transition: transform 0.18s cubic-bezier(0.4,0,0.2,1); }
+ */
+
+interface Props {
+  count?: number;
+  elementId?: string;
+}
+const { count = 5, elementId = 'knob' } = Astro.props;
+
+const DOT_X_START = 24;
+const DOT_X_END   = 136;
+const DOT_Y       = 10;
+const dotXStep    = count > 1 ? (DOT_X_END - DOT_X_START) / (count - 1) : 0;
+const dots        = Array.from({ length: count }, (_, i) => ({
+  x: DOT_X_START + i * dotXStep,
+  index: i,
+}));
+---
+
+<svg
+  class="knob-svg"
+  id={`${elementId}-svg`}
+  width="160"
+  height="110"
+  viewBox="0 0 160 110"
+  style="overflow:visible;"
+>
+  <defs>
+    <filter id="led-glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Pagination dots — flat horizontal row -->
+  {dots.map((d, i) => (
+    <circle
+      class="knob-dot"
+      data-index={String(i)}
+      cx={d.x.toFixed(2)}
+      cy={DOT_Y}
+      r="3.5"
+      fill={i === 0 ? '#3A8A65' : '#1C2B3A'}
+      stroke={i === 0 ? '#2D6A4F' : '#243447'}
+      stroke-width="0.5"
+      filter={i === 0 ? 'url(#led-glow)' : undefined}
+      style="cursor:pointer;"
+    />
+  ))}
+
+  <!-- Track arc: 300° → 60° CW (120° sweep), r=42, center (80,72) -->
+  <path
+    d="M 43.63 51.00 A 42 42 0 0 1 116.37 51.00"
+    fill="none"
+    stroke="#1C2B3A"
+    stroke-width="2.5"
+    stroke-linecap="round"
+  />
+  <!-- Progress arc — glows when active -->
+  <path
+    id={`${elementId}-progress`}
+    d=""
+    fill="none"
+    stroke="#2D6A4F"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    filter="url(#led-glow)"
+  />
+
+  <!-- Knob body — center (80,72), r=30 -->
+  <circle cx="80" cy="72" r="30" fill="#0D1823" stroke="#1C2B3A" stroke-width="1"/>
+  <circle cx="80" cy="72" r="30" fill="none" stroke="#243447" stroke-width="0.5" opacity="0.6"/>
+
+  <!-- Indicator — rotated by JS, transform-origin 80px 72px -->
+  <g id={`${elementId}-indicator`}>
+    <line x1="80" y1="72" x2="80" y2="46" stroke="#8A9BB0" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="80" cy="45" r="2" fill="#3A8A65"/>
+  </g>
+</svg>
