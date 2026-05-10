@@ -3,15 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
 const gameSD = [
-  { title: "Spongebob: Krusty Cook-Off", studio: "Nukebox Studios", year: "2018–2022", desc: "Parameter-driven adaptive music + SFX via Unity & FMOD. 29M+ downloads. Google Play Users' Choice 2020.", tags: ["FMOD","Unity","Adaptive Audio"], note: "200M+ players globally" },
-  { title: "Food Truck Chef", studio: "Nukebox Studios", year: "2018–2022", desc: "Full audio pipeline — adaptive music, SFX, and UI sounds for a globally distributed casual title.", tags: ["FMOD","Unity","SFX Pipeline"], note: "" },
-  { title: "Room Flip: Home Decor", studio: "Nukebox Studios", year: "2018–2022", desc: "Modular SFX architecture and reactive audio state management for casual mobile.", tags: ["Unity","Modular SFX"], note: "" },
-  { title: "Angry Birds Match 3", studio: "Gear Inc. · Tilting Point", year: "2022", desc: "Adaptive audio for a globally distributed IP. High-retention casual gameplay loop design.", tags: ["FMOD","Adaptive Audio"], note: "Global IP" },
-  { title: "M&M's Adventure", studio: "Gear Inc. · Tilting Point", year: "2022", desc: "Audio systems for a branded casual title. Applied adaptive audio to high-engagement match-3 gameplay.", tags: ["FMOD","Adaptive Audio"], note: "Global IP" },
-  { title: "Milli Match", studio: "Giga Fun Studios", year: "2023–2025", desc: "Modular SFX architecture and parameter-driven music design for match-3 mobile.", tags: ["Unity","Param-Driven"], note: "" },
-  { title: "Rani's Case Files", studio: "Giga Fun Studios", year: "2023–2025", desc: "Reactive audio state management and middleware integration for a puzzle mobile title.", tags: ["Unity","Wwise","SFX"], note: "" },
-  { title: "Travel Match India", studio: "Giga Fun Studios", year: "2023–2025", desc: "Full audio pipeline for a culturally-themed casual title targeting Indian market.", tags: ["Unity","Adaptive Audio"], note: "" },
-  { title: "Ludo Hero", studio: "Qila Games", year: "2023–2025", desc: "Audio design and implementation for a multiplayer mobile board game.", tags: ["Unity","Multiplayer Audio"], note: "" },
+  { title: "Spongebob: Krusty Cook-Off", studio: "Nukebox Studios", year: "2018–2022", desc: "Parameter-driven adaptive music + SFX via Unity & FMOD. 29M+ downloads. Google Play Users' Choice 2020.", tags: ["FMOD","Unity","Adaptive Audio"], note: "200M+ players globally", ios: "https://apps.apple.com/app/spongebob-krusty-cook-off/id1456844652", android: "https://play.google.com/store/apps/details?id=com.nickelodeon.sponge" },
+  { title: "Food Truck Chef", studio: "Nukebox Studios", year: "2018–2022", desc: "Full audio pipeline — adaptive music, SFX, and UI sounds for a globally distributed casual title.", tags: ["FMOD","Unity","SFX Pipeline"], note: "", ios: "https://apps.apple.com/app/food-truck-chef/id1213039508", android: "https://play.google.com/store/apps/details?id=com.socialpoint.foodtruckchef" },
+  { title: "Room Flip: Home Decor", studio: "Nukebox Studios", year: "2018–2022", desc: "Modular SFX architecture and reactive audio state management for casual mobile.", tags: ["Unity","Modular SFX"], note: "", ios: "", android: "" },
+  { title: "Angry Birds Match 3", studio: "Gear Inc. · Tilting Point", year: "2022", desc: "Adaptive audio for a globally distributed IP. High-retention casual gameplay loop design.", tags: ["FMOD","Adaptive Audio"], note: "Global IP", ios: "", android: "" },
+  { title: "M&M's Adventure", studio: "Gear Inc. · Tilting Point", year: "2022", desc: "Audio systems for a branded casual title. Applied adaptive audio to high-engagement match-3 gameplay.", tags: ["FMOD","Adaptive Audio"], note: "Global IP", ios: "", android: "" },
+  { title: "Milli Match", studio: "Giga Fun Studios", year: "2023–2025", desc: "Modular SFX architecture and parameter-driven music design for match-3 mobile.", tags: ["Unity","Param-Driven"], note: "", ios: "", android: "" },
+  { title: "Rani's Case Files", studio: "Giga Fun Studios", year: "2023–2025", desc: "Reactive audio state management and middleware integration for a puzzle mobile title.", tags: ["Unity","Wwise","SFX"], note: "", ios: "", android: "" },
+  { title: "Travel Match India", studio: "Giga Fun Studios", year: "2023–2025", desc: "Full audio pipeline for a culturally-themed casual title targeting Indian market.", tags: ["Unity","Adaptive Audio"], note: "", ios: "", android: "" },
+  { title: "Ludo Hero", studio: "Qila Games", year: "2023–2025", desc: "Audio design and implementation for a multiplayer mobile board game.", tags: ["Unity","Multiplayer Audio"], note: "", ios: "", android: "" },
 ];
 
 const gameMusic = [
@@ -30,6 +30,23 @@ const aiAudio = [
   { title: "Gita Gurukul — AI Sanskrit Eval", studio: "AI Audio Developer", year: "2025–Present", desc: "Web prototype for AI-assisted Sanskrit pronunciation evaluation. Phonetic segmentation and alignment for real-time learner feedback.", tags: ["ML Pipelines","IPA Mapping","Speech Eval","Phonetic Align"], note: "Active" },
   { title: "Sanskrit Phonetics Library", studio: "AI Phonetics Researcher", year: "2026–Present", desc: "Structured IPA-mapped phonetic dataset with articulation features for an API-ready speech and pronunciation platform.", tags: ["IPA Mapping","Dataset","API","Phonetics"], note: "Active" },
 ];
+
+const listenTracksDef = [
+  { title: "Prompt DJ — Experiment", year: "2025", label: "AI Audio",    icon: "🤖", color: "#9B72CF", thumbBg: "linear-gradient(150deg,#0D1823 0%,#1A1430 100%)", desc: "AI-assisted DJ experiment exploring procedural music generation and real-time parameter control.", tags: ["AI","Procedural","Electronic"], url: "https://soundcloud.com/sirishsatyavolu/prompt-dj-experiment" },
+  { title: "Contravention",          year: "2016", label: "Composition", icon: "🎹", color: "#3A8A65", thumbBg: "linear-gradient(150deg,#0D1823 0%,#1C2B3A 100%)", desc: "Electronic composition exploring rhythmic tension and melodic counterpoint.", tags: ["Electronic","Composition"], url: "https://soundcloud.com/sirishsatyavolu/contravention-september-15" },
+  { title: "Right and Ease",         year: "2016", label: "Composition", icon: "🌊", color: "#4F7EF7", thumbBg: "linear-gradient(150deg,#0D1823 0%,#0D1628 100%)", desc: "Ambient-leaning piece with layered textures and evolving harmonic movement.", tags: ["Ambient","Texture","Composition"], url: "https://soundcloud.com/sirishsatyavolu/right-and-ease" },
+  { title: "I Miss You Thrice",      year: "2016", label: "Cinematic",   icon: "🎬", color: "#8A9BB0", thumbBg: "linear-gradient(150deg,#0D1823 0%,#1A1F2A 100%)", desc: "Emotionally driven composition with cinematic undertones and dynamic arc.", tags: ["Cinematic","Composition"], url: "https://soundcloud.com/sirishsatyavolu/i-miss-you-thrice-september-19" },
+];
+
+const listenTracks = await Promise.all(listenTracksDef.map(async (t) => {
+  try {
+    const res = await fetch(`https://soundcloud.com/oembed?url=${encodeURIComponent(t.url)}&format=json`);
+    const data = await res.json();
+    return { ...t, thumb: data.thumbnail_url ?? null };
+  } catch {
+    return { ...t, thumb: null };
+  }
+}));
 
 const reels = [
   { title: "Showreel",        sub: "Scripted · Best of Work",      color: "#3A8A65" },
@@ -52,6 +69,7 @@ const reels = [
     --panel-h: 44dvh;
     --panel-w: calc(var(--panel-h) * 16 / 9);
     --content-w: var(--panel-w);
+    --c-tert: #243D55;
   }
   html { scroll-snap-type: y mandatory; }
 
@@ -126,7 +144,10 @@ const reels = [
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-size: 256px 256px;
   }
-  #hero-content { position: relative; z-index: 2; will-change: transform; }
+  #hero-content {
+    position: relative; z-index: 2; will-change: transform;
+    width: var(--content-w); max-width: 100%; margin: 0 auto; padding: 0;
+  }
 
   /* image placeholder label */
   .img-ph-label {
@@ -268,16 +289,110 @@ const reels = [
   }
   .section-alt { background: #1C2B3A; }
   /* Sections with their own dense internal layouts — align to top, not centered */
-  #work, #skills { justify-content: flex-start; padding-top: calc(var(--nav-h) + 2.5rem); }
-  /* Work section inner = flex column so cards pane can fill remaining height */
-  #work .section-inner { height: 100%; display: flex; flex-direction: column; width: 100%; }
+  #work   { justify-content: center; padding-top: calc(var(--nav-h) + 1rem); }
+  #listen { justify-content: flex-start; padding-top: calc(var(--nav-h) + 2.5rem); }
+  #skills { justify-content: flex-start; padding-top: calc(var(--nav-h) + 2.5rem); }
+  /* Work + Listen section inner = flex column, locked to --content-w */
+  #work .section-inner,
+  #listen .section-inner { display: flex; flex-direction: column; width: var(--content-w); max-width: 100%; margin: 0 auto; padding: 0; }
   .eyebrow { font-size: 0.72rem; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #3A8A65; margin-bottom: 0.6rem; }
   .section-h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 800; color: #F4F6F8; margin-bottom: 0.75rem; line-height: 1.1; }
   .section-sub { font-family: 'Lato', sans-serif; font-size: 0.95rem; color: #8A9BB0; line-height: 1.85; max-width: 440px; }
 
+  /* ── LISTEN SECTION ── */
+  .listen-tray {
+    height: var(--panel-h); flex-shrink: 0;
+    position: relative; overflow: hidden;
+    width: 100%;
+    background: var(--c-tert);
+    border-radius: 10px;
+    border: 1px solid #1C2B3A;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04);
+    padding: 0.6rem;
+  }
+  .listen-cards {
+    display: flex; flex-direction: column;
+    gap: 0.5rem; height: calc(100% + 28px); /* +28px compensates for -14px top + bottom negative margins */
+    overflow-y: auto; scrollbar-width: none;
+    padding: 14px 6px; margin: -14px -6px; /* breathing room: 14px v / 6px h for shadow + scale(1.01) */
+  }
+  .listen-cards::-webkit-scrollbar { display: none; }
+  .listen-card {
+    flex-shrink: 0;
+    min-height: 8rem;
+    display: flex; flex-direction: row;
+    background: #131E2A; border: 1px solid #243447; border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  }
+  .listen-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5), 0 0 10px rgba(58,138,101,0.16);
+  }
+  /* Thumb — inset, square, rounded */
+  .lc-thumb-wrap {
+    flex-shrink: 0;
+    padding: 4px 0 4px 4px;
+    display: flex; align-items: center;
+  }
+  .lc-thumb {
+    width: calc(8rem - 8px);
+    height: calc(8rem - 8px); /* square — matches card min-height minus top+bottom gap */
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 6px; overflow: hidden;
+    background: #0D1823;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+  .lc-thumb-bg  { position: absolute; inset: 0; }
+  .lc-thumb-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+  .lc-thumb-icon  { position: relative; z-index: 1; font-size: 1.1rem; }
+  .lc-thumb-label { position: relative; z-index: 1; font-size: 0.44rem; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 0.2rem; }
+  /* Body */
+  .lc-body   { flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 0; position: relative; }
+  .lc-accent { height: 2px; background: var(--cc); opacity: 0.6; flex-shrink: 0; }
+  /* Row 1: label + year */
+  .lc-header { display: flex; align-items: center; justify-content: space-between; padding: 0.35rem 0.65rem 0.2rem; flex-shrink: 0; }
+  .lc-label  { font-size: 0.58rem; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cc); }
+  .lc-year   { font-size: 0.6rem; font-family: 'Lato', sans-serif; color: #8A9BB0; }
+  /* Row 2: play btn + right column */
+  .lc-main { display: flex; flex-direction: row; align-items: stretch; gap: 0.6rem; padding: 0 0.65rem 0.3rem; flex: 1; min-height: 0; }
+  .lc-play-btn {
+    flex-shrink: 0;
+    width: 2.8rem; height: 2.8rem;
+    align-self: center;
+    border-radius: 50%;
+    background: var(--cc); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: #0D1823;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .lc-play-btn:hover { transform: scale(1.06); opacity: 0.9; }
+  .lc-play-btn svg { width: 42%; height: 42%; flex-shrink: 0; }
+  .lc-icon-play  { display: block; }
+  .lc-icon-pause { display: none; }
+  .lc-play-btn.playing .lc-icon-play  { display: none; }
+  .lc-play-btn.playing .lc-icon-pause { display: block; }
+  /* Right column */
+  .lc-track-right { flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; padding-top: 0.1rem; }
+  .lc-title { font-size: 0.82rem; font-family: 'Montserrat', sans-serif; font-weight: 700; color: #F4F6F8; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lc-progress-wrap { flex-shrink: 0; display: flex; flex-direction: column; gap: 0.22rem; }
+  .lc-progress-bar  { height: 3px; border-radius: 2px; background: #243447; cursor: pointer; overflow: hidden; }
+  .lc-progress-fill { height: 100%; width: 0%; border-radius: 2px; background: var(--cc); transition: width 0.1s linear; pointer-events: none; }
+  .lc-time-row { display: flex; justify-content: space-between; }
+  .lc-time-cur, .lc-time-dur { font-size: 0.56rem; font-family: 'Lato', sans-serif; color: #8A9BB0; }
+  .lc-desc  { font-size: 0.65rem; font-family: 'Lato', sans-serif; color: #8A9BB0; line-height: 1.45; flex: 1; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  /* Row 3: tags */
+  .lc-tags  { display: flex; gap: 0.22rem; flex-wrap: wrap; padding: 0 0.65rem 0.35rem; flex-shrink: 0; }
+  .lc-tag   { font-size: 0.56rem; font-family: 'Lato', sans-serif; padding: 0.12rem 0.36rem; background: #0D1823; border-radius: 3px; color: var(--cc); border: 1px solid #1C2B3A; }
+  /* Hidden SC iframe */
+  .lc-sc-iframe { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; top: 0; left: 0; border: none; }
+
   /* ── WORK SECTION ── */
   .work-hdr { flex-shrink: 0; margin-bottom: 0.5rem; }
-  .work-hdr .section-sub { margin-bottom: 1rem; }
+  .work-hdr .section-sub { margin-bottom: 1.5rem; }
   /* Category buttons — button prefab, same row as reel-btn-row */
   .work-btn-row { display: flex; gap: 0.4rem; flex-shrink: 0; margin-bottom: 1rem; }
   .work-btn {
@@ -295,35 +410,77 @@ const reels = [
     color: #3A8A65; border-color: #2D6A4F;
     box-shadow: inset 0 2px 3px rgba(0,0,0,0.5), 0 0 6px rgba(45,106,79,0.55), 0 0 14px rgba(45,106,79,0.18);
   }
-  /* Cards scroll area — fills remaining section height */
+  /* Outer tray wrapper — holds inset shadow above cards */
+  .work-tray-outer {
+    position: relative;
+    border-radius: 10px;
+    isolation: isolate; /* stacking context so ::after renders above inner content */
+  }
+  .work-tray-outer::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 10px;
+    box-shadow:
+      inset 0 10px 20px rgba(0,0,0,0.18),
+      inset 0 -10px 20px rgba(0,0,0,0.14);
+    pointer-events: none;
+    z-index: 1;
+  }
+  /* Cards scroll area — physical showcase tray */
   .work-cards-wrap {
-    flex: 1; min-height: 0;
+    height: var(--panel-h); flex-shrink: 0;
     position: relative; overflow: hidden;
     width: 100%;
+    background: var(--c-tert);
+    border-radius: 10px;
+    border: 1px solid #1C2B3A;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04);
+    padding: 0.6rem;
   }
   /* Panel crossfade */
-  .work-panels { height: 100%; width: 100%; transition: opacity 0.15s ease; }
+  .work-panels {
+    height: 100%; width: 100%; transition: opacity 0.15s ease;
+    --fl: black; --fr: transparent; /* fl/fr = left/right fade start color; transparent = fade on, black = off */
+    mask-image:
+      linear-gradient(to right, var(--fl) 0%, black 5%, black 95%, var(--fr) 100%),
+      linear-gradient(to bottom, transparent 0%, black 2%, black 98%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-image:
+      linear-gradient(to right, var(--fl) 0%, black 5%, black 95%, var(--fr) 100%),
+      linear-gradient(to bottom, transparent 0%, black 2%, black 98%, transparent 100%);
+    -webkit-mask-composite: source-in;
+  }
   .work-panels.fading { opacity: 0; }
   /* Each category panel = horizontal scroll row */
   .work-panel {
     display: none; flex-direction: row;
-    gap: 1.25rem; height: 100%;
-    overflow-x: auto; overflow-y: hidden;
+    gap: 1.25rem;
+    overflow-x: auto; /* forces overflow-y: auto per CSS spec */
     scrollbar-width: none;
-    padding-bottom: 0.75rem; align-items: stretch;
+    align-items: center;
+    /* Breathing room: 14px v so scale(1.02) + shadow aren't clipped top/bottom */
+    padding: 14px 0;
+    height: calc(100% + 28px);
+    margin: -14px 0;
   }
   .work-panel.active { display: flex; }
   .work-panel::-webkit-scrollbar { display: none; }
-  /* Project card — portrait, fixed width, fills panel height */
+  /* Project card — playing-card 5:7 ratio, floats in tray */
   .proj-card-v {
-    flex-shrink: 0; width: 320px;
+    flex-shrink: 0;
+    width: calc((var(--panel-h) - 3rem - 2px) * 5 / 7);
+    height: calc(var(--panel-h) - 3rem - 2px); /* -3rem = fixed visual margin, -2px = tray border */
     display: flex; flex-direction: column;
-    background: #131E2A; border: 1px solid #243447;
+    background: #1C2B3A; border: 1px solid #243447;
     border-radius: 8px; overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-    position: relative;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    position: relative; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
   }
-  .proj-card-v:hover { border-color: var(--cc); transform: translateY(-3px); }
+  .proj-card-v:hover {
+    transform: scale(1.02);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5), 0 0 10px rgba(58,138,101,0.16);
+  }
   .pcv-accent { height: 2px; background: var(--cc); opacity: 0.6; flex-shrink: 0; }
   .pcv-thumb {
     flex-shrink: 0; height: 120px; background: #0D1823;
@@ -361,9 +518,9 @@ const reels = [
   .pcv-tag { font-size: 0.62rem; font-family: 'Lato', sans-serif; padding: 0.18rem 0.45rem; background: #0D1823; border-radius: 3px; color: var(--ct); border: 1px solid #1C2B3A; }
   /* Horizontal scroll glows — same ellipse pattern as Signal Path, rotated */
   .work-glow {
-    position: absolute; top: 0; bottom: 0.75rem; width: 80px;
+    position: absolute; top: 0; bottom: 0; width: 80px;
     pointer-events: none; opacity: 0;
-    transition: opacity 1s ease; z-index: 2;
+    transition: opacity 1s ease; z-index: 10;
   }
   .work-glow.visible { opacity: 1; }
   .work-glow-left {
@@ -374,19 +531,109 @@ const reels = [
     right: 0;
     background: radial-gradient(ellipse 100% 55% at 130% 50%, rgba(58,138,101,0.22) 0%, transparent 100%);
   }
-  /* Work knob zone */
+  /* Work knob zone — mirrors reel knob-zone placement */
   .work-knob-zone {
     display: flex; justify-content: center; align-items: center;
-    padding: 0.35rem 0 0.15rem; flex-shrink: 0;
+    margin-top: 1rem; flex-shrink: 0;
   }
+
+  .listen-knob-zone {
+    display: flex; justify-content: center; align-items: center;
+    margin-top: 1rem; flex-shrink: 0;
+  }
+  #lc-indicator { transform-origin: 80px 72px; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
 
   /* Light mode overrides */
   html.light-mode .work-btn { background: var(--c-deep); border-color: var(--c-border); color: var(--c-text-3); }
   html.light-mode .work-btn.active { color: var(--c-green); border-color: var(--c-green-dk); }
-  html.light-mode .proj-card-v { background: var(--c-surface); border-color: var(--c-border); }
+  html.light-mode .work-cards-wrap { background: #D8E8F0; border-color: var(--c-border); box-shadow: 0 1px 0 rgba(255,255,255,0.6); }
+  html.light-mode .proj-card-v { background: var(--c-surface); border-color: var(--c-border); box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.12); }
   html.light-mode .pcv-studio, html.light-mode .pcv-year, html.light-mode .pcv-desc { color: var(--c-text-2); }
   html.light-mode .pcv-title { color: var(--c-text-1); }
   html.light-mode .pcv-tag { background: var(--c-elevated); border-color: var(--c-border); color: var(--c-text-2); }
+
+  /* ── CARD EXPAND MODAL ── */
+  .card-modal-backdrop {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(8,14,20,0.82);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .card-modal-backdrop.open { opacity: 1; pointer-events: all; }
+  .card-modal-panel {
+    position: relative; display: flex; flex-direction: row;
+    width: min(820px, 92vw); max-height: 82dvh;
+    background: #0D1823; border: 1px solid #243447; border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.85), 0 0 40px rgba(58,138,101,0.1), 0 -1px 0 rgba(255,255,255,0.04);
+    transform: scale(0.88);
+    transition: transform 0.28s cubic-bezier(0.34,1.28,0.64,1);
+  }
+  .card-modal-backdrop.open .card-modal-panel { transform: scale(1); }
+  .card-modal-close {
+    position: absolute; top: 0.75rem; right: 0.75rem; z-index: 10;
+    background: rgba(13,24,35,0.9); border: 1px solid #243447;
+    color: #8A9BB0; font-size: 0.82rem;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: color 0.15s, border-color 0.15s;
+  }
+  .card-modal-close:hover { color: #F4F6F8; border-color: #3A8A65; }
+  .cm-visual {
+    flex-shrink: 0; width: 190px; display: flex; flex-direction: column;
+  }
+  .cm-thumb {
+    flex: 1; position: relative; background: #0D1823;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.5rem; overflow: hidden;
+  }
+  .cm-thumb-bg { position: absolute; inset: 0; }
+  .cm-thumb-icon { font-size: 2.4rem; opacity: 0.22; position: relative; }
+  .cm-thumb-label {
+    font-size: 0.6rem; font-family: 'Montserrat', sans-serif;
+    font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    opacity: 0.4; position: relative;
+  }
+  .cm-accent { height: 3px; flex-shrink: 0; }
+  .cm-content {
+    flex: 1; min-width: 0; padding: 1.5rem 1.5rem 1.25rem;
+    display: flex; flex-direction: column; overflow-y: auto;
+  }
+  .cm-note {
+    display: inline-block; align-self: flex-start;
+    font-size: 0.6rem; font-family: 'Montserrat', sans-serif; font-weight: 700;
+    letter-spacing: 0.1em; padding: 2px 8px; border-radius: 3px; border: 1px solid;
+    margin-bottom: 0.75rem;
+  }
+  .cm-note:empty { display: none; }
+  .cm-meta { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+  .cm-studio, .cm-year { font-size: 0.72rem; font-family: 'Lato', sans-serif; color: #8A9BB0; }
+  .cm-title {
+    font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 700;
+    color: #F4F6F8; margin-bottom: 0.65rem; line-height: 1.25;
+  }
+  .cm-desc {
+    font-size: 0.82rem; font-family: 'Lato', sans-serif; color: #8A9BB0;
+    line-height: 1.7; flex: 1;
+  }
+  .cm-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 1rem; }
+  .cm-tag {
+    font-size: 0.65rem; font-family: 'Lato', sans-serif;
+    padding: 0.22rem 0.5rem; background: #131E2A;
+    border-radius: 3px; color: #8A9BB0; border: 1px solid #1C2B3A;
+  }
+  .cm-links { display: flex; gap: 0.5rem; margin-top: 1rem; flex-shrink: 0; flex-wrap: wrap; }
+  .cm-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.72rem; font-family: 'Lato', sans-serif; font-weight: 700;
+    padding: 0.4rem 0.9rem; border-radius: 5px;
+    border: 1px solid #3A8A65; color: #3A8A65;
+    text-decoration: none; background: rgba(58,138,101,0.08);
+    transition: background 0.15s, color 0.15s;
+  }
+  .cm-link:hover { background: rgba(58,138,101,0.18); color: #5AAF85; }
 
   /* ── REEL / LISTEN ── */
   .ph-video {
@@ -788,8 +1035,8 @@ const reels = [
   </div>
 
   <!-- Hero content (counter-parallax) -->
-  <div id="hero-content" class="section-inner" style="width:100%;">
-    <div style="padding-top:5rem;max-width:680px;">
+  <div id="hero-content" class="section-inner">
+    <div style="padding-top:var(--nav-h);">
       <p class="eyebrow reveal">Audio Architect · Sound Designer</p>
       <h1 class="reveal reveal-delay-1" style="font-family:'Montserrat',sans-serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-0.025em;color:#F4F6F8;margin-bottom:1.25rem;">
         Sirish <span style="color:#3A8A65;">Satyavolu</span>
@@ -825,7 +1072,6 @@ const reels = [
   <span class="img-ph-label">HERO BG — replace with atmospheric photo</span>
 </div>
 
-<!-- ══════════════════ REEL ══════════════════ -->
 <!-- ══════════════════ REEL ══════════════════ -->
 <section id="reel" class="section-pad">
   <div class="section-inner">
@@ -880,13 +1126,17 @@ const reels = [
             <feGaussianBlur stdDeviation="2.5" result="blur"/>
             <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
+          <filter id="dim-glow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="1.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
         </defs>
         <circle class="knob-dot" data-index="0" cx="24"  cy="10" r="3.5" fill="#3A8A65" stroke="#2D6A4F" stroke-width="0.5" filter="url(#led-glow)" style="cursor:pointer;"/>
-        <circle class="knob-dot" data-index="1" cx="52"  cy="10" r="3.5" fill="#1C2B3A" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
-        <circle class="knob-dot" data-index="2" cx="80"  cy="10" r="3.5" fill="#1C2B3A" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
-        <circle class="knob-dot" data-index="3" cx="108" cy="10" r="3.5" fill="#1C2B3A" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
-        <circle class="knob-dot" data-index="4" cx="136" cy="10" r="3.5" fill="#1C2B3A" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
-        <path d="M 43.63 51.00 A 42 42 0 0 1 116.37 51.00" fill="none" stroke="#1C2B3A" stroke-width="2.5" stroke-linecap="round"/>
+        <circle class="knob-dot" data-index="1" cx="52"  cy="10" r="3.5" fill="#243D55" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
+        <circle class="knob-dot" data-index="2" cx="80"  cy="10" r="3.5" fill="#243D55" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
+        <circle class="knob-dot" data-index="3" cx="108" cy="10" r="3.5" fill="#243D55" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
+        <circle class="knob-dot" data-index="4" cx="136" cy="10" r="3.5" fill="#243D55" stroke="#243447" stroke-width="0.5" style="cursor:pointer;"/>
+        <path d="M 43.63 51.00 A 42 42 0 0 1 116.37 51.00" fill="none" stroke="#243D55" stroke-width="2.5" stroke-linecap="round"/>
         <path id="knob-progress" d="" fill="none" stroke="#2D6A4F" stroke-width="2.5" stroke-linecap="round" filter="url(#led-glow)"/>
         <circle cx="80" cy="72" r="30" fill="#0D1823" stroke="#1C2B3A" stroke-width="1"/>
         <circle cx="80" cy="72" r="30" fill="none" stroke="#243447" stroke-width="0.5" opacity="0.6"/>
@@ -919,13 +1169,19 @@ const reels = [
     </div>
 
     <!-- Horizontal card scroll area -->
+    <div class="work-tray-outer">
     <div class="work-cards-wrap">
       <div class="work-panels" id="work-panels">
 
         <!-- Panel 0: Game Sound Design -->
         <div class="work-panel active" data-panel="0">
           {gameSD.map(p => (
-            <div class="proj-card-v" style="--cc:#3A8A65;--ct:#B7D5C4;">
+            <div class="proj-card-v" style="--cc:#3A8A65;--ct:#B7D5C4;"
+              data-title={p.title} data-studio={p.studio} data-year={p.year}
+              data-desc={p.desc} data-tags={p.tags.join(',')} data-note={p.note}
+              data-ios={p.ios} data-android={p.android}
+              data-icon="🎮" data-label="Game SD"
+              data-thumb-bg="linear-gradient(150deg,#0D1823 0%,#1C2B3A 100%)">
               <div class="pcv-accent"></div>
               <div class="pcv-thumb">
                 <div style="position:absolute;inset:0;background:linear-gradient(150deg,#0D1823 0%,#1C2B3A 100%);"></div>
@@ -949,7 +1205,12 @@ const reels = [
         <!-- Panel 1: Game Music -->
         <div class="work-panel" data-panel="1">
           {gameMusic.map(p => (
-            <div class="proj-card-v" style="--cc:#4F7EF7;--ct:#C3D4E8;">
+            <div class="proj-card-v" style="--cc:#4F7EF7;--ct:#C3D4E8;"
+              data-title={p.title} data-studio={p.studio} data-year={p.year}
+              data-desc={p.desc} data-tags={p.tags.join(',')} data-note={p.note}
+              data-ios={p.ios || ''} data-android={p.android || ''}
+              data-icon="🎵" data-label="Game Music"
+              data-thumb-bg="linear-gradient(150deg,#0D1823 0%,#1A2840 100%)">
               <div class="pcv-accent"></div>
               <div class="pcv-thumb">
                 <div style="position:absolute;inset:0;background:linear-gradient(150deg,#0D1823 0%,#1A2840 100%);"></div>
@@ -973,7 +1234,12 @@ const reels = [
         <!-- Panel 2: Film -->
         <div class="work-panel" data-panel="2">
           {film.map(p => (
-            <div class="proj-card-v" style="--cc:#8A9BB0;--ct:#B7D5C4;">
+            <div class="proj-card-v" style="--cc:#8A9BB0;--ct:#B7D5C4;"
+              data-title={p.title} data-studio={p.studio} data-year={p.year}
+              data-desc={p.desc} data-tags={p.tags.join(',')} data-note={p.note}
+              data-ios="" data-android=""
+              data-icon="🎬" data-label="Film"
+              data-thumb-bg="linear-gradient(150deg,#0D1823 0%,#1A1F2A 100%)">
               <div class="pcv-accent"></div>
               <div class="pcv-thumb">
                 <div style="position:absolute;inset:0;background:linear-gradient(150deg,#0D1823 0%,#1A1F2A 100%);"></div>
@@ -997,7 +1263,12 @@ const reels = [
         <!-- Panel 3: AI Audio -->
         <div class="work-panel" data-panel="3">
           {aiAudio.map(p => (
-            <div class="proj-card-v" style="--cc:#9B72CF;--ct:#D4C3E8;">
+            <div class="proj-card-v" style="--cc:#9B72CF;--ct:#D4C3E8;"
+              data-title={p.title} data-studio={p.studio} data-year={p.year}
+              data-desc={p.desc} data-tags={p.tags.join(',')} data-note={p.note}
+              data-ios="" data-android=""
+              data-icon="🤖" data-label="AI Audio"
+              data-thumb-bg="linear-gradient(150deg,#0D1823 0%,#1A1430 100%)">
               <div class="pcv-accent"></div>
               <div class="pcv-thumb">
                 <div style="position:absolute;inset:0;background:linear-gradient(150deg,#0D1823 0%,#1A1430 100%);"></div>
@@ -1023,6 +1294,7 @@ const reels = [
       <div class="work-glow work-glow-left"  id="wgl-left"></div>
       <div class="work-glow work-glow-right" id="wgl-right"></div>
     </div>
+    </div><!-- /.work-tray-outer -->
 
     <!-- Work Knob -->
     <div class="work-knob-zone">
@@ -1040,7 +1312,7 @@ const reels = [
         <!-- Dots / pill group — populated by JS -->
         <g id="wk-dots-group"></g>
         <!-- Base track arc -->
-        <path d="M 43.63 51.00 A 42 42 0 0 1 116.37 51.00" fill="none" stroke="#1C2B3A" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M 43.63 51.00 A 42 42 0 0 1 116.37 51.00" fill="none" stroke="#243D55" stroke-width="2.5" stroke-linecap="round"/>
         <!-- Inactive dashed arc — shown when not scrollable -->
         <path id="wk-inactive-arc" d="M 43.63 51.00 A 42 42 0 0 1 116.37 51.00" fill="none" stroke="#4a5f78" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5" filter="url(#wk-dim-glow)"/>
         <!-- Progress arc — active only, hidden initially -->
@@ -1066,24 +1338,96 @@ const reels = [
     <h2 class="section-h2 reveal reveal-delay-1">Listen</h2>
     <p class="section-sub reveal reveal-delay-2" style="margin-bottom:2.5rem;">Selected tracks — game audio, adaptive music, film score excerpts.</p>
 
-    <div class="itag-wrap reveal">
-      <div class="ph-sc">
-        <svg width="36" height="36" viewBox="0 0 32 24" fill="#ff5500"><path d="M0 17c0 1.1.9 2 2 2s2-.9 2-2v-6c0-1.1-.9-2-2-2s-2 .9-2 2v6zm4.5 1.5c0 1.1.9 2 2 2s2-.9 2-2v-9c0-1.1-.9-2-2-2s-2 .9-2 2v9zm4.5 1c0 1.1.9 2 2 2s2-.9 2-2V8c0-1.1-.9-2-2-2s-2 .9-2 2v11.5zm4.5.5c0 1.1.9 2 2 2s2-.9 2-2V6c0-1.1-.9-2-2-2s-2 .9-2 2v14zm4.5-1c0 1.1.9 2 2 2s2-.9 2-2V10c0-1.1-.9-2-2-2s-2 .9-2 2v9zm4.5 1c0 1.1.9 2 2 2s2-.9 2-2V13c0-1.1-.9-2-2-2s-2 .9-2 2v7z"/></svg>
-        <div>
-          <p style="font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:700;color:#8A9BB0;margin-bottom:0.25rem;">SoundCloud Player</p>
-          <p style="font-size:0.72rem;color:#ff5500;font-family:'Lato',sans-serif;">soundcloud.com/sirishaudio</p>
-          <p style="font-size:0.7rem;color:#8A9BB0;margin-top:0.25rem;font-family:'Lato',sans-serif;">→ Replace with embed iframe</p>
-        </div>
-      </div>
-      <span class="img-ph-label">SOUNDCLOUD EMBED</span>
-      <div class="itag"><button class="itag-btn" style="color:#ff5500;">i</button><div class="itag-tooltip"><strong style="color:#ff5500;">SOUNDCLOUD EMBED</strong>Height: 160px
-URL: soundcloud.com/sirishaudio
-Color: #2D6A4F
-Show user: true, hide related: true</div></div>
-    </div>
+    <div class="listen-tray reveal">
+      <div class="listen-cards">
+        {listenTracks.map((t, i) => (
+          <div class="listen-card" data-lc-idx={i} style={`--cc:${t.color};`}>
 
-    <div style="margin-top:1.5rem;">
-      <a href="https://soundcloud.com/sirishaudio" target="_blank" style="font-size:0.78rem;font-family:'Montserrat',sans-serif;font-weight:600;color:#8A9BB0;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid #243447;padding-bottom:2px;transition:all 0.2s;" onmouseover="this.style.color='#B7D5C4';this.style.borderColor='#3A8A65'" onmouseout="this.style.color='#8A9BB0';this.style.borderColor='#243447'">Full Profile on SoundCloud →</a>
+            <!-- Thumb — inset, square, rounded -->
+            <div class="lc-thumb-wrap">
+              <div class="lc-thumb">
+                {t.thumb
+                  ? <img src={t.thumb} alt={t.title} class="lc-thumb-img" />
+                  : <div class="lc-thumb-bg" style={`background:${t.thumbBg};`}></div>
+                }
+                <span class="lc-thumb-icon">{t.icon}</span>
+                <span class="lc-thumb-label">{t.label}</span>
+              </div>
+            </div>
+
+            <!-- Body -->
+            <div class="lc-body">
+              <div class="lc-accent"></div>
+
+              <!-- Row 1: label + year -->
+              <div class="lc-header">
+                <span class="lc-label">{t.label}</span>
+                <span class="lc-year">{t.year}</span>
+              </div>
+
+              <!-- Row 2: play button + right column -->
+              <div class="lc-main">
+                <button class="lc-play-btn" aria-label="Play/Pause">
+                  <svg class="lc-icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="lc-icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+                <div class="lc-track-right">
+                  <span class="lc-title">{t.title}</span>
+                  <div class="lc-progress-wrap">
+                    <div class="lc-progress-bar"><div class="lc-progress-fill"></div></div>
+                    <div class="lc-time-row">
+                      <span class="lc-time-cur">0:00</span>
+                      <span class="lc-time-dur">—:——</span>
+                    </div>
+                  </div>
+                  <p class="lc-desc">{t.desc}</p>
+                </div>
+              </div>
+
+              <!-- Row 3: tags -->
+              <div class="lc-tags">{t.tags.map(tag => <span class="lc-tag">{tag}</span>)}</div>
+
+              <!-- Hidden SC iframe -->
+              <iframe
+                class="lc-sc-iframe"
+                scrolling="no" frameborder="no" allow="autoplay"
+                src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(t.url)}&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false`}>
+              </iframe>
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </div><!-- /.listen-tray -->
+
+    <!-- Listen Knob -->
+    <div class="listen-knob-zone">
+      <svg class="knob-svg" id="lc-knob-svg" width="160" height="110" viewBox="0 0 160 110" style="overflow:visible;">
+        <defs>
+          <filter id="lc-led-glow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="lc-dim-glow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="1.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Dots — populated by JS (count = listenTracks.length) -->
+        <g id="lc-dots-group"></g>
+        <!-- Base track arc -->
+        <path d="M 43.63 51.00 A 42 42 0 0 1 116.37 51.00" fill="none" stroke="#243D55" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Progress arc -->
+        <path id="lc-progress" d="" fill="none" stroke="#2D6A4F" stroke-width="2.5" stroke-linecap="round" filter="url(#lc-led-glow)"/>
+        <!-- Knob body -->
+        <circle id="lc-knob-body" cx="80" cy="72" r="30" fill="#0D1823" stroke="#1C2B3A" stroke-width="1" style="cursor:grab;"/>
+        <circle cx="80" cy="72" r="30" fill="none" stroke="#243447" stroke-width="0.5" opacity="0.6"/>
+        <!-- Indicator -->
+        <g id="lc-indicator" style="transform-origin:80px 72px; transform:rotate(300deg);">
+          <line x1="80" y1="72" x2="80" y2="46" stroke="#8A9BB0" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="80" cy="45" r="2" fill="#3A8A65"/>
+        </g>
+      </svg>
     </div>
 
     <div class="itag"><button class="itag-btn" style="color:#ff5500;">i</button><div class="itag-tooltip"><strong style="color:#ff5500;">LISTEN SECTION</strong>BG: #131E2A
@@ -1156,7 +1500,7 @@ Placeholder: initials "SS" #3A8A65</div></div>
         <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
           <a href="mailto:sirishsatyavolu@gmail.com" style="font-size:0.78rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:0.06em;color:#3A8A65;text-decoration:none;border-bottom:1px solid #2D6A4F;padding-bottom:2px;">Email</a>
           <a href="https://linkedin.com/in/sirishsatyavolu" target="_blank" style="font-size:0.78rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:0.06em;color:#8A9BB0;text-decoration:none;border-bottom:1px solid #243447;padding-bottom:2px;">LinkedIn</a>
-          <a href="https://soundcloud.com/sirishaudio" target="_blank" style="font-size:0.78rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:0.06em;color:#8A9BB0;text-decoration:none;border-bottom:1px solid #243447;padding-bottom:2px;">SoundCloud</a>
+          <a href="https://soundcloud.com/sirishsatyavolu" target="_blank" style="font-size:0.78rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:0.06em;color:#8A9BB0;text-decoration:none;border-bottom:1px solid #243447;padding-bottom:2px;">SoundCloud</a>
         </div>
       </div>
 
@@ -1177,7 +1521,7 @@ Body: Lato 400 / 1rem</div></div>
       <a href="mailto:sirishsatyavolu@gmail.com" class="contact-cta">sirishsatyavolu@gmail.com</a>
     </div>
     <div class="reveal" style="display:flex;justify-content:center;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;">
-      {[["LinkedIn","https://linkedin.com/in/sirishsatyavolu"],["SoundCloud","https://soundcloud.com/sirishaudio"],["Vimeo","https://vimeo.com/sirishaudio"],["GitHub","https://github.com/sirishaudio"]].map(([l,h]) => (
+      {[["LinkedIn","https://linkedin.com/in/sirishsatyavolu"],["SoundCloud","https://soundcloud.com/sirishsatyavolu"],["Vimeo","https://vimeo.com/sirishaudio"],["GitHub","https://github.com/sirishaudio"]].map(([l,h]) => (
         <a href={h} target="_blank" style="font-size:0.75rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:0.06em;color:#8A9BB0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#B7D5C4'" onmouseout="this.style.color='#8A9BB0'">{l}</a>
       ))}
     </div>
@@ -1212,6 +1556,12 @@ Max-width: 600px, centered</div></div>
   }, { threshold: 0.08 });
   revealEls.forEach(el => revealObs.observe(el));
 
+  // ── SHARED KNOB STATE ──
+  // isModalOpen: guards all knob scroll-update handlers so indicator freezes in place while a card is open.
+  // Inactive (no-scroll) state is separate: indicator parks at 0°, dashed arc shown.
+  // Future knob instances must respect both flags.
+  let isModalOpen = false;
+
   // ── WORK: CATEGORY SWITCHING + SCROLL GLOWS ──
   const workBtns   = document.querySelectorAll('.work-btn');
   const workPanels = document.querySelectorAll('.work-panel');
@@ -1229,8 +1579,14 @@ Max-width: 600px, centered</div></div>
     if (!track) return;
     const sl  = track.scrollLeft;
     const max = track.scrollWidth - track.clientWidth;
-    if (wglLeft)  wglLeft.classList.toggle('visible',  sl > 8);
-    if (wglRight) wglRight.classList.toggle('visible', max > 8 && sl < max - 8);
+    const showLeft  = sl > 8;
+    const showRight = max > 8 && sl < max - 8;
+    if (wglLeft)  wglLeft.classList.toggle('visible',  showLeft);
+    if (wglRight) wglRight.classList.toggle('visible', showRight);
+    if (workPanelsWrap) {
+      workPanelsWrap.style.setProperty('--fl', showLeft  ? 'transparent' : 'black');
+      workPanelsWrap.style.setProperty('--fr', showRight ? 'transparent' : 'black');
+    }
   }
 
   workPanels.forEach(panel => {
@@ -1243,6 +1599,10 @@ Max-width: 600px, centered</div></div>
     // Reset glow state immediately
     if (wglLeft)  wglLeft.classList.remove('visible');
     if (wglRight) wglRight.classList.remove('visible');
+    if (workPanelsWrap) {
+      workPanelsWrap.style.setProperty('--fl', 'black');
+      workPanelsWrap.style.setProperty('--fr', 'transparent');
+    }
     setTimeout(() => {
       workBtns.forEach((b, i)   => b.classList.toggle('active', i === idx));
       workPanels.forEach((p, i) => p.classList.toggle('active', i === idx));
@@ -1267,153 +1627,155 @@ Max-width: 600px, centered</div></div>
   const wkIndicatorDot  = document.getElementById('wk-indicator-dot');
   const wkKnobBody     = document.getElementById('wk-knob-body');
   let wkActive = false;
+  let wkCardIdx = 0;
+  let wkIsAnimating = false;
+
+  function wkGetStops(n) {
+    if (n <= 1) return [300];
+    return Array.from({ length: n }, (_, i) => 300 + i * 120 / (n - 1));
+  }
 
   function buildWkDots(panel) {
     if (!wkDotsGroup) return false;
     wkDotsGroup.innerHTML = '';
     const scrollable = panel.scrollWidth > panel.clientWidth + 4;
     if (!scrollable) {
-      // Single inactive pill
       const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
       rect.setAttribute('x', '56'); rect.setAttribute('y', '6.5');
       rect.setAttribute('width', '48'); rect.setAttribute('height', '7');
       rect.setAttribute('rx', '3.5');
-      rect.setAttribute('fill', '#1C2B3A');
-      rect.setAttribute('stroke', '#243447');
-      rect.setAttribute('stroke-width', '0.5');
+      rect.setAttribute('fill', '#243D55'); rect.setAttribute('stroke', '#243447'); rect.setAttribute('stroke-width', '0.5');
       wkDotsGroup.appendChild(rect);
       return false;
     }
     const n = panel.querySelectorAll('.proj-card-v').length;
-    const spacing = n > 6 ? Math.max(12, Math.floor(128 / Math.max(n - 1, 1))) : 24;
-    const r = n > 6 ? 2.5 : 3.5;
-    const startX = 80 - (n - 1) * spacing / 2;
+    const startX = 80 - (n - 1) * 14;
     for (let i = 0; i < n; i++) {
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('cx', String(startX + i * spacing));
-      c.setAttribute('cy', '10');
-      c.setAttribute('r', String(r));
-      c.setAttribute('fill', i === 0 ? '#3A8A65' : '#1C2B3A');
-      c.setAttribute('stroke', i === 0 ? '#2D6A4F' : '#243447');
-      c.setAttribute('stroke-width', '0.5');
-      c.dataset.wkDot = String(i);
+      c.setAttribute('cx', String(startX + i * 28));
+      c.setAttribute('cy', '10'); c.setAttribute('r', '3.5');
+      c.setAttribute('fill', '#243D55'); c.setAttribute('stroke', '#243447'); c.setAttribute('stroke-width', '0.5');
+      c.dataset.wkDot = String(i); c.style.cursor = 'pointer';
       wkDotsGroup.appendChild(c);
     }
     return true;
   }
 
+  // Instant visual snap — used by scroll-driven updates (no animation lock)
+  function wkSnapVisuals(idx, stops, dots) {
+    wkCardIdx = idx;
+    if (wkIndicator) wkIndicator.style.transform = `rotate(${stops[idx]}deg)`;
+    const sweep = stops[idx] - 300;
+    if (wkProgress) wkProgress.setAttribute('d', sweep > 0.5 ? buildArcPath(300, sweep) : '');
+    dots.forEach((d, i) => {
+      if (i === idx) {
+        d.setAttribute('fill', '#3A8A65'); d.setAttribute('stroke', '#2D6A4F'); d.setAttribute('filter', 'url(#wk-led-glow)');
+      } else {
+        d.setAttribute('fill', '#243D55'); d.setAttribute('stroke', '#243447'); d.removeAttribute('filter');
+      }
+    });
+  }
+
   function setWkKnobState(panel) {
     const scrollable = buildWkDots(panel);
-    wkActive = scrollable;
+    wkActive = scrollable; wkCardIdx = 0;
     if (!scrollable) {
-      // Inactive appearance
-      if (wkProgress)    { wkProgress.setAttribute('d', ''); wkProgress.style.display = 'none'; }
-      if (wkInactiveArc) wkInactiveArc.style.display = '';
-      if (wkIndicator)   wkIndicator.style.transform = 'rotate(0deg)';
+      if (wkProgress)      { wkProgress.setAttribute('d', ''); wkProgress.style.display = 'none'; }
+      if (wkInactiveArc)   wkInactiveArc.style.display = '';
+      if (wkIndicator)     wkIndicator.style.transform = 'rotate(0deg)';
       if (wkIndicatorLine) wkIndicatorLine.setAttribute('stroke', '#243447');
       if (wkIndicatorDot)  wkIndicatorDot.setAttribute('fill', '#4a5f78');
-      if (wkKnobBody) wkKnobBody.setAttribute('stroke', '#1C2B3A');
+      if (wkKnobBody)      wkKnobBody.setAttribute('stroke', '#1C2B3A');
     } else {
-      // Active appearance
-      if (wkInactiveArc) wkInactiveArc.style.display = 'none';
-      if (wkProgress)    wkProgress.style.display = '';
+      if (wkInactiveArc)   wkInactiveArc.style.display = 'none';
+      if (wkProgress)      wkProgress.style.display = '';
       if (wkIndicatorLine) wkIndicatorLine.setAttribute('stroke', '#8A9BB0');
       if (wkIndicatorDot)  wkIndicatorDot.setAttribute('fill', '#3A8A65');
-      if (wkKnobBody) wkKnobBody.setAttribute('stroke', '#243447');
-      updateWkKnob(panel);
+      if (wkKnobBody)      wkKnobBody.setAttribute('stroke', '#243447');
+      const dots = Array.from(wkDotsGroup.querySelectorAll('circle'));
+      wkSnapVisuals(0, wkGetStops(dots.length), dots);
     }
   }
 
-  function updateWkKnob(panel) {
-    if (!wkActive || !panel) return;
-    const max = panel.scrollWidth - panel.clientWidth;
-    const progress = max > 0 ? panel.scrollLeft / max : 0;
-    // Map 0→1 to 300°→420° (same 120° arc as reel, going CW)
-    const angle = 300 + progress * 120;
-    if (wkIndicator) wkIndicator.style.transform = `rotate(${angle}deg)`;
-    // Progress arc
-    const sweepDeg = progress * 120;
-    if (wkProgress) wkProgress.setAttribute('d', sweepDeg > 0.5 ? buildArcPath(300, sweepDeg) : '');
-    // Update active dot
-    const dots = wkDotsGroup ? Array.from(wkDotsGroup.querySelectorAll('circle')) : [];
-    const n = dots.length;
-    if (n > 0) {
-      const activeIdx = Math.round(progress * (n - 1));
-      dots.forEach((d, i) => {
-        if (i === activeIdx) {
-          d.setAttribute('fill', '#3A8A65'); d.setAttribute('stroke', '#2D6A4F');
-          d.setAttribute('filter', 'url(#wk-led-glow)');
-        } else {
-          d.setAttribute('fill', '#1C2B3A'); d.setAttribute('stroke', '#243447');
-          d.removeAttribute('filter');
-        }
-      });
+  // Stepped animation — reel standard, clamped (no wrap on long panels)
+  async function wkGoTo(target) {
+    if (wkIsAnimating || !wkActive || isModalOpen) return;
+    const panel = workPanels[workCurrent];
+    if (!panel) return;
+    const dots = Array.from(wkDotsGroup.querySelectorAll('circle'));
+    const n = dots.length; if (n <= 1) return;
+    const stops = wkGetStops(n);
+    target = Math.max(0, Math.min(n - 1, target));
+    if (target === wkCardIdx) return;
+    wkIsAnimating = true;
+
+    const steps = Math.abs(target - wkCardIdx);
+    const msPerStep = Math.round(350 / steps);
+    const firstCard = panel.querySelector('.proj-card-v');
+    const cardStep = firstCard ? firstCard.offsetWidth + 20 : 267;
+    panel.scrollTo({ left: target * cardStep, behavior: 'smooth' });
+    if (wkIndicator) wkIndicator.style.transitionDuration = `${msPerStep}ms`;
+
+    try {
+      const dir = target > wkCardIdx ? 1 : -1;
+      while (wkCardIdx !== target) {
+        wkCardIdx += dir;
+        wkSnapVisuals(wkCardIdx, stops, dots);
+        if (wkCardIdx !== target) await sleep(msPerStep);
+      }
+    } finally {
+      if (wkIndicator) wkIndicator.style.transitionDuration = '';
+      wkIsAnimating = false;
     }
   }
 
-  // Scroll → update knob
+  // Scroll → discrete snap (no animation — free scroll follows naturally)
   workPanels.forEach(panel => {
     panel.addEventListener('scroll', () => {
       updateWorkGlows();
-      if (wkActive) updateWkKnob(panel);
+      if (!wkActive || isModalOpen || wkIsAnimating) return;
+      const dots = Array.from(wkDotsGroup.querySelectorAll('circle'));
+      const n = dots.length; if (!n) return;
+      const max = panel.scrollWidth - panel.clientWidth;
+      const newIdx = max > 0 ? Math.min(n - 1, Math.round(panel.scrollLeft / max * (n - 1))) : 0;
+      if (newIdx !== wkCardIdx) wkSnapVisuals(newIdx, wkGetStops(n), dots);
     }, { passive: true });
   });
 
-  // Drag knob → scroll active panel
-  let wkDragging = false;
-  let wkDragStartAngle = 0;
-  let wkDragStartScroll = 0;
-
-  function wkGetAngle(e) {
-    if (!wkSvg) return 0;
-    const rect = wkSvg.getBoundingClientRect();
-    const scaleX = 160 / rect.width;
-    const scaleY = 110 / rect.height;
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    const x = (clientX - rect.left) * scaleX - 80;
-    const y = (clientY - rect.top)  * scaleY - 72;
-    return Math.atan2(x, -y) * 180 / Math.PI; // 0° = up
+  // Dot clicks
+  if (wkDotsGroup) {
+    wkDotsGroup.addEventListener('click', (e) => {
+      if (!wkActive) return;
+      const dot = e.target.closest('circle[data-wk-dot]');
+      if (!dot) return;
+      wkGoTo(Number(dot.dataset.wkDot));
+    });
   }
 
+  // Drag → 45px/stop, stepped, clamped
+  let wkDragging = false, wkDragX = 0, wkDragAccum = 0;
   if (wkKnobBody) {
     wkKnobBody.addEventListener('mousedown', (e) => {
-      if (!wkActive) return;
-      e.preventDefault();
-      wkDragging = true;
-      wkDragStartAngle = wkGetAngle(e);
-      const panel = workPanels[workCurrent];
-      wkDragStartScroll = panel ? panel.scrollLeft : 0;
+      if (!wkActive) return; e.preventDefault();
+      wkDragging = true; wkDragX = e.clientX; wkDragAccum = 0;
     });
     wkKnobBody.addEventListener('touchstart', (e) => {
       if (!wkActive) return;
-      wkDragging = true;
-      wkDragStartAngle = wkGetAngle(e);
-      const panel = workPanels[workCurrent];
-      wkDragStartScroll = panel ? panel.scrollLeft : 0;
+      wkDragging = true; wkDragX = e.touches[0].clientX; wkDragAccum = 0;
     }, { passive: true });
   }
-
   document.addEventListener('mousemove', (e) => {
     if (!wkDragging || !wkActive) return;
-    const panel = workPanels[workCurrent];
-    if (!panel) return;
-    const delta = wkGetAngle(e) - wkDragStartAngle;          // degrees rotated
-    const max = panel.scrollWidth - panel.clientWidth;
-    const scrollDelta = (delta / 120) * max;                  // 120° = full scroll range
-    panel.scrollLeft = Math.max(0, Math.min(max, wkDragStartScroll + scrollDelta));
+    wkDragAccum += (e.clientX - wkDragX) * 0.6; wkDragX = e.clientX;
+    const t = Math.max(0, Math.min((wkDotsGroup.querySelectorAll('circle').length || 1) - 1, Math.round(wkCardIdx + wkDragAccum / 45)));
+    if (t !== wkCardIdx) { wkDragAccum = 0; wkGoTo(t); }
   });
-
   document.addEventListener('touchmove', (e) => {
     if (!wkDragging || !wkActive) return;
-    const panel = workPanels[workCurrent];
-    if (!panel) return;
-    const delta = wkGetAngle(e) - wkDragStartAngle;
-    const max = panel.scrollWidth - panel.clientWidth;
-    const scrollDelta = (delta / 120) * max;
-    panel.scrollLeft = Math.max(0, Math.min(max, wkDragStartScroll + scrollDelta));
+    wkDragAccum += (e.touches[0].clientX - wkDragX) * 0.6; wkDragX = e.touches[0].clientX;
+    const t = Math.max(0, Math.min((wkDotsGroup.querySelectorAll('circle').length || 1) - 1, Math.round(wkCardIdx + wkDragAccum / 45)));
+    if (t !== wkCardIdx) { wkDragAccum = 0; wkGoTo(t); }
   }, { passive: true });
-
   document.addEventListener('mouseup', () => { wkDragging = false; });
   document.addEventListener('touchend', () => { wkDragging = false; });
 
@@ -1539,7 +1901,7 @@ Max-width: 600px, centered</div></div>
         d.setAttribute('stroke', '#2D6A4F');
         d.setAttribute('filter', 'url(#led-glow)');
       } else {
-        d.setAttribute('fill', '#1C2B3A');
+        d.setAttribute('fill', '#243D55');
         d.setAttribute('stroke', '#243447');
         d.removeAttribute('filter');
       }
@@ -1553,7 +1915,7 @@ Max-width: 600px, centered</div></div>
   function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
   async function goToReel(target) {
-    if (isAnimating || target === currentReel) return;
+    if (isAnimating || target === currentReel || isModalOpen) return;
     isAnimating = true;
 
     const wrappingForward  = currentReel === TOTAL - 1 && target === 0;
@@ -1569,7 +1931,7 @@ Max-width: 600px, centered</div></div>
         reelBtns.forEach((b, i) => b.classList.toggle('active', i === 0));
         knobDots.forEach((d, i) => {
           if (i === 0) { d.setAttribute('fill','#3A8A65'); d.setAttribute('stroke','#2D6A4F'); d.setAttribute('filter','url(#led-glow)'); }
-          else { d.setAttribute('fill','#1C2B3A'); d.setAttribute('stroke','#243447'); d.removeAttribute('filter'); }
+          else { d.setAttribute('fill','#243D55'); d.setAttribute('stroke','#243447'); d.removeAttribute('filter'); }
         });
         // Knob → rewind 4→3→2→1→0 over CAROUSEL_MS
         if (knobIndicator) knobIndicator.style.transitionDuration = `${msPerStep}ms`;
@@ -1600,7 +1962,7 @@ Max-width: 600px, centered</div></div>
         reelBtns.forEach((b, i) => b.classList.toggle('active', i === TOTAL - 1));
         knobDots.forEach((d, i) => {
           if (i === TOTAL - 1) { d.setAttribute('fill','#3A8A65'); d.setAttribute('stroke','#2D6A4F'); d.setAttribute('filter','url(#led-glow)'); }
-          else { d.setAttribute('fill','#1C2B3A'); d.setAttribute('stroke','#243447'); d.removeAttribute('filter'); }
+          else { d.setAttribute('fill','#243D55'); d.setAttribute('stroke','#243447'); d.removeAttribute('filter'); }
         });
         // Knob → wind forward 0→1→2→3→4 over CAROUSEL_MS
         if (knobIndicator) knobIndicator.style.transitionDuration = `${msPerStep}ms`;
@@ -1885,6 +2247,345 @@ Max-width: 600px, centered</div></div>
     document.addEventListener('touchend', () => { isDragging = false; });
   }
 
+  // ── CARD EXPAND MODAL ──
+  const cardModal = document.getElementById('card-modal');
+  const cardModalClose = document.getElementById('card-modal-close');
+
+  function openCardModal(card) {
+    const cc = getComputedStyle(card).getPropertyValue('--cc').trim();
+
+    // Thumb area
+    const thumbBg = document.getElementById('cm-thumb-bg');
+    if (thumbBg) thumbBg.style.background = card.dataset.thumbBg || '';
+    const thumbIcon = document.getElementById('cm-thumb-icon');
+    if (thumbIcon) thumbIcon.textContent = card.dataset.icon || '';
+    const thumbLabel = document.getElementById('cm-thumb-label');
+    if (thumbLabel) { thumbLabel.textContent = card.dataset.label || ''; thumbLabel.style.color = cc; }
+    const accentEl = document.getElementById('cm-accent');
+    if (accentEl) accentEl.style.background = cc;
+
+    // Note badge
+    const noteEl = document.getElementById('cm-note');
+    if (noteEl) { noteEl.textContent = card.dataset.note || ''; noteEl.style.color = cc; noteEl.style.borderColor = cc; }
+
+    // Meta + body
+    const studioEl = document.getElementById('cm-studio');
+    if (studioEl) studioEl.textContent = card.dataset.studio || '';
+    const yearEl = document.getElementById('cm-year');
+    if (yearEl) yearEl.textContent = card.dataset.year || '';
+    const titleEl = document.getElementById('cm-title');
+    if (titleEl) titleEl.textContent = card.dataset.title || '';
+    const descEl = document.getElementById('cm-desc');
+    if (descEl) descEl.textContent = card.dataset.desc || '';
+
+    // Tags
+    const tagsEl = document.getElementById('cm-tags');
+    if (tagsEl) {
+      tagsEl.innerHTML = '';
+      (card.dataset.tags || '').split(',').filter(Boolean).forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'cm-tag';
+        span.textContent = t.trim();
+        tagsEl.appendChild(span);
+      });
+    }
+
+    // Store links
+    const iosEl = document.getElementById('cm-link-ios');
+    const androidEl = document.getElementById('cm-link-android');
+    const ios = card.dataset.ios || '';
+    const android = card.dataset.android || '';
+    if (iosEl) { if (ios) { iosEl.href = ios; iosEl.hidden = false; } else { iosEl.hidden = true; } }
+    if (androidEl) { if (android) { androidEl.href = android; androidEl.hidden = false; } else { androidEl.hidden = true; } }
+
+    cardModal.setAttribute('aria-hidden', 'false');
+    cardModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    isModalOpen = true;
+  }
+
+  function closeCardModal() {
+    cardModal.classList.remove('open');
+    cardModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    isModalOpen = false;
+  }
+
+  if (cardModal) {
+    cardModal.addEventListener('click', e => { if (e.target === cardModal) closeCardModal(); });
+  }
+  if (cardModalClose) {
+    cardModalClose.addEventListener('click', closeCardModal);
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCardModal(); });
+
+  document.querySelectorAll('.proj-card-v').forEach(card => {
+    card.addEventListener('click', () => openCardModal(card));
+  });
+
+  // ── LISTEN: SC WIDGET PLAYERS ──
+  function fmtTime(ms) {
+    const s = Math.floor(ms / 1000);
+    return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+  }
+
+  const lcCards = document.querySelectorAll('.listen-card');
+  const lcWidgets = [];
+
+  lcCards.forEach((card, idx) => {
+    const iframe   = card.querySelector('.lc-sc-iframe');
+    const playBtn  = card.querySelector('.lc-play-btn');
+    const fill     = card.querySelector('.lc-progress-fill');
+    const bar      = card.querySelector('.lc-progress-bar');
+    const timeCur  = card.querySelector('.lc-time-cur');
+    const timeDur  = card.querySelector('.lc-time-dur');
+
+    const widget = SC.Widget(iframe);
+    lcWidgets[idx] = widget;
+    let duration = 0;
+
+    widget.bind(SC.Widget.Events.READY, () => {
+      widget.getDuration(d => { duration = d; timeDur.textContent = fmtTime(d); });
+    });
+
+    widget.bind(SC.Widget.Events.PLAY, () => {
+      playBtn.classList.add('playing');
+      // pause all other cards
+      lcWidgets.forEach((w, i) => {
+        if (i !== idx) {
+          w.pause();
+          lcCards[i].querySelector('.lc-play-btn').classList.remove('playing');
+        }
+      });
+    });
+
+    widget.bind(SC.Widget.Events.PAUSE, () => {
+      playBtn.classList.remove('playing');
+    });
+
+    widget.bind(SC.Widget.Events.FINISH, () => {
+      playBtn.classList.remove('playing');
+      fill.style.width = '0%';
+      timeCur.textContent = '0:00';
+      widget.seekTo(0); // enables replay
+    });
+
+    widget.bind(SC.Widget.Events.PLAY_PROGRESS, (data) => {
+      fill.style.width = (data.relativePosition * 100) + '%';
+      timeCur.textContent = fmtTime(data.currentPosition);
+    });
+
+    playBtn.addEventListener('click', () => {
+      if (playBtn.classList.contains('playing')) widget.pause();
+      else widget.play();
+    });
+
+    bar.addEventListener('click', (e) => {
+      const rect = bar.getBoundingClientRect();
+      const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      widget.seekTo(pct * duration);
+    });
+  });
+
+  // ── LISTEN KNOB ──
+  (function() {
+    const LC_COUNT      = document.querySelectorAll('.listen-card').length;
+    const LC_SWEEP      = 120;                 // degrees total
+    const LC_ARC_START  = 300;
+    const LC_STEP       = LC_COUNT > 1 ? LC_SWEEP / (LC_COUNT - 1) : 0;
+    const LC_STOPS      = Array.from({ length: LC_COUNT }, (_, i) => LC_ARC_START + i * LC_STEP);
+
+    // Build dots in SVG
+    const lcDotsGroup = document.getElementById('lc-dots-group');
+    const DOT_GAP = 28, DOT_Y = 10;
+    const lcDotStartX = 80 - (LC_COUNT - 1) * DOT_GAP / 2;
+    const lcDotEls = LC_STOPS.map((_, i) => {
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('r', '3.5');
+      c.setAttribute('cx', (lcDotStartX + i * DOT_GAP).toFixed(2));
+      c.setAttribute('cy', DOT_Y);
+      c.setAttribute('stroke-width', '0.5');
+      c.style.cursor = 'pointer';
+      c.dataset.index = String(i);
+      lcDotsGroup.appendChild(c);
+      return c;
+    });
+
+    const lcIndicator = document.getElementById('lc-indicator');
+    const lcProgress  = document.getElementById('lc-progress');
+    const lcTray      = document.querySelector('.listen-cards');
+    const lcCardEls   = document.querySelectorAll('.listen-card');
+    let lcIdx = 0;
+    let lcIsAnimating = false;
+
+    function lcP2xy(r, deg) {
+      const rad = (deg - 90) * Math.PI / 180;
+      return { x: 80 + r * Math.cos(rad), y: 72 + r * Math.sin(rad) };
+    }
+    function lcArcPath(startDeg, sweepDeg) {
+      if (sweepDeg <= 0.5) return '';
+      const s = lcP2xy(42, startDeg), e = lcP2xy(42, startDeg + sweepDeg);
+      return `M ${s.x.toFixed(2)} ${s.y.toFixed(2)} A 42 42 0 ${sweepDeg > 180 ? 1 : 0} 1 ${e.x.toFixed(2)} ${e.y.toFixed(2)}`;
+    }
+
+    // Instant snap — used by scroll-driven updates and as the per-step primitive inside lcGoTo
+    function lcSnapVisuals(idx) {
+      lcIdx = idx;
+      if (lcIndicator) lcIndicator.style.transform = `rotate(${LC_STOPS[idx]}deg)`;
+      if (lcProgress) lcProgress.setAttribute('d', idx === 0 ? '' : lcArcPath(LC_ARC_START, LC_STOPS[idx] - LC_ARC_START));
+      lcDotEls.forEach((d, i) => {
+        if (i === idx) {
+          d.setAttribute('fill', '#3A8A65'); d.setAttribute('stroke', '#2D6A4F'); d.setAttribute('filter', 'url(#lc-led-glow)');
+        } else {
+          d.setAttribute('fill', '#243D55'); d.setAttribute('stroke', '#243447'); d.removeAttribute('filter');
+        }
+      });
+    }
+
+    function lcScrollToCard(idx) {
+      if (!lcTray || !lcCardEls[idx]) return;
+      const card = lcCardEls[idx];
+      lcTray.scrollTo({ top: card.offsetTop - lcTray.offsetTop, behavior: 'smooth' });
+    }
+
+    // Stepped animation — reel standard + wrap
+    async function lcGoTo(target) {
+      if (lcIsAnimating || isModalOpen) return;
+      const norm = ((target % LC_COUNT) + LC_COUNT) % LC_COUNT;
+      if (norm === lcIdx) return;
+      lcIsAnimating = true;
+
+      const wrappingForward  = lcIdx === LC_COUNT - 1 && norm === 0;
+      const wrappingBackward = lcIdx === 0 && norm === LC_COUNT - 1;
+      const steps = (wrappingForward || wrappingBackward) ? LC_COUNT - 1 : Math.abs(norm - lcIdx);
+      const msPerStep = Math.round(350 / steps);
+
+      lcScrollToCard(norm); // start scroll immediately, concurrent with knob
+      if (lcIndicator) lcIndicator.style.transitionDuration = `${msPerStep}ms`;
+
+      try {
+        if (wrappingForward) {
+          // Dots snap to 0; knob rewinds LC_COUNT-1 → 0
+          lcDotEls.forEach((d, i) => {
+            const a = i === 0;
+            d.setAttribute('fill', a ? '#3A8A65' : '#243D55'); d.setAttribute('stroke', a ? '#2D6A4F' : '#243447');
+            if (a) d.setAttribute('filter', 'url(#lc-led-glow)'); else d.removeAttribute('filter');
+          });
+          for (let i = LC_COUNT - 2; i >= 0; i--) {
+            if (lcIndicator) lcIndicator.style.transform = `rotate(${LC_STOPS[i]}deg)`;
+            if (lcProgress) lcProgress.setAttribute('d', i === 0 ? '' : lcArcPath(LC_ARC_START, LC_STOPS[i] - LC_ARC_START));
+            await sleep(msPerStep);
+          }
+          lcIdx = 0;
+        } else if (wrappingBackward) {
+          // Dots snap to LC_COUNT-1; knob winds forward 0 → LC_COUNT-1
+          lcDotEls.forEach((d, i) => {
+            const a = i === LC_COUNT - 1;
+            d.setAttribute('fill', a ? '#3A8A65' : '#243D55'); d.setAttribute('stroke', a ? '#2D6A4F' : '#243447');
+            if (a) d.setAttribute('filter', 'url(#lc-led-glow)'); else d.removeAttribute('filter');
+          });
+          for (let i = 1; i < LC_COUNT; i++) {
+            if (lcIndicator) lcIndicator.style.transform = `rotate(${LC_STOPS[i]}deg)`;
+            if (lcProgress) lcProgress.setAttribute('d', lcArcPath(LC_ARC_START, LC_STOPS[i] - LC_ARC_START));
+            await sleep(msPerStep);
+          }
+          lcIdx = LC_COUNT - 1;
+        } else {
+          const dir = norm > lcIdx ? 1 : -1;
+          while (lcIdx !== norm) {
+            lcIdx += dir;
+            lcSnapVisuals(lcIdx);
+            if (lcIdx !== norm) await sleep(msPerStep);
+          }
+        }
+      } finally {
+        if (lcIndicator) lcIndicator.style.transitionDuration = '';
+        lcIsAnimating = false;
+      }
+    }
+
+    // Scroll → instant snap (guards animation + modal)
+    let lcScrollTicking = false;
+    if (lcTray) {
+      lcTray.addEventListener('scroll', () => {
+        if (lcScrollTicking) return;
+        lcScrollTicking = true;
+        requestAnimationFrame(() => {
+          if (!isModalOpen && !lcIsAnimating) {
+            const max = lcTray.scrollHeight - lcTray.clientHeight;
+            const newIdx = max > 0 ? Math.min(LC_COUNT - 1, Math.round(lcTray.scrollTop / max * (LC_COUNT - 1))) : 0;
+            if (newIdx !== lcIdx) lcSnapVisuals(newIdx);
+          }
+          lcScrollTicking = false;
+        });
+      });
+    }
+
+    // Dot clicks
+    lcDotEls.forEach((dot) => {
+      dot.addEventListener('click', () => lcGoTo(Number(dot.dataset.index)));
+    });
+
+    // Drag → 45px/stop, stepped, wraps at boundaries
+    const lcKnobBody = document.getElementById('lc-knob-body');
+    if (lcKnobBody) {
+      let lcDragging = false, lcDragX = 0, lcDragAccum = 0;
+      lcKnobBody.addEventListener('mousedown', (e) => {
+        lcDragging = true; lcDragX = e.clientX; lcDragAccum = 0; e.preventDefault();
+      });
+      lcKnobBody.addEventListener('touchstart', (e) => {
+        lcDragging = true; lcDragX = e.touches[0].clientX; lcDragAccum = 0;
+      }, { passive: true });
+      document.addEventListener('mousemove', (e) => {
+        if (!lcDragging) return;
+        lcDragAccum += (e.clientX - lcDragX) * 0.6; lcDragX = e.clientX;
+        const raw = Math.round(lcIdx + lcDragAccum / 45);
+        const t = raw < 0 ? LC_COUNT - 1 : raw >= LC_COUNT ? 0 : raw;
+        if (t !== lcIdx) { lcDragAccum = 0; lcGoTo(t); }
+      });
+      document.addEventListener('touchmove', (e) => {
+        if (!lcDragging) return; e.preventDefault();
+        lcDragAccum += (e.touches[0].clientX - lcDragX) * 0.6; lcDragX = e.touches[0].clientX;
+        const raw = Math.round(lcIdx + lcDragAccum / 45);
+        const t = raw < 0 ? LC_COUNT - 1 : raw >= LC_COUNT ? 0 : raw;
+        if (t !== lcIdx) { lcDragAccum = 0; lcGoTo(t); }
+      }, { passive: false });
+      document.addEventListener('mouseup', () => { lcDragging = false; });
+      document.addEventListener('touchend', () => { lcDragging = false; });
+    }
+
+    lcSnapVisuals(0);
+  })();
+
 </script>
+
+<!-- ── CARD EXPAND MODAL ── -->
+<div id="card-modal" class="card-modal-backdrop" aria-hidden="true">
+  <div class="card-modal-panel" role="dialog" aria-modal="true">
+    <button class="card-modal-close" id="card-modal-close" aria-label="Close">✕</button>
+    <div class="cm-visual">
+      <div class="cm-thumb">
+        <div class="cm-thumb-bg" id="cm-thumb-bg"></div>
+        <span class="cm-thumb-icon" id="cm-thumb-icon"></span>
+        <span class="cm-thumb-label" id="cm-thumb-label"></span>
+      </div>
+      <div class="cm-accent" id="cm-accent"></div>
+    </div>
+    <div class="cm-content">
+      <span class="cm-note" id="cm-note"></span>
+      <div class="cm-meta">
+        <span class="cm-studio" id="cm-studio"></span>
+        <span class="cm-year" id="cm-year"></span>
+      </div>
+      <h2 class="cm-title" id="cm-title"></h2>
+      <p class="cm-desc" id="cm-desc"></p>
+      <div class="cm-tags" id="cm-tags"></div>
+      <div class="cm-links">
+        <a class="cm-link" id="cm-link-ios" href="#" target="_blank" rel="noopener">⬡ App Store</a>
+        <a class="cm-link" id="cm-link-android" href="#" target="_blank" rel="noopener">⬡ Google Play</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 </Layout>
