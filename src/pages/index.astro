@@ -3,13 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
 const gameSD = [
-  { title: "Spongebob: Krusty Cook-Off", studio: "Nukebox Studios", year: "2018–2022", desc: "Parameter-driven adaptive music + SFX via Unity & FMOD. 29M+ downloads. Google Play Users' Choice 2020.", tags: ["FMOD","Unity","Adaptive Audio"], note: "200M+ players globally", ios: "https://apps.apple.com/app/spongebob-krusty-cook-off/id1456844652", android: "https://play.google.com/store/apps/details?id=com.nickelodeon.sponge" },
+  { title: "Spongebob: Krusty Cook-Off", studio: "Nukebox Studios", year: "2018–2022", desc: "Parameter-driven adaptive music + SFX via Unity & FMOD. 29M+ downloads. Google Play Users' Choice 2020.", tags: ["FMOD","Unity","Adaptive Audio"], note: "100M+ players globally", ios: "https://apps.apple.com/app/spongebob-krusty-cook-off/id1456844652", android: "https://play.google.com/store/apps/details?id=com.nickelodeon.sponge" },
   { title: "Food Truck Chef", studio: "Nukebox Studios", year: "2018–2022", desc: "Full audio pipeline — adaptive music, SFX, and UI sounds for a globally distributed casual title.", tags: ["FMOD","Unity","SFX Pipeline"], note: "", ios: "https://apps.apple.com/app/food-truck-chef/id1213039508", android: "https://play.google.com/store/apps/details?id=com.socialpoint.foodtruckchef" },
   { title: "Room Flip: Home Decor", studio: "Nukebox Studios", year: "2018–2022", desc: "Modular SFX architecture and reactive audio state management for casual mobile.", tags: ["Unity","Modular SFX"], note: "", ios: "", android: "" },
   { title: "Angry Birds Match 3", studio: "Gear Inc. · Tilting Point", year: "2022", desc: "Adaptive audio for a globally distributed IP. High-retention casual gameplay loop design.", tags: ["FMOD","Adaptive Audio"], note: "Global IP", ios: "", android: "" },
   { title: "M&M's Adventure", studio: "Gear Inc. · Tilting Point", year: "2022", desc: "Audio systems for a branded casual title. Applied adaptive audio to high-engagement match-3 gameplay.", tags: ["FMOD","Adaptive Audio"], note: "Global IP", ios: "", android: "" },
   { title: "Milli Match", studio: "Giga Fun Studios", year: "2023–2025", desc: "Modular SFX architecture and parameter-driven music design for match-3 mobile.", tags: ["Unity","Param-Driven"], note: "", ios: "", android: "" },
-  { title: "Rani's Case Files", studio: "Giga Fun Studios", year: "2023–2025", desc: "Reactive audio state management and middleware integration for a puzzle mobile title.", tags: ["Unity","Wwise","SFX"], note: "", ios: "", android: "" },
+  { title: "Rani's Case Files", studio: "Giga Fun Studios", year: "2023–2025", desc: "Reactive audio state management and middleware integration for a puzzle mobile title.", tags: ["Unity","SFX"], note: "", ios: "", android: "" },
   { title: "Travel Match India", studio: "Giga Fun Studios", year: "2023–2025", desc: "Full audio pipeline for a culturally-themed casual title targeting Indian market.", tags: ["Unity","Adaptive Audio"], note: "", ios: "", android: "" },
   { title: "Ludo Hero", studio: "Qila Games", year: "2023–2025", desc: "Audio design and implementation for a multiplayer mobile board game.", tags: ["Unity","Multiplayer Audio"], note: "", ios: "", android: "" },
 ];
@@ -1584,134 +1584,96 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
   </div>
 </nav>
 
-<!-- ══════════════════ BACKGROUND GLYPHS ══════════════════
-     All glyphs: viewBox="0 0 24 24", rendered 44px, stroke-linecap/join=round
-     Positions spread across full page height in % coords
-═══════════════════════════════════════════════════════ -->
-<div id="glyph-layer" aria-hidden="true">
-
-  <!-- 8TH NOTE (single flag) -->
-  <svg class="glyph g-note8" style="left:7%;top:11%;transform:rotate(-8deg)" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Eighth Note</title><ellipse cx="7.5" cy="19.5" rx="3.5" ry="2.3" transform="rotate(-15 7.5 19.5)" stroke-width="1.5"/><line x1="11" y1="18" x2="11" y2="5" stroke-width="1.5"/><path d="M11 5 C15 5.5 17 8 14 11" stroke-width="1.5"/></svg>
-  <svg class="glyph g-note8" style="left:52%;top:27%;transform:rotate(6deg)" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Eighth Note</title><ellipse cx="7.5" cy="19.5" rx="3.5" ry="2.3" transform="rotate(-15 7.5 19.5)" stroke-width="1.5"/><line x1="11" y1="18" x2="11" y2="5" stroke-width="1.5"/><path d="M11 5 C15 5.5 17 8 14 11" stroke-width="1.5"/></svg>
-  <svg class="glyph g-note8" style="left:76%;top:74%;transform:rotate(-12deg)" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Eighth Note</title><ellipse cx="7.5" cy="19.5" rx="3.5" ry="2.3" transform="rotate(-15 7.5 19.5)" stroke-width="1.5"/><line x1="11" y1="18" x2="11" y2="5" stroke-width="1.5"/><path d="M11 5 C15 5.5 17 8 14 11" stroke-width="1.5"/></svg>
-
-  <!-- 16TH NOTE (double flag) -->
-  <svg class="glyph g-note16" style="left:86%;top:8%;transform:rotate(10deg)" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Sixteenth Note</title><ellipse cx="7.5" cy="19.5" rx="3.5" ry="2.3" transform="rotate(-15 7.5 19.5)" stroke-width="1.5"/><line x1="11" y1="18" x2="11" y2="4" stroke-width="1.5"/><path d="M11 4 C15 4.5 17 7 14 10" stroke-width="1.5"/><path d="M11 8 C15 8.5 17 11 14 14" stroke-width="1.5"/></svg>
-  <svg class="glyph g-note16" style="left:18%;top:61%;transform:rotate(-5deg)" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Sixteenth Note</title><ellipse cx="7.5" cy="19.5" rx="3.5" ry="2.3" transform="rotate(-15 7.5 19.5)" stroke-width="1.5"/><line x1="11" y1="18" x2="11" y2="4" stroke-width="1.5"/><path d="M11 4 C15 4.5 17 7 14 10" stroke-width="1.5"/><path d="M11 8 C15 8.5 17 11 14 14" stroke-width="1.5"/></svg>
-
-  <!-- PIANO (7 white keys, 5 black keys) -->
-  <svg class="glyph g-piano" style="left:38%;top:5%;transform:rotate(-3deg)" viewBox="0 0 32 18" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Piano</title><rect x="0.75" y="0.75" width="30.5" height="16.5" rx="1.5" stroke-width="1.4"/><line x1="5.4" y1="0.75" x2="5.4" y2="17.25" stroke-width="1"/><line x1="10.1" y1="0.75" x2="10.1" y2="17.25" stroke-width="1"/><line x1="14.9" y1="0.75" x2="14.9" y2="17.25" stroke-width="1"/><line x1="19.6" y1="0.75" x2="19.6" y2="17.25" stroke-width="1"/><line x1="24.3" y1="0.75" x2="24.3" y2="17.25" stroke-width="1"/><line x1="29.0" y1="0.75" x2="29.0" y2="17.25" stroke-width="1"/><rect class="pk" x="3.2" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="7.9" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="17.3" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="22.0" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="26.7" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/></svg>
-  <svg class="glyph g-piano" style="left:5%;top:77%;transform:rotate(5deg)" viewBox="0 0 32 18" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Piano</title><rect x="0.75" y="0.75" width="30.5" height="16.5" rx="1.5" stroke-width="1.4"/><line x1="5.4" y1="0.75" x2="5.4" y2="17.25" stroke-width="1"/><line x1="10.1" y1="0.75" x2="10.1" y2="17.25" stroke-width="1"/><line x1="14.9" y1="0.75" x2="14.9" y2="17.25" stroke-width="1"/><line x1="19.6" y1="0.75" x2="19.6" y2="17.25" stroke-width="1"/><line x1="24.3" y1="0.75" x2="24.3" y2="17.25" stroke-width="1"/><line x1="29.0" y1="0.75" x2="29.0" y2="17.25" stroke-width="1"/><rect class="pk" x="3.2" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="7.9" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="17.3" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="22.0" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="26.7" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/></svg>
-  <svg class="glyph g-piano" style="left:80%;top:51%;transform:rotate(-7deg)" viewBox="0 0 32 18" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Piano</title><rect x="0.75" y="0.75" width="30.5" height="16.5" rx="1.5" stroke-width="1.4"/><line x1="5.4" y1="0.75" x2="5.4" y2="17.25" stroke-width="1"/><line x1="10.1" y1="0.75" x2="10.1" y2="17.25" stroke-width="1"/><line x1="14.9" y1="0.75" x2="14.9" y2="17.25" stroke-width="1"/><line x1="19.6" y1="0.75" x2="19.6" y2="17.25" stroke-width="1"/><line x1="24.3" y1="0.75" x2="24.3" y2="17.25" stroke-width="1"/><line x1="29.0" y1="0.75" x2="29.0" y2="17.25" stroke-width="1"/><rect class="pk" x="3.2" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="7.9" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="17.3" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="22.0" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/><rect class="pk" x="26.7" y="0.75" width="3" height="9.5" rx="0.8" stroke-width="1.2"/></svg>
-
-  <!-- HARP (curved neck, column, base, 5 strings) -->
-  <svg class="glyph g-harp" style="left:70%;top:17%;transform:rotate(4deg)" viewBox="0 0 24 28" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Harp</title><path d="M4 25 C3 16 5 8 12 3.5 C17 1 21 4 21 8" stroke-width="1.6"/><line x1="21" y1="8" x2="21" y2="25" stroke-width="1.8"/><line x1="4" y1="25" x2="21" y2="25" stroke-width="1.8"/><line class="hs" x1="8" y1="8" x2="21" y2="20" stroke-width="1"/><line class="hs" x1="10" y1="6" x2="21" y2="17" stroke-width="1"/><line class="hs" x1="13" y1="4.5" x2="21" y2="14" stroke-width="1"/><line class="hs" x1="16" y1="3.5" x2="21" y2="11" stroke-width="1"/><line class="hs" x1="19" y1="4" x2="21" y2="8.5" stroke-width="1"/></svg>
-  <svg class="glyph g-harp" style="left:28%;top:81%;transform:rotate(-6deg)" viewBox="0 0 24 28" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Harp</title><path d="M4 25 C3 16 5 8 12 3.5 C17 1 21 4 21 8" stroke-width="1.6"/><line x1="21" y1="8" x2="21" y2="25" stroke-width="1.8"/><line x1="4" y1="25" x2="21" y2="25" stroke-width="1.8"/><line class="hs" x1="8" y1="8" x2="21" y2="20" stroke-width="1"/><line class="hs" x1="10" y1="6" x2="21" y2="17" stroke-width="1"/><line class="hs" x1="13" y1="4.5" x2="21" y2="14" stroke-width="1"/><line class="hs" x1="16" y1="3.5" x2="21" y2="11" stroke-width="1"/><line class="hs" x1="19" y1="4" x2="21" y2="8.5" stroke-width="1"/></svg>
-
-  <!-- WAVEFORM (oscilloscope frame + wave) -->
-  <svg class="glyph g-waveform" style="left:44%;top:47%;transform:rotate(-4deg)" viewBox="0 0 28 20" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Waveform</title><rect x="0.75" y="0.75" width="26.5" height="18.5" rx="2" stroke-width="1.4"/><line x1="3" y1="10" x2="25" y2="10" stroke-width="0.8" opacity="0.35"/><polyline class="wv" points="3,10 5,10 7,4 9,16 11,4 13,16 15,7 17,13 19,10 22,10 25,10" stroke-width="1.4"/></svg>
-  <svg class="glyph g-waveform" style="left:88%;top:64%;transform:rotate(6deg)" viewBox="0 0 28 20" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Waveform</title><rect x="0.75" y="0.75" width="26.5" height="18.5" rx="2" stroke-width="1.4"/><line x1="3" y1="10" x2="25" y2="10" stroke-width="0.8" opacity="0.35"/><polyline class="wv" points="3,10 5,10 7,4 9,16 11,4 13,16 15,7 17,13 19,10 22,10 25,10" stroke-width="1.4"/></svg>
-  <svg class="glyph g-waveform" style="left:22%;top:34%;transform:rotate(-9deg)" viewBox="0 0 28 20" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Waveform</title><rect x="0.75" y="0.75" width="26.5" height="18.5" rx="2" stroke-width="1.4"/><line x1="3" y1="10" x2="25" y2="10" stroke-width="0.8" opacity="0.35"/><polyline class="wv" points="3,10 5,10 7,4 9,16 11,4 13,16 15,7 17,13 19,10 22,10 25,10" stroke-width="1.4"/></svg>
-
-  <!-- HEADPHONES (over-ear, padded cups) -->
-  <svg class="glyph g-headphones" style="left:59%;top:13%;transform:rotate(3deg)" viewBox="0 0 24 22" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Headphones</title><path d="M3.5 13 C3.5 6 20.5 6 20.5 13" stroke-width="1.6"/><rect class="hc-l" x="1" y="12" width="5.5" height="8" rx="2.2" stroke-width="1.5"/><rect x="2.2" y="13.2" width="3.1" height="5.6" rx="1.5" stroke-width="0.9" opacity="0.55"/><rect class="hc-r" x="17.5" y="12" width="5.5" height="8" rx="2.2" stroke-width="1.5"/><rect x="18.7" y="13.2" width="3.1" height="5.6" rx="1.5" stroke-width="0.9" opacity="0.55"/></svg>
-  <svg class="glyph g-headphones" style="left:10%;top:89%;transform:rotate(-5deg)" viewBox="0 0 24 22" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Headphones</title><path d="M3.5 13 C3.5 6 20.5 6 20.5 13" stroke-width="1.6"/><rect class="hc-l" x="1" y="12" width="5.5" height="8" rx="2.2" stroke-width="1.5"/><rect x="2.2" y="13.2" width="3.1" height="5.6" rx="1.5" stroke-width="0.9" opacity="0.55"/><rect class="hc-r" x="17.5" y="12" width="5.5" height="8" rx="2.2" stroke-width="1.5"/><rect x="18.7" y="13.2" width="3.1" height="5.6" rx="1.5" stroke-width="0.9" opacity="0.55"/></svg>
-  <svg class="glyph g-headphones" style="left:73%;top:39%;transform:rotate(8deg)" viewBox="0 0 24 22" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Headphones</title><path d="M3.5 13 C3.5 6 20.5 6 20.5 13" stroke-width="1.6"/><rect class="hc-l" x="1" y="12" width="5.5" height="8" rx="2.2" stroke-width="1.5"/><rect x="2.2" y="13.2" width="3.1" height="5.6" rx="1.5" stroke-width="0.9" opacity="0.55"/><rect class="hc-r" x="17.5" y="12" width="5.5" height="8" rx="2.2" stroke-width="1.5"/><rect x="18.7" y="13.2" width="3.1" height="5.6" rx="1.5" stroke-width="0.9" opacity="0.55"/></svg>
-
-  <!-- PAPERS (3 stacked sheets, ruled lines on front) -->
-  <svg class="glyph g-paper" style="left:91%;top:21%;transform:rotate(4deg)" viewBox="0 0 24 28" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Papers</title><rect x="5" y="2" width="15" height="19" rx="1.5" stroke-width="1.2"/><rect x="3.5" y="3.5" width="15" height="19" rx="1.5" stroke-width="1.3"/><rect x="2" y="5" width="15" height="19" rx="1.5" stroke-width="1.5"/><line x1="5" y1="10" x2="14" y2="10" stroke-width="1"/><line x1="5" y1="13" x2="14" y2="13" stroke-width="1"/><line x1="5" y1="16" x2="11" y2="16" stroke-width="1"/><line x1="5" y1="19" x2="13" y2="19" stroke-width="1"/></svg>
-  <svg class="glyph g-paper" style="left:4%;top:44%;transform:rotate(-6deg)" viewBox="0 0 24 28" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Papers</title><rect x="5" y="2" width="15" height="19" rx="1.5" stroke-width="1.2"/><rect x="3.5" y="3.5" width="15" height="19" rx="1.5" stroke-width="1.3"/><rect x="2" y="5" width="15" height="19" rx="1.5" stroke-width="1.5"/><line x1="5" y1="10" x2="14" y2="10" stroke-width="1"/><line x1="5" y1="13" x2="14" y2="13" stroke-width="1"/><line x1="5" y1="16" x2="11" y2="16" stroke-width="1"/><line x1="5" y1="19" x2="13" y2="19" stroke-width="1"/></svg>
-  <svg class="glyph g-paper" style="left:63%;top:87%;transform:rotate(8deg)" viewBox="0 0 24 28" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Papers</title><rect x="5" y="2" width="15" height="19" rx="1.5" stroke-width="1.2"/><rect x="3.5" y="3.5" width="15" height="19" rx="1.5" stroke-width="1.3"/><rect x="2" y="5" width="15" height="19" rx="1.5" stroke-width="1.5"/><line x1="5" y1="10" x2="14" y2="10" stroke-width="1"/><line x1="5" y1="13" x2="14" y2="13" stroke-width="1"/><line x1="5" y1="16" x2="11" y2="16" stroke-width="1"/><line x1="5" y1="19" x2="13" y2="19" stroke-width="1"/></svg>
-
-  <!-- REEL-TO-REEL (two spools, tape bridge, playhead) -->
-  <svg class="glyph g-reel" style="left:32%;top:17%;transform:rotate(-5deg)" viewBox="0 0 36 22" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Reel to Reel</title><circle class="rl" cx="8" cy="11" r="7" stroke-width="1.4"/><circle cx="8" cy="11" r="2.2" stroke-width="1.2"/><line x1="8" y1="8.8" x2="8" y2="4" stroke-width="1"/><line x1="6.1" y1="9.9" x2="2" y2="7.5" stroke-width="1"/><line x1="9.9" y1="9.9" x2="14" y2="7.5" stroke-width="1"/><circle class="rr" cx="28" cy="11" r="7" stroke-width="1.4"/><circle cx="28" cy="11" r="2.2" stroke-width="1.2"/><line x1="28" y1="8.8" x2="28" y2="4" stroke-width="1"/><line x1="26.1" y1="9.9" x2="22" y2="7.5" stroke-width="1"/><line x1="29.9" y1="9.9" x2="34" y2="7.5" stroke-width="1"/><line x1="8" y1="18" x2="28" y2="18" stroke-width="1.2"/><line x1="18" y1="16.5" x2="18" y2="19.5" stroke-width="1.8"/><line x1="16" y1="16.5" x2="20" y2="16.5" stroke-width="1.2"/></svg>
-  <svg class="glyph g-reel" style="left:55%;top:71%;transform:rotate(7deg)" viewBox="0 0 36 22" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Reel to Reel</title><circle class="rl" cx="8" cy="11" r="7" stroke-width="1.4"/><circle cx="8" cy="11" r="2.2" stroke-width="1.2"/><line x1="8" y1="8.8" x2="8" y2="4" stroke-width="1"/><line x1="6.1" y1="9.9" x2="2" y2="7.5" stroke-width="1"/><line x1="9.9" y1="9.9" x2="14" y2="7.5" stroke-width="1"/><circle class="rr" cx="28" cy="11" r="7" stroke-width="1.4"/><circle cx="28" cy="11" r="2.2" stroke-width="1.2"/><line x1="28" y1="8.8" x2="28" y2="4" stroke-width="1"/><line x1="26.1" y1="9.9" x2="22" y2="7.5" stroke-width="1"/><line x1="29.9" y1="9.9" x2="34" y2="7.5" stroke-width="1"/><line x1="8" y1="18" x2="28" y2="18" stroke-width="1.2"/><line x1="18" y1="16.5" x2="18" y2="19.5" stroke-width="1.8"/><line x1="16" y1="16.5" x2="20" y2="16.5" stroke-width="1.2"/></svg>
-
-  <!-- TUNING FORK (U tines, handle, base ball, vibration arcs) -->
-  <svg class="glyph g-tuningfork" style="left:15%;top:19%;transform:rotate(-10deg)" viewBox="0 0 24 28" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Tuning Fork</title><path d="M8 16 L8 10 C8 4.5 16 4.5 16 10 L16 16" stroke-width="1.6"/><line x1="12" y1="16" x2="12" y2="25" stroke-width="1.8"/><circle cx="12" cy="26.5" r="1.5" stroke-width="1.3"/><path class="tf-a" d="M5 10 C3.5 7.5 3.5 4 6 2.5" stroke-width="1" opacity="0"/><path class="tf-b" d="M19 10 C20.5 7.5 20.5 4 18 2.5" stroke-width="1" opacity="0"/></svg>
-  <svg class="glyph g-tuningfork" style="left:93%;top:54%;transform:rotate(12deg)" viewBox="0 0 24 28" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Tuning Fork</title><path d="M8 16 L8 10 C8 4.5 16 4.5 16 10 L16 16" stroke-width="1.6"/><line x1="12" y1="16" x2="12" y2="25" stroke-width="1.8"/><circle cx="12" cy="26.5" r="1.5" stroke-width="1.3"/><path class="tf-a" d="M5 10 C3.5 7.5 3.5 4 6 2.5" stroke-width="1" opacity="0"/><path class="tf-b" d="M19 10 C20.5 7.5 20.5 4 18 2.5" stroke-width="1" opacity="0"/></svg>
-  <svg class="glyph g-tuningfork" style="left:47%;top:91%;transform:rotate(-3deg)" viewBox="0 0 24 28" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Tuning Fork</title><path d="M8 16 L8 10 C8 4.5 16 4.5 16 10 L16 16" stroke-width="1.6"/><line x1="12" y1="16" x2="12" y2="25" stroke-width="1.8"/><circle cx="12" cy="26.5" r="1.5" stroke-width="1.3"/><path class="tf-a" d="M5 10 C3.5 7.5 3.5 4 6 2.5" stroke-width="1" opacity="0"/><path class="tf-b" d="M19 10 C20.5 7.5 20.5 4 18 2.5" stroke-width="1" opacity="0"/></svg>
-
-  <!-- METRONOME (tapered body, tempo line, pendulum rod+bob) -->
-  <svg class="glyph g-metronome" style="left:42%;top:67%;transform:rotate(3deg)" viewBox="0 0 24 28" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Metronome</title><path d="M3 27 L8 3 L16 3 L21 27 Z" stroke-width="1.5"/><line x1="5" y1="20" x2="19" y2="20" stroke-width="1.1"/><line class="mr" x1="12" y1="4" x2="16" y2="20" stroke-width="1.5"/><circle class="mb" cx="16" cy="20" r="2" stroke-width="1.3"/></svg>
-  <svg class="glyph g-metronome" style="left:3%;top:61%;transform:rotate(-8deg)" viewBox="0 0 24 28" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Metronome</title><path d="M3 27 L8 3 L16 3 L21 27 Z" stroke-width="1.5"/><line x1="5" y1="20" x2="19" y2="20" stroke-width="1.1"/><line class="mr" x1="12" y1="4" x2="16" y2="20" stroke-width="1.5"/><circle class="mb" cx="16" cy="20" r="2" stroke-width="1.3"/></svg>
-
-  <!-- SPEAKER (cabinet, cone, dust cap, two arcs) -->
-  <svg class="glyph g-speaker" style="left:64%;top:57%;transform:rotate(-6deg)" viewBox="0 0 28 22" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Speaker</title><rect x="1" y="7" width="7" height="10" rx="1.2" stroke-width="1.4"/><path d="M8 8 L17 3 L17 21 L8 16 Z" stroke-width="1.4"/><ellipse cx="12.5" cy="12" rx="2.5" ry="3" stroke-width="1"/><path class="sa1" d="M20 7 C23.5 9 23.5 15 20 17" stroke-width="1.4"/><path class="sa2" d="M22 4.5 C27 7.5 27 16.5 22 19.5" stroke-width="1.1"/></svg>
-  <svg class="glyph g-speaker" style="left:25%;top:49%;transform:rotate(9deg)" viewBox="0 0 28 22" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Speaker</title><rect x="1" y="7" width="7" height="10" rx="1.2" stroke-width="1.4"/><path d="M8 8 L17 3 L17 21 L8 16 Z" stroke-width="1.4"/><ellipse cx="12.5" cy="12" rx="2.5" ry="3" stroke-width="1"/><path class="sa1" d="M20 7 C23.5 9 23.5 15 20 17" stroke-width="1.4"/><path class="sa2" d="M22 4.5 C27 7.5 27 16.5 22 19.5" stroke-width="1.1"/></svg>
-  <svg class="glyph g-speaker" style="left:82%;top:84%;transform:rotate(-12deg)" viewBox="0 0 28 22" fill="none" stroke-linecap="round" stroke-linejoin="round"><title>Speaker</title><rect x="1" y="7" width="7" height="10" rx="1.2" stroke-width="1.4"/><path d="M8 8 L17 3 L17 21 L8 16 Z" stroke-width="1.4"/><ellipse cx="12.5" cy="12" rx="2.5" ry="3" stroke-width="1"/><path class="sa1" d="M20 7 C23.5 9 23.5 15 20 17" stroke-width="1.4"/><path class="sa2" d="M22 4.5 C27 7.5 27 16.5 22 19.5" stroke-width="1.1"/></svg>
-
-</div>
+<!-- Glyph strips are injected inside each section below — see each section -->
 
 <style>
-  #glyph-layer { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
-  .glyph { position:absolute; overflow:visible; pointer-events:all; cursor:default; stroke:#2e4458; fill:none; opacity:0.4; transition:opacity 0.2s,stroke 0.2s,filter 0.2s; }
-  .glyph:hover { opacity:1; stroke:#3A8A65; filter:drop-shadow(0 0 6px rgba(58,138,101,0.4)); }
-  .g-note8,.g-note16 { width:44px; height:44px; }
-  .g-piano    { width:78px; height:44px; }
-  .g-harp     { width:38px; height:44px; }
-  .g-waveform { width:62px; height:44px; }
-  .g-headphones { width:48px; height:44px; }
-  .g-paper    { width:38px; height:44px; }
-  .g-reel     { width:72px; height:44px; }
-  .g-tuningfork { width:38px; height:44px; }
-  .g-metronome  { width:38px; height:44px; }
-  .g-speaker  { width:56px; height:44px; }
+  /* ── GLYPH STRIP: sits inside each section ──
+     position:absolute fills the section, pointer-events:none so the strip
+     itself doesn't block clicks. Individual .glyph elements opt back in
+     with pointer-events:all. z-index:0 puts strip above section bg,
+     .section-inner is z-index:1 so content always sits on top. */
+  .glyph-strip {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
 
-  /* 8th note — arc jump (no forwards: resets when hover ends) */
-  .g-note8:hover { animation:n8j 0.65s cubic-bezier(0.22,1,0.36,1); }
-  @keyframes n8j { 0%{transform:rotate(0deg) translate(0,0)} 35%{transform:rotate(22deg) translate(0,-10px)} 65%{transform:rotate(-5deg) translate(0,-5px)} 100%{transform:rotate(0deg) translate(0,0)} }
-  /* 16th note — fast double bounce */
-  .g-note16:hover { animation:n16b 0.5s cubic-bezier(0.22,1,0.36,1); }
-  @keyframes n16b { 0%{transform:rotate(0deg) translate(0,0)} 22%{transform:rotate(32deg) translate(0,-9px)} 44%{transform:rotate(8deg) translate(0,-2px)} 66%{transform:rotate(36deg) translate(0,-7px)} 100%{transform:rotate(0deg) translate(0,0)} }
-  /* piano keys — all 5 black keys press in sequence, then repeat two */
-  .g-piano:hover .pk:nth-child(8)  { animation:kp 0.16s 0.00s ease both; }
-  .g-piano:hover .pk:nth-child(9)  { animation:kp 0.16s 0.14s ease both; }
-  .g-piano:hover .pk:nth-child(10) { animation:kp 0.16s 0.29s ease both; }
-  .g-piano:hover .pk:nth-child(11) { animation:kp 0.16s 0.44s ease both; }
-  .g-piano:hover .pk:nth-child(12) { animation:kp 0.16s 0.60s ease both; }
-  @keyframes kp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(2px)} }
-  /* harp strings ripple */
-  .g-harp:hover .hs:nth-child(4) { animation:hs 0.28s 0.00s ease both; }
-  .g-harp:hover .hs:nth-child(5) { animation:hs 0.28s 0.06s ease both; }
-  .g-harp:hover .hs:nth-child(6) { animation:hs 0.28s 0.12s ease both; }
-  .g-harp:hover .hs:nth-child(7) { animation:hs 0.28s 0.18s ease both; }
-  .g-harp:hover .hs:nth-child(8) { animation:hs 0.28s 0.24s ease both; }
-  @keyframes hs { 0%,100%{stroke-width:1;transform:translateX(0)} 40%{stroke-width:1.9;transform:translateX(-1.5px)} }
-  /* headphone cups pulse at ~90bpm */
-  .g-headphones:hover .hc-l { transform-origin:3.75px 16px; animation:hcp 0.67s ease-in-out infinite; }
-  .g-headphones:hover .hc-r { transform-origin:20.25px 16px; animation:hcp 0.67s 0.335s ease-in-out infinite; }
-  @keyframes hcp { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.14)} }
-  /* paper fan (no forwards: resets on mouse-out) */
-  .g-paper:hover { transform-origin:bottom center; animation:pfan 0.75s cubic-bezier(0.34,1.56,0.64,1); }
-  @keyframes pfan { 0%{transform:rotate(0deg)} 22%{transform:rotate(14deg)} 52%{transform:rotate(-9deg)} 76%{transform:rotate(4deg)} 100%{transform:rotate(0deg)} }
-  /* waveform travel */
-  .g-waveform:hover .wv { stroke-dasharray:72; stroke-dashoffset:72; animation:wt 0.55s linear infinite; }
-  @keyframes wt { to{stroke-dashoffset:0} }
-  /* reel spools spin */
-  .g-reel:hover .rl { transform-origin:8px 11px; animation:sp 0.55s linear infinite; }
-  .g-reel:hover .rr { transform-origin:28px 11px; animation:sp 0.55s linear infinite reverse; }
-  @keyframes sp { to{transform:rotate(360deg)} }
-  /* tuning fork vibrate + arcs */
-  .g-tuningfork:hover { animation:tv 0.05s ease-in-out 10 alternate; }
-  .g-tuningfork:hover .tf-a,.g-tuningfork:hover .tf-b { animation:ta 0.55s ease-out forwards; }
-  .g-tuningfork:hover .tf-b { animation-delay:0.12s; }
-  @keyframes tv { from{transform:translateX(-2px)} to{transform:translateX(2px)} }
-  @keyframes ta { 0%{opacity:0} 25%{opacity:1} 100%{opacity:0} }
-  /* metronome swing */
-  .g-metronome:hover .mr,.g-metronome:hover .mb { transform-origin:12px 4px; animation:ms 0.42s ease-in-out 3 alternate; }
-  @keyframes ms { from{transform:rotate(-20deg)} to{transform:rotate(20deg)} }
-  /* speaker thump + ripple */
-  .g-speaker:hover { animation:st 0.22s ease-out 2; }
-  .g-speaker:hover .sa1 { animation:sr 0.45s ease-out infinite; }
-  .g-speaker:hover .sa2 { animation:sr 0.45s 0.14s ease-out infinite; }
-  @keyframes st { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
-  @keyframes sr { 0%{opacity:1;transform:translateX(0)} 100%{opacity:0;transform:translateX(3px)} }
+  /* Sections need position:relative so the strip is contained */
+  #hero-outer,
+  .section-pad {
+    position: relative;
+  }
+
+  /* Content always above glyphs */
+  .section-inner,
+  .v2-section-inner,
+  #contact .itag-wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .glyph {
+    position: absolute;
+    pointer-events: all;
+    cursor: default;
+    /* filled glyphs use currentColor for fill + stroke */
+    color: #2a3d52;
+    stroke: #2a3d52;
+    fill: none;
+    opacity: 0.28;
+    transition: opacity 0.25s, color 0.25s, filter 0.25s;
+  }
+  .glyph:hover {
+    opacity: 0.85;
+    color: #3A8A65;
+    stroke: #3A8A65;
+    filter: drop-shadow(0 0 5px rgba(58,138,101,0.35));
+  }
+
+  /* Sizes — ~25% smaller than original */
+  .g-quarter { width: 14px; height: 35px; }
+  .g-beam    { width: 27px; height: 35px; }
+
+  /* ── QUARTER NOTE: single weighted jump ──
+     Lifts with slight lean, hangs at peak, drops with weight */
+  .g-quarter:hover {
+    animation: qjump 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  @keyframes qjump {
+    0%   { transform: translateY(0)    rotate(0deg);   }
+    28%  { transform: translateY(-11px) rotate(-4deg); }
+    52%  { transform: translateY(-13px) rotate(-2deg); } /* hang */
+    75%  { transform: translateY(-3px)  rotate(1deg);  } /* fall */
+    88%  { transform: translateY(-6px)  rotate(0deg);  } /* small rebound */
+    100% { transform: translateY(0)    rotate(0deg);   }
+  }
+
+  /* ── BEAMED PAIR: gallop rhythm ──
+     Two-beat lurch — accent on first beat, quick second, settles */
+  .g-beam:hover {
+    animation: bgallop 0.72s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  @keyframes bgallop {
+    0%   { transform: translateY(0)    rotate(0deg);   }
+    18%  { transform: translateY(-10px) rotate(-5deg); } /* beat 1 up */
+    33%  { transform: translateY(-4px)  rotate(-2deg); } /* land */
+    50%  { transform: translateY(-8px)  rotate(-4deg); } /* beat 2 up */
+    65%  { transform: translateY(-2px)  rotate(1deg);  } /* land */
+    80%  { transform: translateY(-4px)  rotate(-1deg); } /* small echo */
+    100% { transform: translateY(0)    rotate(0deg);   }
+  }
 </style>
 
 <!-- ══════════════════ HERO ══════════════════ -->
 <div id="home" style="position:absolute;top:0;"></div>
 <div id="hero-outer">
+  <div class="glyph-strip" aria-hidden="true">
+    <svg class="glyph g-quarter" style="left:4%;top:28%"  viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+    <svg class="glyph g-beam"    style="left:87%;top:55%" viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+    <svg class="glyph g-quarter" style="left:93%;top:22%" viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+  </div>
   <!-- Parallax background layers -->
   <div id="hero-bg">
     <div id="hero-grain"></div>
@@ -1764,7 +1726,7 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
 
       <!-- Stats -->
       <div class="hero-stats reveal" style="display:flex;gap:3rem;flex-wrap:wrap;margin-bottom:2.5rem;">
-        {[["10+","Years"],["200M+","Players Reached"],["9","Shipped Titles"],["4","Feature Films"]].map(([n,l]) => (
+        {[["10+","Years"],["100M+","Players Reached"],["9","Shipped Titles"],["4","Feature Films"]].map(([n,l]) => (
           <div>
             <p style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:800;color:#F4F6F8;line-height:1;">{n}</p>
             <p style="font-size:0.7rem;font-family:'Lato',sans-serif;color:#8A9BB0;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;">{l}</p>
@@ -1863,8 +1825,13 @@ PARKED -->
 
 <!-- ══════════════════ REEL V2 ══════════════════ -->
 <section id="reel-v2" class="section-pad">
+  <div class="glyph-strip" aria-hidden="true">
+    <svg class="glyph g-beam"    style="left:9%;top:35%"  viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+    <svg class="glyph g-quarter" style="left:92%;top:60%" viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+    <svg class="glyph g-quarter" style="left:3%;top:72%"  viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+  </div>
   <div class="section-inner v2-section-inner">
-    <p class="eyebrow reveal">Showreels <span class="v2-badge">V2</span></p>
+    <p class="eyebrow reveal">Showreels</p>
     <h2 class="section-h2 reveal reveal-delay-1">Demo Reels</h2>
     <p class="section-sub reveal reveal-delay-2" style="margin-bottom:0.75rem;">Centered carousel. Poster → modal on click.</p>
 
@@ -2108,10 +2075,14 @@ PARKED -->
 
 <!-- ══════════════════ WORK V2 ══════════════════ -->
 <section id="work-v2" class="section-pad section-alt">
+  <div class="glyph-strip" aria-hidden="true">
+    <svg class="glyph g-beam"    style="left:85%;top:28%" viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+    <svg class="glyph g-quarter" style="left:7%;top:65%"  viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+  </div>
   <div class="section-inner">
 
     <div class="work-hdr">
-      <p class="eyebrow reveal">Selected Work <span class="v2-badge">V2</span></p>
+      <p class="eyebrow reveal">Selected Work</p>
       <h2 class="section-h2 reveal reveal-delay-1">Projects</h2>
       <p class="section-sub reveal reveal-delay-2">Centered carousel. Artwork fills card. Expand on click.</p>
     </div>
@@ -2306,7 +2277,7 @@ PARKED -->
 <!-- PARKED: kept for reference, not rendered
 <section id="listen-v2" class="section-pad">
   <div class="section-inner">
-    <p class="eyebrow reveal">Audio <span class="v2-badge">V2</span></p>
+    <p class="eyebrow reveal">Audio</p>
     <h2 class="section-h2 reveal reveal-delay-1">Listen</h2>
     <p class="section-sub reveal reveal-delay-2">Selected tracks — game audio, adaptive music, film scores.</p>
 
@@ -2367,8 +2338,13 @@ PARKED -->
 <!-- ══════════════════ LISTEN V3 ══════════════════ -->
 <!-- V3: landscape cards (16×9), horizontal centered carousel, category switching -->
 <section id="listen-v3" class="section-pad">
+  <div class="glyph-strip" aria-hidden="true">
+    <svg class="glyph g-quarter" style="left:91%;top:32%" viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+    <svg class="glyph g-beam"    style="left:2%;top:58%"  viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+    <svg class="glyph g-quarter" style="left:88%;top:78%" viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+  </div>
   <div class="section-inner">
-    <p class="eyebrow reveal">Audio <span class="v3-badge">V3</span></p>
+    <p class="eyebrow reveal">Audio</p>
     <h2 class="section-h2 reveal reveal-delay-1">Listen</h2>
     <p class="section-sub reveal reveal-delay-2">Selected tracks — game audio, adaptive music, film scores.</p>
 
@@ -2431,6 +2407,10 @@ PARKED -->
 
 <!-- ══════════════════ SKILLS ══════════════════ -->
 <section id="skills" class="section-pad section-alt">
+  <div class="glyph-strip" aria-hidden="true">
+    <svg class="glyph g-beam"    style="left:5%;top:40%"  viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+    <svg class="glyph g-quarter" style="left:84%;top:65%" viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+  </div>
   <div class="section-inner">
     <p class="eyebrow reveal">Signal Path</p>
     <h2 class="section-h2 reveal reveal-delay-1">How I Got Here</h2>
@@ -2497,6 +2477,11 @@ PARKED -->
 
 <!-- ══════════════════ ABOUT ══════════════════ -->
 <section id="about" class="section-pad">
+  <div class="glyph-strip" aria-hidden="true">
+    <svg class="glyph g-quarter" style="left:11%;top:30%" viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+    <svg class="glyph g-beam"    style="left:90%;top:55%" viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+    <svg class="glyph g-quarter" style="left:1%;top:72%"  viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+  </div>
   <div class="section-inner">
     <p class="eyebrow reveal">Background</p>
     <h2 class="section-h2 reveal reveal-delay-1">About</h2>
@@ -2520,6 +2505,10 @@ PARKED -->
 
 <!-- ══════════════════ CONTACT ══════════════════ -->
 <section id="contact" class="section-pad section-alt">
+  <div class="glyph-strip" aria-hidden="true">
+    <svg class="glyph g-beam"    style="left:86%;top:35%" viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+    <svg class="glyph g-quarter" style="left:6%;top:62%"  viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
+  </div>
   <div class="itag-wrap" style="max-width:600px;margin:0 auto;padding:0 2rem;text-align:center;">
     <p class="eyebrow reveal" style="justify-content:center;display:block;">Let's Talk</p>
     <h2 class="section-h2 reveal reveal-delay-1" style="margin-bottom:1.25rem;">Open to Opportunities</h2>
@@ -3058,16 +3047,16 @@ Max-width: 600px, centered</div></div>
       synopsis: "Expanding into AI-assisted audio — building ML pipelines for speech evaluation and phonetic analysis while staying active across game audio and film.",
       skills: [
         { cat: "AI & Phonetics",  items: ["ML Pipelines","IPA Mapping","Phonetic Alignment","Speech Evaluation","Python","API Development"] },
-        { cat: "Game Audio",      items: ["FMOD Studio","Wwise","Adaptive Audio","Procedural Music","Param-Driven Design","Spatial Audio"] },
+        { cat: "Game Audio",      items: ["FMOD Studio","Adaptive Audio","Procedural Music","Param-Driven Design","Spatial Audio"] },
         { cat: "Engine & Tools",  items: ["Unity Audio","Logic Pro","Pro Tools","Reaper"] },
         { cat: "Film & Media",    items: ["Film Scoring","Foley","ADR","Mixing & Mastering"] },
       ]
     },
     {
       year: 2024, era: "Freelance Expansion",
-      synopsis: "Scaling across simultaneous titles at Giga Fun Studios and Qila Games. Broadened Wwise expertise alongside continued FMOD and Unity work.",
+      synopsis: "Scaling across simultaneous titles at Giga Fun Studios and Qila Games.",
       skills: [
-        { cat: "Game Audio",      items: ["FMOD Studio","Wwise","Adaptive Audio","Procedural Music","Param-Driven Design","Spatial Audio"] },
+        { cat: "Game Audio",      items: ["FMOD Studio","Adaptive Audio","Procedural Music","Param-Driven Design","Spatial Audio"] },
         { cat: "Engine & Tools",  items: ["Unity Audio","Logic Pro","Pro Tools","Reaper"] },
         { cat: "Film & Media",    items: ["Film Scoring","Foley","ADR","Mixing & Mastering"] },
       ]
@@ -4852,17 +4841,8 @@ Max-width: 600px, centered</div></div>
 
   // ── HOOK: GLYPH HOVER ─────────────────────────────────────────────
   const _glyphSoundMap = {
-    'g-note8':      'note8',
-    'g-note16':     'note16',
-    'g-piano':      'piano',
-    'g-harp':       'harp',
-    'g-waveform':   'waveform',
-    'g-headphones': 'headphones',
-    'g-paper':      'paper',
-    'g-reel':       'reel',
-    'g-tuningfork': 'tuningfork',
-    'g-metronome':  'metronome',
-    'g-speaker':    'speaker',
+    'g-quarter': 'note8',   // single quarter note → short pluck
+    'g-beam':    'note16',  // beamed pair → double-hit
   };
   document.querySelectorAll('.glyph').forEach(g => {
     const typeClass = [...g.classList].find(c => _glyphSoundMap[c]);
