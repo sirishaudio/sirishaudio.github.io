@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sirish Satyavolu — AI Tutor, Audio Editing</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sidebar:     #1c2128;
+  --accent:      #5b8fa8;
+  --accent-dim:  #3d6878;
+  --accent-pale: #e8f1f5;
+  --page-bg:     #f8f9fa;
+  --rule:        #dde2e6;
+  --ink:         #181c20;
+  --body:        #48555f;
+  --s-txt:       #dce6ea;
+  --s-mut:       #6b838e;
+  --s-ac:        #7ab3cc;
+  --tag-bg:      #222c33;
+  --tag-bd:      #334450;
+  --tag-ac-bg:   #1a3040;
+  --card-bg:     #eef2f5;
+  --sidebar-w:   240px;
+}
+
+html { font-size: 10.5px; }
+
+body {
+  background: #d8dfe4;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+
+/* ── PAGE ── */
+.page {
+  width: 85rem;
+  max-width: 100%;
+  background: var(--page-bg);
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  box-shadow: 0 2rem 6rem rgba(0,0,0,0.28), 0 0.4rem 1.2rem rgba(0,0,0,0.12);
+  position: relative;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3.5px;
+  background: var(--accent);
+  z-index: 10;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: var(--sidebar);
+  padding: 2.4rem 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.name-block { padding-bottom: 1.6rem; border-bottom: 1px solid #2a3840; }
+
+.name-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--s-ac);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.name-first {
+  font-family: 'Fraunces', serif;
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: var(--s-txt);
+  line-height: 1;
+  display: block;
+}
+
+.name-last {
+  font-family: 'Fraunces', serif;
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: var(--s-ac);
+  line-height: 1.05;
+  display: block;
+}
+
+.name-sub {
+  margin-top: 0.8rem;
+  font-size: 1.05rem;
+  color: var(--s-mut);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.s-section { display: flex; flex-direction: column; gap: 1rem; }
+
+.s-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--s-ac);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #2a3840;
+}
+
+.contact-item { display: flex; flex-direction: column; gap: 0.15rem; }
+
+.c-lbl {
+  font-size: 0.72rem;
+  color: var(--s-mut);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-family: 'Space Mono', monospace;
+}
+
+.c-val {
+  font-size: 1rem;
+  color: var(--s-txt);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.tag-group { display: flex; flex-direction: column; gap: 0.8rem; }
+
+.tag-cat {
+  font-size: 0.72rem;
+  color: var(--s-mut);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: 'Space Mono', monospace;
+  margin-top: 0.4rem;
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.35rem; }
+
+.tag {
+  font-size: 0.85rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 2px;
+  border: 1px solid var(--tag-bd);
+  background: var(--tag-bg);
+  color: var(--s-txt);
+  font-weight: 400;
+}
+
+.tag.accent {
+  background: var(--tag-ac-bg);
+  border-color: var(--s-ac);
+  color: var(--s-ac);
+}
+
+.edu-item { display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 0.8rem; }
+.edu-deg { font-size: 1rem; font-weight: 600; color: var(--s-txt); }
+.edu-school { font-size: 0.92rem; color: var(--s-ac); }
+.edu-yr { font-size: 0.82rem; color: var(--s-mut); }
+
+.title-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+.title-name { font-size: 0.95rem; color: var(--s-txt); text-align: left; flex: 1; }
+.title-studio { font-size: 0.75rem; color: var(--s-mut); font-family: 'Space Mono', monospace; text-align: right; flex-shrink: 0; }
+.title-arrow { color: var(--s-ac); font-size: 0.75rem; flex-shrink: 0; }
+
+.film-item { margin-bottom: 0.7rem; }
+.film-title { font-size: 0.95rem; font-weight: 600; color: var(--s-txt); }
+.film-note { font-size: 0.8rem; color: var(--s-mut); }
+
+/* ── MAIN ── */
+.main {
+  padding: 2.4rem 3rem 2.4rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.sec-header { margin-bottom: 0.6rem; }
+
+.sec-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.profile-wrap {
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+}
+
+.profile-bar {
+  width: 2.5px;
+  background: var(--accent);
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 100%;
+}
+
+.profile-text {
+  font-size: 1.18rem;
+  line-height: 1.72;
+  color: var(--body);
+  font-weight: 300;
+}
+
+.profile-text strong { font-weight: 600; color: var(--ink); }
+
+.exp-section { display: flex; flex-direction: column; gap: 1.1rem; }
+
+.current-band {
+  background: #e8f0f4;
+  border-radius: 3px;
+  padding: 0.7rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.current-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-dim);
+  font-weight: 700;
+}
+
+.current-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.current-jobs { display: flex; flex-direction: column; gap: 0.9rem; padding-left: 0; }
+
+.job { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.job-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.job-title {
+  font-size: 1.22rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.job-period {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--body);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.job-sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.job-company {
+  font-size: 1rem;
+  color: var(--accent-dim);
+  font-weight: 400;
+}
+
+.job-co {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--accent-dim);
+  margin-left: 0.5rem;
+}
+
+.job-badge {
+  font-size: 0.72rem;
+  background: var(--accent-pale);
+  color: var(--accent-dim);
+  border: 1px solid var(--accent);
+  padding: 0.18rem 0.65rem;
+  border-radius: 2px;
+  font-family: 'Space Mono', monospace;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.job-rule {
+  height: 1px;
+  background: var(--rule);
+}
+
+.job-bullets { display: flex; flex-direction: column; gap: 0.55rem; }
+
+.job-bullet {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.bullet-arrow {
+  color: var(--accent);
+  font-size: 0.78rem;
+  flex-shrink: 0;
+  margin-top: 0.22rem;
+}
+
+.bullet-text {
+  font-size: 1.08rem;
+  line-height: 1.62;
+  color: var(--body);
+  font-weight: 300;
+}
+
+.leadership-bullets { display: flex; flex-direction: column; gap: 0.55rem; }
+
+@media print {
+  @page { size: letter; margin: 0; }
+  body { background: white; padding: 0; margin: 0; }
+  .page { box-shadow: none; width: 100%; max-width: 100%; height: 100vh; overflow: hidden; }
+  html { font-size: 9px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="name-block">
+      <div class="name-eyebrow">Audio Editor · Post-Production</div>
+      <span class="name-first">Sirish</span>
+      <span class="name-last">Satyavolu</span>
+      <div class="name-sub">Voice Editing · Film · AI Audio Data</div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">Contact</div>
+      <div class="contact-item"><span class="c-lbl">Location</span><span class="c-val">Austin, TX</span></div>
+      <div class="contact-item"><span class="c-lbl">Email</span><span class="c-val">sirishsatyavolu@gmail.com</span></div>
+      <div class="contact-item"><span class="c-lbl">Phone</span><span class="c-val">512-947-4428</span></div>
+      <div class="contact-item"><span class="c-lbl">Portfolio</span><span class="c-val">linktr.ee/sirishsatyavolu</span></div>
+      <div class="contact-item"><span class="c-lbl">LinkedIn</span><span class="c-val">in/sirishsatyavolu</span></div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">Skills</div>
+      <div class="tag-group">
+        <div class="tag-cat">DAWs</div>
+        <div class="tags">
+          <span class="tag accent">Pro Tools</span>
+          <span class="tag accent">Logic Pro</span>
+          <span class="tag">Adobe Audition</span>
+          <span class="tag">Audacity</span>
+          <span class="tag">FL Studio</span>
+          <span class="tag">Cubase</span>
+        </div>
+        <div class="tag-cat">Voice Editing</div>
+        <div class="tags">
+          <span class="tag accent">Voice Modulation</span>
+          <span class="tag accent">Dialogue Cleanup</span>
+          <span class="tag">ADR Integration</span>
+          <span class="tag">De-essing</span>
+          <span class="tag">Breath Removal</span>
+          <span class="tag">Room Tone Repair</span>
+        </div>
+        <div class="tag-cat">Post-Production</div>
+        <div class="tags">
+          <span class="tag accent">Waveform Analysis</span>
+          <span class="tag accent">Acoustics</span>
+          <span class="tag">Noise Reduction</span>
+          <span class="tag">Equalization</span>
+          <span class="tag">Signal Processing</span>
+          <span class="tag">Mixing &amp; Mastering</span>
+        </div>
+        <div class="tag-cat">AI Audio Tools</div>
+        <div class="tags">
+          <span class="tag accent">Izotope RX</span>
+          <span class="tag accent">Adobe Podcast Enhance</span>
+          <span class="tag">DX Revive Pro</span>
+        </div>
+        <div class="tag-cat">Data &amp; Annotation</div>
+        <div class="tags">
+          <span class="tag accent">Sound Clip Labeling</span>
+          <span class="tag accent">Voice Recording Annotation</span>
+          <span class="tag">Curated Dataset QA</span>
+          <span class="tag">Quality Assessment</span>
+          <span class="tag">Phonetic Alignment</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">Shipped Titles</div>
+      <div class="title-item"><span class="title-arrow">▸</span><span class="title-name">Spongebob: Krusty Cook-Off</span><span class="title-studio">Nukebox</span></div>
+      <div class="title-item"><span class="title-arrow">▸</span><span class="title-name">Angry Birds Match 3</span><span class="title-studio">Gear Inc.</span></div>
+      <div class="title-item"><span class="title-arrow">▸</span><span class="title-name">M&amp;M's Adventure</span><span class="title-studio">Gear Inc.</span></div>
+      <div class="title-item"><span class="title-arrow">▸</span><span class="title-name">Ludo Hero</span><span class="title-studio">Qila Games</span></div>
+      <div class="title-item"><span class="title-arrow">▸</span><span class="title-name">Travel Match India</span><span class="title-studio">Giga Fun</span></div>
+    </div>
+
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- PROFILE -->
+    <section>
+      <div class="sec-header"><div class="sec-title">Profile</div></div>
+      <div class="profile-wrap">
+        <div class="profile-bar"></div>
+        <p class="profile-text">
+          Audio editor and post-production specialist with <strong>10+ years</strong> of hands-on work in Pro Tools, Logic Pro, Adobe Audition, FL Studio, and Cubase — across film, games, and interactive media. Deep expertise in <strong>voice recording, dialogue cleanup, noise reduction, equalization, and signal processing.</strong> Experienced editing and cleaning voice clips, collaborating with technical teams, and annotating audio data for AI training. Trained ear for vocal quality, fidelity, and subtle sound characteristics across a wide range of production contexts.
+        </p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <div class="sec-header"><div class="sec-title">Experience</div></div>
+      <div class="exp-section">
+
+        <!-- Current -->
+        <div>
+          <div class="current-jobs">
+
+            <div class="job">
+              <div class="job-top">
+                <div class="job-title">AI Speech Evaluation Developer <span class="job-co">· Confidential Client</span></div>
+                <div class="job-period">Nov 2025 – Present</div>
+              </div>
+              <div class="job-rule"></div>
+              <div class="job-bullets">
+                <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Editing, cleaning, and labeling spoken audio samples using proprietary annotation tooling — processing voice clips against reference standards to support AI training data quality.</span></div>
+                <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Defining quality criteria for voice recordings: phonetic segmentation, audio clarity, noise floor, and annotation consistency for downstream AI training.</span></div>
+              </div>
+            </div>
+
+            <div class="job">
+              <div class="job-top">
+                <div class="job-title">Speech Data &amp; Phonetics Researcher <span class="job-co">· Confidential Client</span></div>
+                <div class="job-period">Feb 2026 – Present</div>
+              </div>
+              <div class="job-rule"></div>
+              <div class="job-bullets">
+                <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Building a structured, IPA-mapped phonetic dataset — curating and annotating voice recordings for an API-ready speech and pronunciation platform.</span></div>
+                <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Defining labeling conventions and quality criteria to ensure consistent, high-quality audio annotation across contributors.</span></div>
+              </div>
+            </div>
+
+            <div class="job">
+              <div class="job-top">
+                <div class="job-title">Founder &amp; Lead Audio Designer <span class="job-co">· Beat Kingdom</span></div>
+                <div class="job-period">Aug 2025 – Present</div>
+              </div>
+              <div class="job-rule"></div>
+              <div class="job-bullets">
+                <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Architecting a timing-based rhythm game in Unity + FMOD — designing beat-synchronised adaptive audio systems where musical energy evolves through BPM ramp progression and player streak, with all cues quantized to bar boundaries.</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Film -->
+        <div class="job">
+          <div class="job-top">
+            <div class="job-title">Sound Designer, Composer &amp; Audio Director <span class="job-co">· Independent Film Projects</span></div>
+            <div class="job-period">Jan 2019 – Present</div>
+          </div>
+          <div class="job-rule"></div>
+          <div class="job-bullets">
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">10+ years of film post-production across four Telugu features — handling full dialogue editing pipelines in Pro Tools, Logic Pro, and Adobe Audition: ADR integration, sync sound, voice modulation, noise reduction, and broadcast-quality mixing and mastering.</span></div>
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Cleaned raw vocal recordings end-to-end — breath removal, de-essing, room tone repair, and dialogue leveling — applying waveform analysis, equalization, and signal processing to achieve consistent tonal balance across drama, comedy, and horror genres.</span></div>
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Applied acoustic principles to diagnose and correct recording environment issues; directed voice talent for emotional clarity, intelligibility, and intentionality across scripted and spontaneous delivery styles.</span></div>
+          </div>
+        </div>
+
+        <!-- Games -->
+        <div class="job">
+          <div class="job-top">
+            <div class="job-title">Lead Audio Designer — Mobile Games <span class="job-co">· Nukebox · Giga Fun · Gear Inc.</span></div>
+            <div class="job-period">Oct 2018 – Sep 2025</div>
+          </div>
+          <div class="job-rule"></div>
+          <div class="job-bullets">
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Owned full audio pipelines across 9+ titles — SFX editing, voice clip cleaning and processing, mixing, and middleware integration — maintaining strict standards for audio fidelity, format compatibility, and QA across simultaneous productions.</span></div>
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Collaborated with technical teams to define sound design conventions and asset quality standards; work reached 100M+ downloads globally including Spongebob: Krusty Cook-Off (Google Play Users' Choice Award 2020).</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LEADERSHIP & CRAFT -->
+    <section>
+      <div class="sec-header"><div class="sec-title">Leadership &amp; Craft</div></div>
+      <div class="leadership-bullets">
+        <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Directed voice talent and ADR sessions across film and game productions — maintaining high bars for vocal clarity, emotion, and intentionality in both scripted and spontaneous delivery.</span></div>
+        <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Collaborated with technical teams to define audio quality standards, annotation conventions, and review criteria; consistently delivered across simultaneous projects with competing deadlines.</span></div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <div class="sec-header"><div class="sec-title">Education</div></div>
+      <div style="display:flex;flex-direction:column;gap:0.9rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:1rem;">
+          <div>
+            <span style="font-size:1.12rem;font-weight:600;color:var(--ink);">M.S. Music Technology</span>
+            <span style="font-size:0.95rem;color:var(--body);margin-left:0.6rem;">· Georgia Institute of Technology</span>
+          </div>
+          <span style="font-family:'Space Mono',monospace;font-size:0.78rem;color:var(--body);white-space:nowrap;flex-shrink:0;">2015 – 2017</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:1rem;">
+          <div>
+            <span style="font-size:1.12rem;font-weight:600;color:var(--ink);">M.Tech Mechanical Engineering</span>
+            <span style="font-size:0.95rem;color:var(--body);margin-left:0.6rem;">· NIT Rourkela</span>
+          </div>
+          <span style="font-family:'Space Mono',monospace;font-size:0.78rem;color:var(--body);white-space:nowrap;flex-shrink:0;">2008 – 2012</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>

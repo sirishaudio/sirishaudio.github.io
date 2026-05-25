@@ -1,0 +1,158 @@
+
+<style>
+:root { --gap: 12px; }
+.section { margin: 0 0 2rem; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 0 0 10px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--gap); }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px 16px; }
+.card-label { font-size: 12px; color: var(--color-text-secondary); margin: 0 0 6px; }
+.card-value { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+.card-sub { font-size: 12px; color: var(--color-text-secondary); margin: 4px 0 0; }
+.pill { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 99px; margin: 0 4px 4px 0; }
+.pill-teal { background: #E1F5EE; color: #0F6E56; }
+.pill-purple { background: #EEEDFE; color: #3C3489; }
+.pill-amber { background: #FAEEDA; color: #854F0B; }
+.pill-coral { background: #FAECE7; color: #993C1D; }
+.pill-blue { background: #E6F1FB; color: #185FA5; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.block { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px 16px; }
+.block-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 8px; }
+.block-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin: 0; }
+.proj-row { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; }
+.proj-bar-bg { flex: 1; height: 6px; background: var(--color-border-tertiary); border-radius: 99px; overflow: hidden; }
+.proj-bar { height: 100%; border-radius: 99px; }
+.proj-label { font-size: 12px; color: var(--color-text-secondary); min-width: 36px; text-align: right; }
+.proj-name { font-size: 13px; color: var(--color-text-primary); min-width: 90px; }
+.divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 0 0 2rem; }
+.year-row { display: grid; grid-template-columns: 60px 1fr 1fr 1fr; gap: 8px; align-items: center; margin: 0 0 10px; }
+.year-tag { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); }
+.year-cell { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 8px 12px; }
+.year-cell-label { font-size: 11px; color: var(--color-text-tertiary); margin: 0 0 2px; }
+.year-cell-val { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+.accent-teal { border-left: 2px solid #1D9E75; }
+.accent-purple { border-left: 2px solid #7F77DD; }
+.accent-amber { border-left: 2px solid #EF9F27; }
+@media (max-width: 480px) { .row { grid-template-columns: 1fr; } .year-row { grid-template-columns: 50px 1fr 1fr; } }
+</style>
+
+<h2 class="sr-only">Siri career assessment: identity, trajectory, financial projections</h2>
+
+<div class="section">
+  <p class="section-label">Identity</p>
+  <div class="card" style="border-left: 2px solid #7F77DD;">
+    <p class="card-label">What you actually are</p>
+    <p class="card-value" style="font-size: 17px; line-height: 1.4;">Audio-native systems founder with deep cultural IP instincts</p>
+    <p class="card-sub">Not a sound designer. Not a developer. A builder with a domain no one else has.</p>
+  </div>
+</div>
+
+<div class="section">
+  <p class="section-label">Core tendencies (observed)</p>
+  <div class="cards">
+    <div class="card"><p class="card-label">Thinking mode</p><p class="card-value" style="font-size:15px;">Systems first</p><p class="card-sub">You design before you build. Always.</p></div>
+    <div class="card"><p class="card-label">Motivation source</p><p class="card-value" style="font-size:15px;">Meaning + craft</p><p class="card-sub">Not money. Money is a byproduct.</p></div>
+    <div class="card"><p class="card-label">Work style</p><p class="card-value" style="font-size:15px;">Director</p><p class="card-sub">You need creative ownership or you disengage.</p></div>
+    <div class="card"><p class="card-label">Risk profile</p><p class="card-value" style="font-size:15px;">Calculated bold</p><p class="card-sub">Nordic visa path proves this.</p></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <p class="section-label">Role fit — where you'd shine</p>
+  <div class="row">
+    <div class="block accent-teal">
+      <p class="block-title">Best role (now)</p>
+      <p class="block-body">Senior Audio Designer / Interactive Audio Lead at a mid-size game studio — ideally Nordic (Supercell, Rovio, Resolution Games, Ubisoft Helsinki, DICE). Creative ownership, no crunch culture, visa sponsorship.</p>
+    </div>
+    <div class="block accent-purple">
+      <p class="block-title">Best role (3–5 years)</p>
+      <p class="block-body">Audio Director or Head of Audio at a studio, OR founder of your own Audio × AI × Cultural IP studio. GG becomes the flagship product. BYHO becomes the proof of concept.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="section-label">Project priority (for career leverage)</p>
+  <div class="proj-row"><span class="proj-name">Gita Gurukul</span><div class="proj-bar-bg"><div class="proj-bar" style="width:95%; background:#7F77DD;"></div></div><span class="proj-label">95%</span></div>
+  <div class="proj-row"><span class="proj-name">BYHO</span><div class="proj-bar-bg"><div class="proj-bar" style="width:80%; background:#1D9E75;"></div></div><span class="proj-label">80%</span></div>
+  <div class="proj-row"><span class="proj-name">SPHL</span><div class="proj-bar-bg"><div class="proj-bar" style="width:65%; background:#EF9F27;"></div></div><span class="proj-label">65%</span></div>
+  <div class="proj-row"><span class="proj-name">Mazed</span><div class="proj-bar-bg"><div class="proj-bar" style="width:35%; background:#888780;"></div></div><span class="proj-label">35%</span></div>
+  <p style="font-size:12px; color:var(--color-text-tertiary); margin:0;">Priority = career leverage + IP uniqueness + long-term moat</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <p class="section-label">What to learn (prioritized)</p>
+  <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+    <span class="pill pill-teal">Speech AI / TTS pipelines</span>
+    <span class="pill pill-teal">Flutter / React Native</span>
+    <span class="pill pill-purple">Audio ML basics (librosa, spectrograms)</span>
+    <span class="pill pill-purple">Unity Addressables + build pipelines</span>
+    <span class="pill pill-amber">Basic business finance (P&L, cap table)</span>
+    <span class="pill pill-amber">Grant writing (NEA, Fulbright, cultural tech)</span>
+    <span class="pill pill-coral">Nordic work culture norms</span>
+    <span class="pill pill-blue">IP law basics (copyright, licensing)</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <p class="section-label">Financial projections (realistic, not optimistic)</p>
+  <p style="font-size:12px; color:var(--color-text-tertiary); margin: -4px 0 12px;">All in USD. Baseline = film income (~$23k/yr at current rate). Scenarios: Floor / Studio Job / Founder track.</p>
+
+  <div class="year-row">
+    <span class="year-tag"></span>
+    <div class="year-cell" style="background:var(--color-background-tertiary);"><p class="year-cell-label">Floor</p></div>
+    <div class="year-cell" style="background:var(--color-background-tertiary);"><p class="year-cell-label">Studio job</p></div>
+    <div class="year-cell" style="background:var(--color-background-tertiary);"><p class="year-cell-label">Founder track</p></div>
+  </div>
+
+  <div class="year-row">
+    <span class="year-tag">Year 1</span>
+    <div class="year-cell"><p class="year-cell-val">$20–25k</p><p class="year-cell-label">film only</p></div>
+    <div class="year-cell accent-teal"><p class="year-cell-val">$55–75k</p><p class="year-cell-label">Nordic entry + film</p></div>
+    <div class="year-cell accent-purple"><p class="year-cell-val">$20–30k</p><p class="year-cell-label">film + early GG rev</p></div>
+  </div>
+
+  <div class="year-row">
+    <span class="year-tag">Year 5</span>
+    <div class="year-cell"><p class="year-cell-val">$25–35k</p><p class="year-cell-label">stagnant</p></div>
+    <div class="year-cell accent-teal"><p class="year-cell-val">$90–130k</p><p class="year-cell-label">senior/lead role</p></div>
+    <div class="year-cell accent-purple"><p class="year-cell-val">$80–200k</p><p class="year-cell-label">GG + BYHO revenue</p></div>
+  </div>
+
+  <div class="year-row">
+    <span class="year-tag">Year 10</span>
+    <div class="year-cell"><p class="year-cell-val">$30–40k</p><p class="year-cell-label">stagnant</p></div>
+    <div class="year-cell accent-teal"><p class="year-cell-val">$130–180k</p><p class="year-cell-label">Audio Dir / Head</p></div>
+    <div class="year-cell accent-purple"><p class="year-cell-val">$300k–2M+</p><p class="year-cell-label">studio / IP exits</p></div>
+  </div>
+
+  <p style="font-size:12px; color:var(--color-text-tertiary); margin: 8px 0 0;">$5M India house goal → achievable at Year 7–10 on founder track, or Year 12–15 on studio track with savings discipline.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <p class="section-label">Happiness forecast</p>
+  <div class="row">
+    <div class="block accent-teal">
+      <p class="block-title">You'll be happiest when...</p>
+      <p class="block-body">You lead without micromanagement. Your work has cultural depth. Shravya is stable and free. The farm exists. You have a workshop. Morning is yours.</p>
+    </div>
+    <div class="block accent-amber">
+      <p class="block-title">You'll be miserable if...</p>
+      <p class="block-body">You're executing someone else's vision with no creative say. You're financially anxious. You're visa-trapped. You're working nights and weekends for someone else's product.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="section-label">The honest one-liner</p>
+  <div class="card" style="border-left: 2px solid #1D9E75;">
+    <p class="block-body" style="font-size:14px; line-height:1.7; margin:0;">You are not one job away from your 10-year picture. You are one <em>strategic move</em> away — the Nordic studio job is that move. It buys visa freedom, salary, craft refinement, and 2–3 years of runway to turn GG into something that outlasts any studio you'll ever work at.</p>
+  </div>
+</div>
