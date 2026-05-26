@@ -3,11 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
 const gameSD = [
-  { title: "Spongebob: Krusty Cook-Off", studio: "Nukebox Studios", year: "2018–2022", desc: "Parameter-driven adaptive music + SFX via Unity & FMOD. 29M+ downloads. Google Play Users' Choice 2020.", tags: ["FMOD","Unity","Adaptive Audio"], note: "100M+ players globally", ios: "https://apps.apple.com/app/spongebob-krusty-cook-off/id1456844652", android: "https://play.google.com/store/apps/details?id=com.nickelodeon.sponge" },
+  { title: "SpongeBob: Krusty Cook-Off", studio: "Nukebox Studios · Tilting Point · Nickelodeon", year: "2018–2022", desc: "Music producer & sound designer. Parameter-driven adaptive music + SFX via Unity & FMOD. 100M+ global downloads. Google Play Users' Choice 2020, Best Casual Game 2020, Pocket Gamer People's Choice 2021.", tags: ["FMOD","Unity","Adaptive Audio","Award-winning"], note: "100M+ players · 3 awards", ios: "https://apps.apple.com/app/spongebob-krusty-cook-off/id1456844652", android: "https://play.google.com/store/apps/details?id=com.nickelodeon.sponge" },
   { title: "Food Truck Chef", studio: "Nukebox Studios", year: "2018–2022", desc: "Full audio pipeline — adaptive music, SFX, and UI sounds for a globally distributed casual title.", tags: ["FMOD","Unity","SFX Pipeline"], note: "", ios: "https://apps.apple.com/app/food-truck-chef/id1213039508", android: "https://play.google.com/store/apps/details?id=com.socialpoint.foodtruckchef" },
   { title: "Room Flip: Home Decor", studio: "Nukebox Studios", year: "2018–2022", desc: "Modular SFX architecture and reactive audio state management for casual mobile.", tags: ["Unity","Modular SFX"], note: "", ios: "", android: "" },
-  { title: "Angry Birds Match 3", studio: "Gear Inc. · Tilting Point", year: "2022", desc: "Adaptive audio for a globally distributed IP. High-retention casual gameplay loop design.", tags: ["FMOD","Adaptive Audio"], note: "Global IP", ios: "", android: "" },
-  { title: "M&M's Adventure", studio: "Gear Inc. · Tilting Point", year: "2022", desc: "Audio systems for a branded casual title. Applied adaptive audio to high-engagement match-3 gameplay.", tags: ["FMOD","Adaptive Audio"], note: "Global IP", ios: "", android: "" },
+  { title: "Angry Birds Hatchlings (fka Match 3)", studio: "Gear Inc. · Rovio Entertainment", year: "Feb–Jun 2022", desc: "Sound designer (contract via Gear Inc.). SFX, adaptive music, mix implementation. Originally launched as Angry Birds Match 3 (2016), rebranded to Angry Birds Hatchlings in Mar 2026 (v9.8.1). Game still actively live on iOS + Android.", tags: ["FMOD","Adaptive Audio","Rovio IP"], note: "Live · rebranded 2026", ios: "https://apps.apple.com/us/app/angry-birds-match-3/id1144401880", android: "https://play.google.com/store/apps/details?id=com.rovio.abmatch3" },
+  { title: "M&M's Adventure", studio: "Gear Inc. · Tilting Point · Mars Inc.", year: "Feb–Jun 2022", desc: "Sound designer (contract via Gear Inc.). SFX, music, audio implementation for branded casual title. Game sunsetted Jun 30, 2025 (removed from stores; servers shut down Sept 2025).", tags: ["FMOD","Unity","Adaptive Audio","Brand IP"], note: "Sunsetted Jun 2025", ios: "", android: "" },
   { title: "Milli Match", studio: "Giga Fun Studios", year: "2023–2025", desc: "Modular SFX architecture and parameter-driven music design for match-3 mobile.", tags: ["Unity","Param-Driven"], note: "", ios: "", android: "" },
   { title: "Rani's Case Files", studio: "Giga Fun Studios", year: "2023–2025", desc: "Reactive audio state management and middleware integration for a puzzle mobile title.", tags: ["Unity","SFX"], note: "", ios: "", android: "" },
   { title: "Travel Match India", studio: "Giga Fun Studios", year: "2023–2025", desc: "Full audio pipeline for a culturally-themed casual title targeting Indian market.", tags: ["Unity","Adaptive Audio"], note: "", ios: "", android: "" },
@@ -290,6 +290,123 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
     transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
   }
   .nav-links a:hover { color: #8A9BB0; border-color: #243447; }
+  .nav-links a.nav-social {
+    padding: 0.3rem 0.5rem;
+    background: transparent;
+    border: 1px solid transparent;
+    box-shadow: none;
+  }
+  .nav-links a.nav-social:hover {
+    color: #3A8A65;
+    border-color: transparent;
+    background: transparent;
+  }
+  .nav-links a.nav-social svg { display: block; }
+
+  /* ── CONTACT SOCIAL BUTTONS (icon + label) ── */
+  .contact-social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem;
+    background: #0D1823;
+    border: 1px solid #243447;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8A9BB0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .contact-social-btn:hover {
+    color: #5AAF85;
+    border-color: #3A8A65;
+    background: rgba(58,138,101,0.08);
+    transform: translateY(-1px);
+  }
+  .contact-social-btn svg { display: block; }
+  html.light-mode .contact-social-btn {
+    background: #F4F6F9;
+    border-color: #C9D4DE;
+    color: #5A6B7A;
+  }
+  html.light-mode .contact-social-btn:hover {
+    color: #2D6A4F;
+    border-color: #3A8A65;
+    background: rgba(58,138,101,0.06);
+  }
+
+  /* ── SECTION "COMING SOON" SUBTLE TAG ── */
+  .coming-soon-tag {
+    display: inline-block;
+    margin-left: 0.6rem;
+    padding: 0.18rem 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5A6B7A;
+    background: rgba(36,52,71,0.4);
+    border: 1px solid #243447;
+    border-radius: 3px;
+    vertical-align: middle;
+    opacity: 0.7;
+  }
+  html.light-mode .coming-soon-tag {
+    color: #8A9BB0;
+    background: rgba(201,212,222,0.4);
+    border-color: #C9D4DE;
+  }
+
+  /* ── UNDER CONSTRUCTION BANNER ── */
+  .construction-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    padding: 0.55rem 1rem;
+    background: rgba(13,24,35,0.92);
+    border-top: 1px solid #243447;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.78rem;
+    color: #8A9BB0;
+    line-height: 1.4;
+  }
+  .construction-banner strong { color: #5AAF85; font-weight: 600; letter-spacing: 0.04em; }
+  .construction-close {
+    position: absolute;
+    right: 0.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid #243447;
+    color: #8A9BB0;
+    width: 22px;
+    height: 22px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0;
+  }
+  .construction-close:hover { color: #E8EEF5; border-color: #3A8A65; }
+  html.light-mode .construction-banner {
+    background: rgba(244,246,249,0.92);
+    border-top-color: #C9D4DE;
+    color: #5A6B7A;
+  }
+  html.light-mode .construction-close {
+    border-color: #C9D4DE;
+    color: #5A6B7A;
+  }
   .nav-links a.nav-active {
     color: #3A8A65;
     border-color: #2D6A4F;
@@ -1514,6 +1631,111 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
     transform: scale(1.03);
     box-shadow: 0 8px 26px rgba(0,0,0,0.6), 0 0 16px rgba(58,138,101,0.2);
   }
+
+  /* ── PATH TIMELINE ── */
+  .path-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid #243447;
+    max-width: 720px;
+  }
+  .path-item {
+    position: relative;
+    padding: 1.25rem 0 1.25rem 1.75rem;
+    border-bottom: 1px solid #1A2533;
+  }
+  .path-item:last-child { border-bottom: none; }
+  .path-item::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 1.65rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #3A8A65;
+    box-shadow: 0 0 0 3px #0D1823;
+  }
+  .path-year {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5AAF85;
+    margin-bottom: 0.35rem;
+  }
+  .path-role {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #E8EEF5;
+    margin-bottom: 0.25rem;
+  }
+  .path-org {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.88rem;
+    color: #8A9BB0;
+    line-height: 1.5;
+  }
+  html.light-mode .path-timeline { border-left-color: #C9D4DE; }
+  html.light-mode .path-item { border-bottom-color: #E0E6ED; }
+  html.light-mode .path-item::before { box-shadow: 0 0 0 3px #F4F6F9; }
+  html.light-mode .path-role { color: #1A2533; }
+  html.light-mode .path-org { color: #5A6B7A; }
+
+  /* ── HERO SOCIAL FLOATER (right side, fixed) ── */
+  .hero-floater {
+    position: fixed;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 50;
+  }
+  .hero-floater a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(13,24,35,0.7);
+    border: 1px solid #243447;
+    color: #8A9BB0;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.2s ease;
+  }
+  .hero-floater a:hover {
+    color: #5AAF85;
+    border-color: #3A8A65;
+    background: rgba(13,24,35,0.9);
+    transform: scale(1.08);
+  }
+  .hero-floater a svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  html.light-mode .hero-floater a {
+    background: rgba(244,246,249,0.85);
+    border-color: #C9D4DE;
+    color: #5A6B7A;
+  }
+  html.light-mode .hero-floater a:hover {
+    color: #2D6A4F;
+    border-color: #3A8A65;
+  }
+  @media (max-width: 640px) {
+    .hero-floater { right: 0.65rem; gap: 0.4rem; }
+    .hero-floater a { width: 34px; height: 34px; }
+    .hero-floater a svg { width: 15px; height: 15px; }
+  }
 </style>
 
 <!-- ══════════════════ NAV ══════════════════ -->
@@ -1538,7 +1760,7 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
       <a href="#reel">Reel</a>
       <a href="#work">Work</a>
       <a href="#listen">Listen</a>
-      <a href="#skills">Path</a>
+      <a href="#path">Path</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
@@ -1665,6 +1887,25 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
     100% { transform: translateY(0)    rotate(0deg);   }
   }
 </style>
+
+<!-- ══════════════════ SOCIAL FLOATER ══════════════════ -->
+<aside class="hero-floater" aria-label="Social links">
+  <a href="https://linktr.ee/sirishsatyavolu" target="_blank" rel="noopener" aria-label="Linktree" title="Linktree">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.736 5.853l4.005-4.117 2.325 2.381-4.2 4.005h5.908v3.305h-5.937l4.229 4.108-2.325 2.297-5.74-5.74-5.74 5.74-2.325-2.297 4.229-4.108H2.226V8.122h5.908l-4.2-4.005 2.325-2.381 4.005 4.117V0h3.472zm-3.472 12.295h3.472V24h-3.472z"/></svg>
+  </a>
+  <a href="https://linkedin.com/in/sirishsatyavolu" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+  </a>
+  <a href="https://soundcloud.com/sirishsatyavolu" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c0-.054-.045-.1-.09-.1zm-.899.828c-.06 0-.091.037-.104.094L0 14.479l.165 1.308c0 .055.045.094.09.094s.089-.045.104-.104l.21-1.319-.21-1.334c0-.061-.044-.09-.09-.09zm1.83-1.229c-.061 0-.12.045-.12.104l-.21 2.563.225 2.458c0 .06.045.12.119.12.061 0 .105-.061.121-.12l.254-2.474-.254-2.548c0-.06-.061-.12-.121-.12zm.945-.089c-.075 0-.135.06-.15.135l-.193 2.64.21 2.544c.016.077.075.138.149.138.075 0 .135-.061.15-.15l.24-2.532-.24-2.623c-.016-.075-.075-.135-.166-.135zm1.155.36a.176.176 0 0 0-.18.165l-.21 2.43.21 2.563c0 .09.09.166.18.166.09 0 .18-.077.18-.166l.24-2.563-.24-2.444a.175.175 0 0 0-.18-.151zm.93-.404c-.105 0-.196.09-.21.195l-.165 2.85.165 2.46c.014.105.105.195.21.195a.21.21 0 0 0 .21-.195l.193-2.475-.193-2.835a.197.197 0 0 0-.21-.195zm1.155-1.005c-.121 0-.211.09-.225.225l-.165 3.84.165 2.43c.014.119.104.225.225.225.119 0 .225-.105.225-.225l.195-2.43-.196-3.84c0-.135-.105-.225-.225-.225zm.93-.305c-.135 0-.24.105-.24.24l-.15 4.13.149 2.41c.016.135.121.24.241.24.135 0 .24-.105.24-.24l.165-2.41-.165-4.13a.245.245 0 0 0-.24-.24zm1.155.435a.27.27 0 0 0-.27.27v.005L9.27 14.92l.105 2.39c.012.145.131.27.27.27.135 0 .254-.121.27-.255l.119-2.4-.135-3.93a.272.272 0 0 0-.27-.265zm.945-1.785c-.06-.045-.135-.075-.21-.075a.34.34 0 0 0-.196.06c-.09.061-.149.166-.149.286v.029l-.105 5.355.105 2.38c0 .104.061.21.135.255a.4.4 0 0 0 .42 0c.08-.061.135-.135.135-.255l.121-2.38-.121-5.385a.318.318 0 0 0-.135-.27zm.81-.39a.327.327 0 0 0-.166-.045c-.06 0-.119.014-.165.029-.119.061-.21.181-.21.301v.014l-.119 5.776.119 2.366c.016.18.18.33.36.33s.345-.15.345-.345l.135-2.351-.135-5.79c0-.121-.075-.241-.166-.286zm1.155-.84a.382.382 0 0 0-.18-.044.394.394 0 0 0-.211.06.385.385 0 0 0-.195.345l-.105 6.66.119 2.32c.016.211.181.376.391.376a.39.39 0 0 0 .39-.39l.135-2.306-.135-6.69a.39.39 0 0 0-.21-.331zm.99-.404a.397.397 0 0 0-.391.391v.014l-.075 7.245.105 2.295c.014.225.195.42.42.42.226 0 .42-.196.42-.42l.105-2.296-.121-7.262a.413.413 0 0 0-.21-.345.516.516 0 0 0-.253-.042zm.929-.061c-.075 0-.135.014-.21.044a.452.452 0 0 0-.255.39v.016l-.075 7.65.075 2.265c0 .256.21.45.45.45.255 0 .45-.21.45-.466l.09-2.265-.09-7.665a.454.454 0 0 0-.226-.39.503.503 0 0 0-.21-.029zm1.005-.18a.495.495 0 0 0-.499.495l-.064 7.86.075 2.234c.014.27.225.48.495.48a.484.484 0 0 0 .495-.495l.075-2.235-.075-7.844a.484.484 0 0 0-.502-.495zm9.075 4.005c-.405 0-.81.09-1.17.241a4.65 4.65 0 0 0-4.65-4.515 4.66 4.66 0 0 0-1.665.3c-.196.075-.255.135-.255.314v9.78c0 .181.135.331.315.346h7.41A2.97 2.97 0 0 0 24 14.78c.014-1.63-1.305-2.969-2.97-2.969z"/></svg>
+  </a>
+  <a href="mailto:sirishsatyavolu@gmail.com" aria-label="Email" title="Email">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+  </a>
+  <a href="https://sirishaudio.com" aria-label="Home" title="sirishaudio.com">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.7l6 5.4V18h-2v-6H8v6H6v-6.9l6-5.4z"/></svg>
+  </a>
+</aside>
 
 <!-- ══════════════════ HERO ══════════════════ -->
 <div id="home" style="position:absolute;top:0;"></div>
@@ -1824,7 +2065,7 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
 PARKED -->
 
 <!-- ══════════════════ REEL V2 ══════════════════ -->
-<section id="reel-v2" class="section-pad">
+<section id="reel" class="section-pad">
   <div class="glyph-strip" aria-hidden="true">
     <svg class="glyph g-beam"    style="left:9%;top:35%"  viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
     <svg class="glyph g-quarter" style="left:92%;top:60%" viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
@@ -1832,7 +2073,7 @@ PARKED -->
   </div>
   <div class="section-inner v2-section-inner">
     <p class="eyebrow reveal">Showreels</p>
-    <h2 class="section-h2 reveal reveal-delay-1">Demo Reels</h2>
+    <h2 class="section-h2 reveal reveal-delay-1">Demo Reels<span class="coming-soon-tag">Coming Soon</span></h2>
     <p class="section-sub reveal reveal-delay-2" style="margin-bottom:0.75rem;">Centered carousel. Poster → modal on click.</p>
 
     <!-- Reel selector buttons -->
@@ -2074,7 +2315,7 @@ PARKED -->
 PARKED -->
 
 <!-- ══════════════════ WORK V2 ══════════════════ -->
-<section id="work-v2" class="section-pad section-alt">
+<section id="work" class="section-pad section-alt">
   <div class="glyph-strip" aria-hidden="true">
     <svg class="glyph g-beam"    style="left:85%;top:28%" viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
     <svg class="glyph g-quarter" style="left:7%;top:65%"  viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
@@ -2083,7 +2324,7 @@ PARKED -->
 
     <div class="work-hdr">
       <p class="eyebrow reveal">Selected Work</p>
-      <h2 class="section-h2 reveal reveal-delay-1">Projects</h2>
+      <h2 class="section-h2 reveal reveal-delay-1">Projects<span class="coming-soon-tag">In Progress</span></h2>
       <p class="section-sub reveal reveal-delay-2">Centered carousel. Artwork fills card. Expand on click.</p>
     </div>
 
@@ -2337,7 +2578,7 @@ PARKED -->
 
 <!-- ══════════════════ LISTEN V3 ══════════════════ -->
 <!-- V3: landscape cards (16×9), horizontal centered carousel, category switching -->
-<section id="listen-v3" class="section-pad">
+<section id="listen" class="section-pad">
   <div class="glyph-strip" aria-hidden="true">
     <svg class="glyph g-quarter" style="left:91%;top:32%" viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
     <svg class="glyph g-beam"    style="left:2%;top:58%"  viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
@@ -2345,7 +2586,7 @@ PARKED -->
   </div>
   <div class="section-inner">
     <p class="eyebrow reveal">Audio</p>
-    <h2 class="section-h2 reveal reveal-delay-1">Listen</h2>
+    <h2 class="section-h2 reveal reveal-delay-1">Listen<span class="coming-soon-tag">Coming Soon</span></h2>
     <p class="section-sub reveal reveal-delay-2">Selected tracks — game audio, adaptive music, film scores.</p>
 
     <!-- Category buttons -->
@@ -2406,14 +2647,14 @@ PARKED -->
 </section>
 
 <!-- ══════════════════ SKILLS ══════════════════ -->
-<section id="skills" class="section-pad section-alt">
+<section id="path" class="section-pad section-alt">
   <div class="glyph-strip" aria-hidden="true">
     <svg class="glyph g-beam"    style="left:5%;top:40%"  viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
     <svg class="glyph g-quarter" style="left:84%;top:65%" viewBox="0 0 14 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)" fill="currentColor" stroke="none"/><line x1="9" y1="28" x2="9" y2="4" stroke-width="1.8"/></svg>
   </div>
   <div class="section-inner">
-    <p class="eyebrow reveal">Signal Path</p>
-    <h2 class="section-h2 reveal reveal-delay-1">How I Got Here</h2>
+    <p class="eyebrow reveal">Journey</p>
+    <h2 class="section-h2 reveal reveal-delay-1">Path<span class="coming-soon-tag">In Progress</span></h2>
     <p class="section-sub reveal reveal-delay-2">Turn the knob or tap a year to travel through time.</p>
 
     <!-- Year buttons — horizontal row, injected by JS -->
@@ -2475,6 +2716,9 @@ PARKED -->
   </div>
 </section>
 
+<!-- Path section was merged into former Skills section above (id="path") -->
+
+
 <!-- ══════════════════ ABOUT ══════════════════ -->
 <section id="about" class="section-pad">
   <div class="glyph-strip" aria-hidden="true">
@@ -2484,7 +2728,7 @@ PARKED -->
   </div>
   <div class="section-inner">
     <p class="eyebrow reveal">Background</p>
-    <h2 class="section-h2 reveal reveal-delay-1">About</h2>
+    <h2 class="section-h2 reveal reveal-delay-1">About<span class="coming-soon-tag">In Progress</span></h2>
     <div class="about-body reveal reveal-delay-2">
 
       <div class="ph-avatar">SS</div>
@@ -2516,10 +2760,19 @@ PARKED -->
     <div class="reveal reveal-delay-3">
       <a href="mailto:sirishsatyavolu@gmail.com" class="contact-cta">sirishsatyavolu@gmail.com</a>
     </div>
-    <div class="reveal" style="display:flex;justify-content:center;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;">
-      {[["LinkedIn","https://linkedin.com/in/sirishsatyavolu"],["SoundCloud","https://soundcloud.com/sirishsatyavolu"],["Vimeo","https://vimeo.com/sirishaudio"],["GitHub","https://github.com/sirishaudio"]].map(([l,h]) => (
-        <a href={h} target="_blank" style="font-size:0.75rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:0.06em;color:#8A9BB0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#B7D5C4'" onmouseout="this.style.color='#8A9BB0'">{l}</a>
-      ))}
+    <div class="reveal contact-socials" style="display:flex;justify-content:center;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;">
+      <a href="https://www.linkedin.com/in/sirishsatyavolu" target="_blank" rel="noopener noreferrer" class="contact-social-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://linktr.ee/sirishsatyavolu" target="_blank" rel="noopener noreferrer" class="contact-social-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.736 5.853l4.005-4.117 2.325 2.381-4.2 4.005h5.908v3.305h-5.937l4.229 4.108-2.325 2.297-5.74-5.74-5.74 5.74-2.325-2.297 4.229-4.108H2.226V8.122h5.908l-4.2-4.005 2.325-2.381 4.005 4.117V0h3.472zm-3.472 12.295h3.472V24h-3.472z"/></svg>
+        <span>Linktree</span>
+      </a>
+      <a href="https://soundcloud.com/sirishsatyavolu" target="_blank" rel="noopener noreferrer" class="contact-social-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c0-.054-.045-.1-.09-.1zm9.075-4.005c-.405 0-.81.09-1.17.241a4.65 4.65 0 0 0-4.65-4.515 4.66 4.66 0 0 0-1.665.3c-.196.075-.255.135-.255.314v9.78c0 .181.135.331.315.346h7.41A2.97 2.97 0 0 0 24 14.78c.014-1.63-1.305-2.969-2.97-2.969z"/></svg>
+        <span>SoundCloud</span>
+      </a>
     </div>
     <div class="itag"><button class="itag-btn" style="color:#B7D5C4;">i</button><div class="itag-tooltip"><strong style="color:#B7D5C4;">CONTACT SECTION</strong>BG: #1C2B3A
 CTA: Montserrat 700 / 0.82rem
@@ -2531,6 +2784,22 @@ Max-width: 600px, centered</div></div>
 <footer>
   <p style="font-size:0.7rem;font-family:'Lato',sans-serif;color:#8A9BB0;letter-spacing:0.08em;">© 2026 Sirish Satyavolu · sirishaudio.com</p>
 </footer>
+
+<!-- ══════════════════ UNDER CONSTRUCTION BANNER ══════════════════ -->
+<div class="construction-banner" id="construction-banner" role="status">
+  <span><strong>Under construction.</strong> Sections will be refined and reorganized over the coming days — thanks for your patience.</span>
+  <button class="construction-close" id="construction-close" aria-label="Dismiss banner">×</button>
+</div>
+<script>
+  // Construction banner — dismissible (session-persistent)
+  const cb = document.getElementById('construction-banner');
+  const cbClose = document.getElementById('construction-close');
+  if (cb && sessionStorage.getItem('cb-dismissed') === '1') cb.style.display = 'none';
+  cbClose?.addEventListener('click', () => {
+    if (cb) cb.style.display = 'none';
+    try { sessionStorage.setItem('cb-dismissed','1'); } catch(_){}
+  });
+</script>
 
 <script>
   // ── PARALLAX ──
@@ -2803,7 +3072,7 @@ Max-width: 600px, centered</div></div>
 
   // ── NAV ACTIVE STATE ──
   const navLinks = document.querySelectorAll('.nav-links a');
-  const sectionIds = ['reel','work','listen','skills','about','contact'];
+  const sectionIds = ['reel','work','listen','path','about','contact'];
   const sectionObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {

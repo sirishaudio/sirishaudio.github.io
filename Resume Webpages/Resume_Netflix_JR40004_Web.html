@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sirish Satyavolu — Audio Lead, Games Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sidebar:     #1c2128;
+  --accent:      #5b8fa8;
+  --accent-dim:  #3d6878;
+  --accent-pale: #e8f1f5;
+  --page-bg:     #f8f9fa;
+  --rule:        #dde2e6;
+  --ink:         #181c20;
+  --body:        #48555f;
+  --s-txt:       #dce6ea;
+  --s-mut:       #6b838e;
+  --s-ac:        #7ab3cc;
+  --tag-bg:      #222c33;
+  --tag-bd:      #334450;
+  --tag-ac-bg:   #1a3040;
+  --card-bg:     #eef2f5;
+  --sidebar-w:   252px;
+}
+
+html { font-size: 10px; }
+
+body {
+  background: #d0d9de;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4rem 2rem 5rem;
+}
+
+/* ── PAGE ── */
+.page {
+  width: 92rem;
+  max-width: 100%;
+  background: var(--page-bg);
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  box-shadow: 0 2.4rem 7rem rgba(0,0,0,0.30), 0 0.4rem 1.4rem rgba(0,0,0,0.12);
+  position: relative;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3.5px;
+  background: var(--accent);
+  z-index: 10;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: var(--sidebar);
+  padding: 3.8rem 2.2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.name-block {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #2a3840;
+}
+
+.name-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--s-ac);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.name-first {
+  font-family: 'Fraunces', serif;
+  font-size: 3.4rem;
+  font-weight: 300;
+  color: var(--s-txt);
+  line-height: 1;
+  display: block;
+}
+
+.name-last {
+  font-family: 'Fraunces', serif;
+  font-size: 3.4rem;
+  font-weight: 300;
+  color: var(--s-ac);
+  line-height: 1.08;
+  display: block;
+}
+
+.name-sub {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: var(--s-mut);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+/* Sidebar sections */
+.s-section { display: flex; flex-direction: column; gap: 1.1rem; }
+
+.s-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--s-ac);
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #2a3840;
+}
+
+/* Contact */
+.contact-item { display: flex; flex-direction: column; gap: 0.18rem; }
+
+.c-lbl {
+  font-size: 0.70rem;
+  color: var(--s-mut);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-family: 'Space Mono', monospace;
+}
+
+.c-val {
+  font-size: 1rem;
+  color: var(--s-txt);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.c-val a {
+  color: var(--s-ac);
+  text-decoration: none;
+}
+
+.c-val a:hover { text-decoration: underline; }
+
+/* Tags */
+.tag-group { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.tag-cat {
+  font-size: 0.70rem;
+  color: var(--s-mut);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: 'Space Mono', monospace;
+  margin-top: 0.5rem;
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.4rem; }
+
+.tag {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 2px;
+  border: 1px solid var(--tag-bd);
+  background: var(--tag-bg);
+  color: var(--s-txt);
+  font-weight: 400;
+}
+
+.tag.accent {
+  background: var(--tag-ac-bg);
+  border-color: var(--s-ac);
+  color: var(--s-ac);
+}
+
+/* Education */
+.edu-item { display: flex; flex-direction: column; gap: 0.22rem; margin-bottom: 1rem; }
+.edu-deg { font-size: 1rem; font-weight: 600; color: var(--s-txt); }
+.edu-school { font-size: 0.92rem; color: var(--s-ac); }
+.edu-yr { font-size: 0.82rem; color: var(--s-mut); }
+
+/* Shipped titles */
+.title-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.28rem 0;
+  border-bottom: 1px solid #24313a;
+}
+
+.title-item:last-child { border-bottom: none; }
+
+.title-name { font-size: 0.95rem; color: var(--s-txt); }
+.title-studio { font-size: 0.72rem; color: var(--s-mut); font-family: 'Space Mono', monospace; text-align: right; flex-shrink: 0; }
+.title-arrow { color: var(--s-ac); font-size: 0.78rem; flex-shrink: 0; margin-right: 0.3rem; }
+
+/* Film credits */
+.film-item { margin-bottom: 0.9rem; padding-bottom: 0.9rem; border-bottom: 1px solid #24313a; }
+.film-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.film-title { font-size: 0.95rem; font-weight: 600; color: var(--s-txt); }
+.film-note { font-size: 0.8rem; color: var(--s-mut); margin-top: 0.15rem; }
+.film-badge {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.68rem;
+  font-family: 'Space Mono', monospace;
+  padding: 0.15rem 0.55rem;
+  border-radius: 2px;
+  background: var(--tag-ac-bg);
+  border: 1px solid var(--s-ac);
+  color: var(--s-ac);
+  letter-spacing: 0.06em;
+}
+
+/* ── MAIN ── */
+.main {
+  padding: 3.8rem 4.2rem 4rem 3.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Section header */
+.sec-header { margin-bottom: 1.2rem; }
+
+.sec-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.80rem;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.sec-rule {
+  height: 1px;
+  background: var(--rule);
+  margin-top: 0.55rem;
+}
+
+/* Profile */
+.profile-wrap {
+  display: flex;
+  gap: 1.6rem;
+  align-items: flex-start;
+}
+
+.profile-bar {
+  width: 2.5px;
+  background: var(--accent);
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 100%;
+}
+
+.profile-text {
+  font-size: 1.18rem;
+  line-height: 1.78;
+  color: var(--body);
+  font-weight: 300;
+}
+
+.profile-text strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Stat chips */
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.stat-chip {
+  background: var(--accent-pale);
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  padding: 0.5rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--accent-dim);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--accent-dim);
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Experience */
+.exp-section { display: flex; flex-direction: column; gap: 2rem; }
+
+/* Current block */
+.current-band {
+  background: #e8f0f4;
+  border-radius: 3px;
+  padding: 0.75rem 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.current-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-dim);
+  font-weight: 700;
+}
+
+.current-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.current-jobs { display: flex; flex-direction: column; gap: 1.6rem; }
+
+/* Job */
+.job { display: flex; flex-direction: column; gap: 0.7rem; }
+
+.job-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.job-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.job-period {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--body);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.job-sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.job-company {
+  font-size: 1rem;
+  color: var(--accent-dim);
+  font-weight: 400;
+}
+
+.job-badge {
+  font-size: 0.70rem;
+  background: var(--accent-pale);
+  color: var(--accent-dim);
+  border: 1px solid var(--accent);
+  padding: 0.2rem 0.7rem;
+  border-radius: 2px;
+  font-family: 'Space Mono', monospace;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.job-rule { height: 1px; background: var(--rule); }
+
+.job-bullets { display: flex; flex-direction: column; gap: 0.65rem; }
+
+.job-bullet {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.bullet-arrow {
+  color: var(--accent);
+  font-size: 0.80rem;
+  flex-shrink: 0;
+  margin-top: 0.28rem;
+}
+
+.bullet-text {
+  font-size: 1.05rem;
+  line-height: 1.62;
+  color: var(--body);
+  font-weight: 300;
+}
+
+.bullet-text strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* Highlights callout */
+.highlight-callout {
+  background: var(--accent-pale);
+  border-left: 3px solid var(--accent);
+  padding: 0.8rem 1.2rem;
+  border-radius: 0 2px 2px 0;
+  font-size: 0.95rem;
+  color: var(--accent-dim);
+  font-weight: 400;
+  margin-top: 0.3rem;
+}
+
+/* Leadership section */
+.leadership-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem 2rem;
+}
+
+.lead-bullet {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+/* Footer strip */
+.footer-strip {
+  grid-column: 1 / -1;
+  background: var(--sidebar);
+  padding: 1.4rem 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-txt {
+  font-size: 0.9rem;
+  color: var(--s-mut);
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.08em;
+}
+
+.footer-link {
+  font-size: 0.9rem;
+  color: var(--s-ac);
+  font-family: 'Space Mono', monospace;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+}
+
+.footer-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="name-block">
+      <div class="name-eyebrow">Audio Lead · Audio Director</div>
+      <span class="name-first">Sirish</span>
+      <span class="name-last">Satyavolu</span>
+      <div class="name-sub">Game Audio · Film · AI Audio Systems</div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">Contact</div>
+      <div class="contact-item">
+        <span class="c-lbl">Location</span>
+        <span class="c-val">Austin, TX · Open to Relocate</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-lbl">Portfolio</span>
+        <span class="c-val"><a href="https://www.sirishaudio.com" target="_blank">www.sirishaudio.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="c-lbl">Email</span>
+        <span class="c-val">sirishsatyavolu@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-lbl">Phone</span>
+        <span class="c-val">512-947-4428</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-lbl">LinkedIn</span>
+        <span class="c-val"><a href="https://linkedin.com/in/sirishsatyavolu" target="_blank">in/sirishsatyavolu</a></span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">Capabilities</div>
+      <div class="tag-group">
+        <div class="tag-cat">Audio Direction</div>
+        <div class="tags">
+          <span class="tag accent">VO Pipeline</span>
+          <span class="tag accent">Outsource Mgmt</span>
+          <span class="tag">Mood Boards</span>
+          <span class="tag">Feature Docs</span>
+          <span class="tag">Audio Direction</span>
+        </div>
+        <div class="tag-cat">Middleware</div>
+        <div class="tags">
+          <span class="tag accent">FMOD Studio</span>
+          <span class="tag accent">Wwise</span>
+          <span class="tag">Unity Audio</span>
+          <span class="tag">Adaptive Music</span>
+          <span class="tag">Spatial Audio</span>
+        </div>
+        <div class="tag-cat">Game Audio</div>
+        <div class="tags">
+          <span class="tag">SFX Design</span>
+          <span class="tag">Interactive Music</span>
+          <span class="tag">Casual · Party</span>
+          <span class="tag">Multiplayer</span>
+        </div>
+        <div class="tag-cat">Production</div>
+        <div class="tags">
+          <span class="tag">Logic Pro</span>
+          <span class="tag">Pro Tools</span>
+          <span class="tag">Composition</span>
+          <span class="tag">ADR · Foley</span>
+        </div>
+        <div class="tag-cat">AI &amp; Speech</div>
+        <div class="tags">
+          <span class="tag">Phonetic Alignment</span>
+          <span class="tag">IPA Mapping</span>
+          <span class="tag">Speech Eval</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">Education</div>
+      <div class="edu-item">
+        <span class="edu-deg">M.S. Music Technology</span>
+        <span class="edu-school">Georgia Inst. of Technology</span>
+        <span class="edu-yr">2015 – 2017</span>
+      </div>
+      <div class="edu-item">
+        <span class="edu-deg">M.Tech Mechanical Eng.</span>
+        <span class="edu-school">NIT Rourkela</span>
+        <span class="edu-yr">2008 – 2012</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">Shipped Titles</div>
+      <div class="title-item">
+        <span class="title-arrow">▸</span>
+        <span class="title-name">SpongeBob: Krusty Cook-Off</span>
+        <span class="title-studio">Nukebox</span>
+      </div>
+      <div class="title-item">
+        <span class="title-arrow">▸</span>
+        <span class="title-name">Food Truck Chef</span>
+        <span class="title-studio">Nukebox</span>
+      </div>
+      <div class="title-item">
+        <span class="title-arrow">▸</span>
+        <span class="title-name">Room Flip</span>
+        <span class="title-studio">Nukebox</span>
+      </div>
+      <div class="title-item">
+        <span class="title-arrow">▸</span>
+        <span class="title-name">Angry Birds Match 3</span>
+        <span class="title-studio">Gear Inc.</span>
+      </div>
+      <div class="title-item">
+        <span class="title-arrow">▸</span>
+        <span class="title-name">M&amp;M's Adventure</span>
+        <span class="title-studio">Gear Inc.</span>
+      </div>
+      <div class="title-item">
+        <span class="title-arrow">▸</span>
+        <span class="title-name">Milli Match</span>
+        <span class="title-studio">Giga Fun</span>
+      </div>
+      <div class="title-item">
+        <span class="title-arrow">▸</span>
+        <span class="title-name">Rani's Case Files</span>
+        <span class="title-studio">Giga Fun</span>
+      </div>
+      <div class="title-item">
+        <span class="title-arrow">▸</span>
+        <span class="title-name">Travel Match India</span>
+        <span class="title-studio">Giga Fun</span>
+      </div>
+      <div class="title-item">
+        <span class="title-arrow">▸</span>
+        <span class="title-name">Ludo Hero</span>
+        <span class="title-studio">Qila Games</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-label">Film Credits</div>
+      <div class="film-item">
+        <div class="film-title">Cinemabandi</div>
+        <div class="film-note">Netflix India · 2021</div>
+        <span class="film-badge">#1 Trending · IFFI Jury Award</span>
+      </div>
+      <div class="film-item">
+        <div class="film-title">Anthele Kadha Anthele</div>
+        <div class="film-note">Sakala Ent. · 2022</div>
+      </div>
+      <div class="film-item">
+        <div class="film-title">Kavyam</div>
+        <div class="film-note">Swaraj Studios · 2023</div>
+      </div>
+      <div class="film-item">
+        <div class="film-title">Seetharam Sithralu</div>
+        <div class="film-note">Raising Hands · 2023</div>
+      </div>
+      <div class="film-item">
+        <div class="film-title">E3 <span style="font-weight:300;color:var(--s-mut)">(working title)</span></div>
+        <div class="film-note">Telugu indie · Ongoing</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- PROFILE -->
+    <section>
+      <div class="sec-header">
+        <div class="sec-title">Profile</div>
+        <div class="sec-rule"></div>
+      </div>
+      <div class="profile-wrap">
+        <div class="profile-bar"></div>
+        <div>
+          <p class="profile-text">
+            Audio Lead and director with <strong>10+ years</strong> delivering production-ready audio for mobile games and feature films — including <strong>SpongeBob: Krusty Cook-Off</strong> (100M+ downloads, Google Play Users' Choice 2020) and <strong>Cinemabandi</strong> (Netflix India #1 trending debut week, IFFI Jury Special Mention). Full ownership of <strong>VO pipelines</strong> — casting, directing, recording, editing, and in-game implementation — alongside SFX design, interactive and adaptive music systems, and <strong>outsource management</strong> across simultaneous multi-project environments.
+          </p>
+          <p class="profile-text" style="margin-top:1rem;">
+            Fluent in <strong>FMOD Studio</strong> across shipped titles; <strong>Wwise-proficient</strong> with event graphs, RTPC systems, state machines, and spatialisation architecture directly transferable from FMOD. Collaborates natively with engineers — defining integration contracts, parameter schemas, and bus architecture as standard practice. Establishes audio pipelines from scratch, authors <strong>audio mood boards</strong> and <strong>feature documentation</strong>, and delivers without oversight at any scale.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stat chips -->
+      <div class="stat-row">
+        <div class="stat-chip">
+          <span class="stat-num">100M+</span>
+          <span class="stat-label">Downloads · SpongeBob</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-num">10M+</span>
+          <span class="stat-label">Downloads · Angry Birds</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-num">9</span>
+          <span class="stat-label">Shipped Titles</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Feature Films</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Years Audio Lead</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <div class="sec-header">
+        <div class="sec-title">Experience</div>
+        <div class="sec-rule"></div>
+      </div>
+      <div class="exp-section">
+
+        <!-- Current -->
+        <div>
+          <div class="current-band">
+            <span class="current-label">Current · Concurrent Independent Projects</span>
+            <span class="current-dot"></span>
+          </div>
+          <div class="current-jobs">
+
+            <div class="job">
+              <div class="job-top">
+                <div class="job-title">Audio Lead &amp; Founder</div>
+                <div class="job-period">Aug 2025 – Present</div>
+              </div>
+              <div class="job-company">Beat Kingdom · Original Rhythm IP</div>
+              <div class="job-rule"></div>
+              <div class="job-bullets">
+                <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Leading full audio direction on an original rhythm game — designing <strong>adaptive music systems</strong> that respond to gameplay state (BPM, intensity, player input), owning creative vision from concept through in-engine implementation.</span></div>
+                <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Authored <strong>audio mood boards</strong> and <strong>feature documentation</strong> for adaptive systems; managing asset pipeline and <strong>FMOD Studio</strong> middleware integration, setting all technical audio specs unilaterally.</span></div>
+              </div>
+            </div>
+
+            <div class="job">
+              <div class="job-top">
+                <div class="job-title">AI Audio Developer</div>
+                <div class="job-period">Nov 2025 – Present</div>
+              </div>
+              <div class="job-company">Gita Gurukul · AI Pronunciation Platform</div>
+              <div class="job-rule"></div>
+              <div class="job-bullets">
+                <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Building an AI-assisted pronunciation evaluation prototype — architecting phonetic segmentation, speech alignment, and real-time audio feedback pipelines from scratch, independently, with no process scaffolding.</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Giga Fun + Qila -->
+        <div class="job">
+          <div class="job-top">
+            <div class="job-title">Sound Designer &amp; Audio Lead</div>
+            <div class="job-period">Sep 2023 – Sep 2025</div>
+          </div>
+          <div class="job-sub">
+            <div class="job-company">Giga Fun Studios · Bangalore &amp; Qila Games · Bangalore</div>
+            <div class="job-badge">Contract</div>
+          </div>
+          <div class="job-rule"></div>
+          <div class="job-bullets">
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Led audio across four shipped mobile titles — <strong>Milli Match, Rani's Case Files</strong> (50K+ installs), <strong>Travel Match India</strong> (50K+ installs), and <strong>Ludo Hero</strong> (60K+ downloads) — applying modular SFX architecture and parameter-driven adaptive music systems across match-3, puzzle, and multiplayer genres.</span></div>
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Owned end-to-end Unity audio implementation: defined event naming conventions, FMOD Studio integration specs, and spatial audio configuration in direct collaboration with engineers — delivering a reusable audio architecture adopted across the studio's pipeline.</span></div>
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Authored <strong>audio mood boards</strong> and <strong>feature documentation</strong> per title; partnered with designers to define audio states, trigger logic, and reward-feedback systems before engineering handoff — eliminating implementation ambiguity at source.</span></div>
+          </div>
+        </div>
+
+        <!-- Film -->
+        <div class="job">
+          <div class="job-top">
+            <div class="job-title">Audio Director, Sound Designer &amp; Composer</div>
+            <div class="job-period">Jan 2019 – Present</div>
+          </div>
+          <div class="job-sub">
+            <div class="job-company">Independent Film Projects · Hyderabad, India</div>
+            <div class="job-badge">Freelance</div>
+          </div>
+          <div class="job-rule"></div>
+          <div class="job-bullets">
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Sound design and score on <strong>Cinemabandi</strong> (Netflix India, 2021) — #1 trending in debut week, IFFI Jury Special Mention, 7.8 IMDb; collaborated with director and post-production team to define the film's complete sonic identity from scratch.</span></div>
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Directed composers, voice talent, and live instrument recording sessions across four Telugu features — managing all creative and logistical decisions autonomously across <strong>Cinemabandi, Anthele Kadha Anthele, Kavyam,</strong> and <strong>Seetharam Sithralu</strong>.</span></div>
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Sole audio producer on Telugu indie E3 — original songs, background score, sound design, mixing and mastering end-to-end; directed <strong>VO pipeline</strong> including ADR, sync sound, foley, and dubbing across drama, comedy, and horror genres.</span></div>
+          </div>
+        </div>
+
+        <!-- Gear Inc -->
+        <div class="job">
+          <div class="job-top">
+            <div class="job-title">Sound Designer &amp; Composer</div>
+            <div class="job-period">Feb 2022 – Jun 2022</div>
+          </div>
+          <div class="job-sub">
+            <div class="job-company">Gear Inc. · Da Nang, Vietnam</div>
+            <div class="job-badge">Contract</div>
+          </div>
+          <div class="job-rule"></div>
+          <div class="job-bullets">
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Designed audio for globally-distributed IPs <strong>Angry Birds Match 3</strong> (now Angry Birds Hatchlings — 10M+ downloads, Rovio) and <strong>M&amp;M's Adventure</strong> (500K+ installs) — tuning SFX and adaptive music systems to gameplay feel, reward mechanics, and player retention loops in close collaboration with remote design and engineering teams.</span></div>
+          </div>
+          <div class="highlight-callout">
+            Angry Birds Match 3 subsequently rebranded as Angry Birds Hatchlings by Rovio — same APK, same audio systems, live and actively downloaded today.
+          </div>
+        </div>
+
+        <!-- Nukebox -->
+        <div class="job">
+          <div class="job-top">
+            <div class="job-title">Lead Sound Designer &amp; Music Producer</div>
+            <div class="job-period">Oct 2018 – Feb 2022</div>
+          </div>
+          <div class="job-sub">
+            <div class="job-company">Nukebox Studios · Bangalore, India</div>
+            <div class="job-badge">Full-time</div>
+          </div>
+          <div class="job-rule"></div>
+          <div class="job-bullets">
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Shipped audio for <strong>SpongeBob: Krusty Cook-Off</strong> (100M+ downloads, Google Play Users' Choice 2020), Food Truck Chef, and Room Flip — sole audio decision-maker across all three titles simultaneously for 3+ years.</span></div>
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Owned the full <strong>VO pipeline</strong> — casting, directing, and managing outsourced voice talent — alongside SFX design, <strong>FMOD Studio</strong> middleware integration, interactive and adaptive music systems, and Unity audio implementation.</span></div>
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Co-defined the studio's audio integration standard with engineering: event naming schema, parameter contracts, bus architecture, and asset delivery spec — adopted as the production baseline for all subsequent titles.</span></div>
+            <div class="job-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Managed outsourced composers and sound design vendors; authored <strong>audio mood boards, feature documentation,</strong> and asset naming conventions across every project — the single point of creative and technical ownership for audio at the studio.</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section>
+      <div class="sec-header">
+        <div class="sec-title">Leadership &amp; Autonomy</div>
+        <div class="sec-rule"></div>
+      </div>
+      <div class="leadership-grid">
+        <div class="lead-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Sole audio decision-maker across game and film — directing vendors, setting integration standards, delivering without oversight across genres and platforms.</span></div>
+        <div class="lead-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Establishes audio pipelines from scratch — comfortable setting direction before process exists, authoring technical specs that engineering and design teams adopt as production standard.</span></div>
+        <div class="lead-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Directed VO sessions, live instrument recordings, and outsource composers across 10+ shipped games and 5+ feature films — integrating external work into cohesive audio visions on deadline.</span></div>
+        <div class="lead-bullet"><span class="bullet-arrow">▸</span><span class="bullet-text">Collaborates natively with engineers — defining event naming schema, parameter contracts, bus architecture, and asset delivery specs as a default working mode, not an exception.</span></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER STRIP -->
+  <div class="footer-strip">
+    <span class="footer-txt">Audio Lead · Game Audio · 10+ Years</span>
+    <a href="https://www.sirishaudio.com" target="_blank" class="footer-link">www.sirishaudio.com</a>
+    <span class="footer-txt">sirishsatyavolu@gmail.com · 512-947-4428</span>
+  </div>
+
+</div>
+</body>
+</html>

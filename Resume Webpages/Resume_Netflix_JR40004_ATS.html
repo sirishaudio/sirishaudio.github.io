@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sirish Satyavolu — Audio Lead, Games Studio · Netflix JR40004</title>
+<style>
+@page {
+  size: Letter;
+  margin: 0.5in 0.62in;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent:   #5b8fa8;
+  --dark:     #1c2128;
+  --mid:      #444;
+  --light:    #666;
+  --rule:     #c8d8e0;
+  --bg-chip:  #eef4f7;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9.4pt;
+  color: var(--dark);
+  background: #fff;
+  /* screen preview sizing */
+  padding: 0.5in 0.62in;
+  max-width: 8.5in;
+  margin: 0 auto;
+  line-height: 1.38;
+}
+
+@media print {
+  body {
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+/* ── HEADER ── */
+.name {
+  font-size: 20pt;
+  font-weight: bold;
+  letter-spacing: 0.01em;
+  color: var(--dark);
+  margin-bottom: 2pt;
+}
+
+.title-line {
+  font-size: 9.8pt;
+  color: var(--accent);
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  margin-bottom: 6pt;
+}
+
+/* ── CONTACT GRID ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3pt 14pt;
+  margin-bottom: 8pt;
+  padding-bottom: 6pt;
+  border-bottom: 2pt solid var(--accent);
+}
+
+.contact-cell { display: flex; flex-direction: column; gap: 0.5pt; }
+
+.c-label {
+  font-size: 6.5pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.c-value {
+  font-size: 8.5pt;
+  color: var(--mid);
+}
+
+/* ── COMPETENCIES ── */
+.competencies {
+  margin-bottom: 8pt;
+  padding: 5pt 7pt;
+  border: 1pt solid var(--rule);
+  background: var(--bg-chip);
+}
+
+.comp-title {
+  font-size: 7pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--accent);
+  margin-bottom: 3pt;
+}
+
+.comp-item {
+  font-size: 8.2pt;
+  color: var(--dark);
+  width: 33%;
+  padding-right: 6pt;
+  line-height: 1.55;
+}
+
+.comp-item::before { content: "▪ "; color: var(--accent); }
+
+/* ── SECTIONS ── */
+.section { margin-bottom: 8pt; }
+
+.section-title {
+  font-size: 7.5pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--accent);
+  border-bottom: 1pt solid var(--rule);
+  padding-bottom: 2pt;
+  margin-bottom: 5pt;
+}
+
+.profile { font-size: 9.2pt; line-height: 1.52; color: var(--dark); }
+
+/* ── JOBS ── */
+.job { margin-bottom: 7pt; }
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1pt;
+}
+
+.job-title { font-weight: bold; font-size: 9.8pt; color: var(--dark); }
+.job-period { font-size: 8.2pt; color: var(--light); white-space: nowrap; }
+
+.job-company { font-size: 8.6pt; color: var(--mid); margin-bottom: 2pt; }
+.job-type { font-size: 7.8pt; color: var(--light); font-style: italic; }
+
+.bullets { padding-left: 11pt; margin-top: 2pt; }
+.bullets li {
+  font-size: 9pt;
+  line-height: 1.44;
+  margin-bottom: 2.5pt;
+  list-style-type: disc;
+  color: var(--dark);
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.job { page-break-inside: avoid; break-inside: avoid; }
+
+/* ── SKILLS TABLE ── */
+.skills-table { width: 100%; border-collapse: collapse; }
+.skills-table td { font-size: 8.8pt; padding: 2pt 0; vertical-align: top; }
+.skills-table .sk-cat { font-weight: bold; width: 26%; padding-right: 8pt; color: var(--accent); }
+.skills-table .sk-val { color: var(--dark); line-height: 1.44; }
+
+/* ── BOTTOM GRID ── */
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 22pt;
+}
+
+.inline-list { font-size: 9.2pt; line-height: 1.65; color: var(--dark); }
+
+.edu-item { margin-bottom: 6pt; }
+.edu-deg { font-weight: bold; font-size: 10pt; color: var(--dark); }
+.edu-school { font-size: 9.2pt; color: var(--mid); }
+.edu-yr { font-size: 8.8pt; color: var(--light); }
+
+.col-rule { border-left: 1pt solid var(--rule); padding-left: 14pt; }
+
+.lead-bullets { padding-left: 11pt; }
+.lead-bullets li {
+  font-size: 9.2pt;
+  line-height: 1.52;
+  margin-bottom: 5pt;
+  list-style-type: disc;
+  color: var(--dark);
+}
+
+@media print {
+  body { padding: 0; max-width: 100%; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAME -->
+<div class="name">Sirish Satyavolu</div>
+<div class="title-line">Audio Lead &nbsp;·&nbsp; Audio Director &nbsp;·&nbsp; Game Audio</div>
+
+<!-- CONTACT GRID -->
+<div class="contact-grid">
+  <div class="contact-cell">
+    <span class="c-label">Location</span>
+    <span class="c-value">Austin, Texas &nbsp;·&nbsp; Open to Relocate</span>
+  </div>
+  <div class="contact-cell">
+    <span class="c-label">Email</span>
+    <span class="c-value">sirishsatyavolu@gmail.com</span>
+  </div>
+  <div class="contact-cell">
+    <span class="c-label">Phone</span>
+    <span class="c-value">+1 (512) 947-4428</span>
+  </div>
+  <div class="contact-cell">
+    <span class="c-label">Website</span>
+    <span class="c-value">www.sirishaudio.com</span>
+  </div>
+  <div class="contact-cell">
+    <span class="c-label">LinkedIn</span>
+    <span class="c-value">linkedin.com/in/sirishsatyavolu</span>
+  </div>
+</div>
+
+<!-- CORE COMPETENCIES -->
+<div class="competencies">
+  <div class="comp-title">Core Competencies</div>
+  <div style="display:flex; flex-wrap:wrap;">
+    <div class="comp-item">VO Pipeline Ownership</div>
+    <div class="comp-item">FMOD Studio</div>
+    <div class="comp-item">Wwise</div>
+    <div class="comp-item">Audio Direction &amp; Leadership</div>
+    <div class="comp-item">Outsource Management</div>
+    <div class="comp-item">Unity Audio</div>
+    <div class="comp-item">SFX Design</div>
+    <div class="comp-item">Interactive / Adaptive Music</div>
+    <div class="comp-item">Feature Documentation</div>
+    <div class="comp-item">Audio Mood Boards</div>
+    <div class="comp-item">Spatial Audio</div>
+    <div class="comp-item">Cross-functional Collaboration</div>
+    <div class="comp-item">Logic Pro · Pro Tools</div>
+    <div class="comp-item">Composition &amp; Orchestration</div>
+    <div class="comp-item">ADR · Foley · Dubbing</div>
+  </div>
+</div>
+
+<!-- PROFILE -->
+<div class="section">
+  <div class="section-title">Profile</div>
+  <p class="profile">Audio Lead and director with 10+ years delivering production-ready audio for mobile games and feature films, including SpongeBob: Krusty Cook-Off (100M+ downloads, Google Play Users' Choice 2020) and Cinemabandi (Netflix India #1 trending, IFFI Jury Special Mention). Full ownership of VO pipelines — casting, directing, recording, editing, and in-game implementation — alongside SFX design, interactive and adaptive music systems, and outsource management across simultaneous multi-project environments. Fluent in FMOD Studio across shipped titles; Wwise-proficient with event graphs, RTPC systems, state machines, and spatialisation architecture directly transferable from FMOD. Collaborates natively with engineers — defining integration contracts, parameter schemas, and bus architecture as standard practice. Establishes audio pipelines from scratch, authors mood boards and feature documentation, and delivers without oversight at any scale.</p>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section">
+  <div class="section-title">Experience</div>
+
+  <!-- CURRENT -->
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">Audio Lead &amp; AI Audio Developer</div>
+      <div class="job-period">Aug 2025 – Present</div>
+    </div>
+    <div class="job-company">Beat Kingdom · Original Rhythm IP &nbsp;&amp;&nbsp; Gita Gurukul · AI Pronunciation Platform &nbsp;<span class="job-type">Independent</span></div>
+    <ul class="bullets">
+      <li>Leading full audio direction on an original rhythm game — designing adaptive music systems (BPM, intensity, player input), authoring audio mood boards and feature documentation, and managing FMOD Studio integration end-to-end.</li>
+      <li>Building an AI-assisted pronunciation evaluation prototype — architecting phonetic segmentation, speech alignment, and real-time audio feedback pipelines from scratch.</li>
+    </ul>
+  </div>
+
+  <!-- GAMES -->
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">Sound Designer &amp; Audio Lead — Games</div>
+      <div class="job-period">Oct 2018 – Sep 2025</div>
+    </div>
+    <div class="job-company">Nukebox Studios · Bangalore &nbsp;·&nbsp; Gear Inc. · Da Nang, Vietnam &nbsp;·&nbsp; Giga Fun Studios · Bangalore &nbsp;·&nbsp; Qila Games · Bangalore &nbsp;<span class="job-type">Full-time &amp; Contract</span></div>
+    <ul class="bullets">
+      <li>Shipped audio for SpongeBob: Krusty Cook-Off (100M+ downloads, Google Play Users' Choice 2020), Food Truck Chef, and Room Flip at Nukebox — sole audio decision-maker across all three titles simultaneously for 3+ years.</li>
+      <li>Designed SFX and adaptive music for Angry Birds Match 3 (now Angry Birds Hatchlings — 10M+ downloads, Rovio) and M&amp;M's Adventure (500K+ installs) at Gear Inc.; led audio on Milli Match, Rani's Case Files (50K+), Travel Match India (50K+), and Ludo Hero (60K+) at Giga Fun and Qila.</li>
+      <li>Owned the full VO pipeline across all studios — casting, directing, and managing outsourced voice talent — alongside FMOD Studio middleware integration, adaptive music systems, and Unity audio implementation.</li>
+      <li>Co-defined audio integration standards with engineering at every studio: event naming schema, parameter contracts, bus architecture, and asset delivery specs — adopted as production baselines; authored audio mood boards and feature documentation per title.</li>
+    </ul>
+  </div>
+
+  <!-- FILM -->
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">Audio Director, Sound Designer &amp; Composer — Film</div>
+      <div class="job-period">Jan 2019 – Present</div>
+    </div>
+    <div class="job-company">Independent Telugu Film Productions · Hyderabad, India &nbsp;<span class="job-type">Freelance</span></div>
+    <ul class="bullets">
+      <li>Sound design and score on Cinemabandi (Netflix India, 2021) — #1 trending debut week, IFFI Jury Special Mention, 7.8 IMDb; defined the film's complete sonic identity in collaboration with the director and post-production team.</li>
+      <li>Directed composers, voice talent, ADR, foley, and live instrument sessions across four Telugu features (Cinemabandi, Anthele Kadha Anthele, Kavyam, Seetharam Sithralu); sole audio producer on Telugu indie E3 — songs, score, sound design, mix and master end-to-end.</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- TECHNICAL SKILLS -->
+<div class="section">
+  <div class="section-title">Technical Skills</div>
+  <table class="skills-table">
+    <tr>
+      <td class="sk-cat">Middleware:</td>
+      <td class="sk-val">FMOD Studio (shipped — extensive production depth) · Wwise (proficient — event graphs, RTPC, state machines, spatialisation architecture directly transferable from FMOD) · Unity Audio</td>
+    </tr>
+    <tr>
+      <td class="sk-cat">Audio Direction:</td>
+      <td class="sk-val">VO pipeline (casting, directing, recording, editing, implementation) · outsource management · vendor direction · audio mood boards · feature documentation</td>
+    </tr>
+    <tr>
+      <td class="sk-cat">Game Audio:</td>
+      <td class="sk-val">Adaptive / interactive music · SFX design · spatial audio · parameter-driven systems · casual, party &amp; multiplayer genres</td>
+    </tr>
+    <tr>
+      <td class="sk-cat">DAW / Production:</td>
+      <td class="sk-val">Logic Pro · Pro Tools · Reaper · orchestration · composition · mixing &amp; mastering</td>
+    </tr>
+    <tr>
+      <td class="sk-cat">Film / Post &amp; AI:</td>
+      <td class="sk-val">ADR · foley · sync sound · dubbing · phonetic alignment · IPA mapping · speech evaluation</td>
+    </tr>
+  </table>
+</div>
+
+<!-- BOTTOM: SHIPPED TITLES + FILM | EDUCATION + LEADERSHIP -->
+<div class="section">
+  <div class="bottom-grid">
+
+    <div>
+      <div class="section-title">Shipped Titles</div>
+      <p class="inline-list">SpongeBob: Krusty Cook-Off (Nukebox) · Food Truck Chef (Nukebox) · Room Flip (Nukebox) · Angry Birds Match 3 (Gear Inc.) · M&amp;M's Adventure (Gear Inc.) · Milli Match (Giga Fun) · Rani's Case Files (Giga Fun) · Travel Match India (Giga Fun) · Ludo Hero (Qila Games)</p>
+
+      <div style="margin-top: 12pt;">
+        <div class="section-title">Film Credits</div>
+        <p class="inline-list">Cinemabandi (Netflix India, 2021 — #1 trending · IFFI Jury Award · 7.8 IMDb) · Anthele Kadha Anthele · Kavyam · Seetharam Sithralu · E3 (ongoing)<br>
+        <span style="font-size:8.5pt; color:var(--light);">Roles: Audio Director · Sound Designer · Composer · ADR · Foley · Dubbing</span></p>
+      </div>
+    </div>
+
+    <div class="col-rule">
+      <div class="section-title">Education</div>
+      <div class="edu-item">
+        <div class="edu-deg">M.S. Music Technology</div>
+        <div class="edu-school">Georgia Institute of Technology</div>
+        <div class="edu-yr">Aug 2015 – May 2017</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-deg">M.Tech Mechanical Engineering</div>
+        <div class="edu-school">NIT Rourkela</div>
+        <div class="edu-yr">Aug 2008 – May 2012</div>
+      </div>
+
+      <div style="margin-top: 12pt;">
+        <div class="section-title">Leadership &amp; Autonomy</div>
+        <ul class="lead-bullets">
+          <li>Sole audio decision-maker across 9 shipped games and 5+ feature films — directing vendors, setting integration standards, delivering without oversight across genres and platforms.</li>
+          <li>Established audio pipelines from scratch at every studio; authored technical specs adopted by engineering as production standards.</li>
+          <li>Comfortable setting direction before process exists — built for high-trust, high-autonomy environments.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
