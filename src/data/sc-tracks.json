@@ -1,0 +1,262 @@
+{
+  "categories": [
+    {
+      "id": "shipped",
+      "label": "Shipped Titles",
+      "color": "#E8D44A",
+      "thumbBg": "linear-gradient(150deg,#0D1823 0%,#1A1806 100%)",
+      "tracks": [
+        {
+          "title": "Spongebob - Krusty Cookoff - Bikini Bottom - Map",
+          "year": "2022",
+          "label": "SpongeBob: Krusty Cook-Off",
+          "icon": "🍍",
+          "desc": "The adaptive world map theme for Bikini Bottom — layered, parameter-driven, built for 100M+ players.",
+          "tags": ["Adaptive Audio", "Logic Pro", "Mobile"],
+          "url": "https://soundcloud.com/sirishsatyavolu/spongebob-krusty-cookoff",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Spongebob - Krusty Cookoff - Bikini Bottom - Map by Sirish Satyavolu"
+        },
+        {
+          "title": "Room Flip - Cutscene's initial Music",
+          "year": "2022",
+          "label": "Room Flip: Home Decor",
+          "icon": "🏠",
+          "desc": "Opening state music for the Match-3 gameplay loop — sets pace and energy from first tap.",
+          "tags": ["Game Music", "Logic Pro", "Casual"],
+          "url": "https://soundcloud.com/sirishsatyavolu/room-flip-cutscenes-initial",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Room Flip - Cutscene's initial Music by Sirish Satyavolu"
+        },
+        {
+          "title": "Room Flip - Main Match3 Loop",
+          "year": "2022",
+          "label": "Room Flip: Home Decor",
+          "icon": "🏠",
+          "desc": "The primary gameplay loop — designed for long-session retention without fatigue.",
+          "tags": ["Game Loop", "Logic Pro", "Casual"],
+          "url": "https://soundcloud.com/sirishsatyavolu/room-flip-main-match3-loop",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Room Flip - Main Match3 Loop by Sirish Satyavolu"
+        },
+        {
+          "title": "Room Flip - Cutscene Main Music Loop",
+          "year": "2022",
+          "label": "Room Flip: Home Decor",
+          "icon": "🛋️",
+          "desc": "Metagame entry state — warmer, more narrative. Signals transition from puzzle to home-design layer.",
+          "tags": ["Metagame", "Logic Pro", "Casual"],
+          "url": "https://soundcloud.com/sirishsatyavolu/room-flip-cutscene-main-music",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Room Flip - Cutscene Main Music Loop by Sirish Satyavolu"
+        },
+        {
+          "title": "Room Flip - Loading Music",
+          "year": "2022",
+          "label": "Room Flip: Home Decor",
+          "icon": "🛋️",
+          "desc": "Sustained metagame ambient loop — relaxed, spacious, designed for unhurried browsing.",
+          "tags": ["Metagame", "Logic Pro", "Casual"],
+          "url": "https://soundcloud.com/sirishsatyavolu/room-flip-loading-music",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Room Flip - Loading Music by Sirish Satyavolu"
+        },
+        {
+          "title": "Angry Birds Hatchlings — Sports Theme",
+          "year": "2022",
+          "label": "Angry Birds Hatchlings",
+          "icon": "🏆",
+          "desc": "High-energy seasonal music for the Sports chapter — built for competitive momentum and quick loops.",
+          "tags": ["Adaptive Audio", "FMOD", "Rovio"],
+          "url": "https://soundcloud.com/sirishsatyavolu/angry-birds-hatchlings-sports",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Angry Birds Hatchlings — Sports Theme by Sirish Satyavolu"
+        },
+        {
+          "title": "Angry Birds Hatchlings — Zoo Theme",
+          "year": "2022",
+          "label": "Angry Birds Hatchlings",
+          "icon": "🦁",
+          "desc": "Playful, character-driven music for the Zoo seasonal chapter. Warm textures, bright orchestration.",
+          "tags": ["Adaptive Audio", "FMOD", "Rovio"],
+          "url": "https://soundcloud.com/sirishsatyavolu/angry-birds-hatchlings-zoo",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Angry Birds Hatchlings — Zoo Theme by Sirish Satyavolu"
+        },
+        {
+          "title": "Ludo Hero - Main Menu - Theme 1",
+          "year": "2024",
+          "label": "Ludo Hero",
+          "icon": "🎲",
+          "desc": "Upbeat, inviting main menu theme — sets a social, competitive tone for multiplayer board game sessions.",
+          "tags": ["Game Music", "Logic Pro", "Multiplayer"],
+          "url": "https://soundcloud.com/sirishsatyavolu/ludo-hero-main-menu-theme-1",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Ludo Hero - Main Menu -  Theme 1 by Sirish Satyavolu"
+        },
+        {
+          "title": "Ludo Hero — Gameplay Theme 1",
+          "year": "2024",
+          "label": "Ludo Hero",
+          "icon": "🎲",
+          "desc": "Primary gameplay loop — tension-building groove designed for turn-based multiplayer pacing.",
+          "tags": ["Game Loop", "Logic Pro", "Multiplayer"],
+          "url": "https://soundcloud.com/sirishsatyavolu/ludo-hero-main-menu-music-1",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Ludo Hero — Gameplay Theme 1 by Sirish Satyavolu"
+        },
+        {
+          "title": "Ludo Hero — Gameplay Theme 2",
+          "year": "2024",
+          "label": "Ludo Hero",
+          "icon": "🎲",
+          "desc": "Alternate gameplay loop — lighter energy, varied texture for session variety.",
+          "tags": ["Game Loop", "Logic Pro", "Multiplayer"],
+          "url": "https://soundcloud.com/sirishsatyavolu/ludo-hero-gameplay-theme-2",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Ludo Hero — Gameplay Theme 2 by Sirish Satyavolu"
+        },
+        {
+          "title": "Ludo Hero — Raid Theme 1",
+          "year": "2024",
+          "label": "Ludo Hero",
+          "icon": "⚔️",
+          "desc": "First raid music cue — urgency and momentum, signalling high-stakes competitive play.",
+          "tags": ["Action", "Logic Pro", "Multiplayer"],
+          "url": "https://soundcloud.com/sirishsatyavolu/ludo-hero-raid-theme-1",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Ludo Hero — Raid Theme 1 by Sirish Satyavolu"
+        },
+        {
+          "title": "Ludo Hero — Raid Theme 2",
+          "year": "2024",
+          "label": "Ludo Hero",
+          "icon": "⚔️",
+          "desc": "Second raid cue — darker harmonic palette, sustained drive.",
+          "tags": ["Action", "Logic Pro", "Multiplayer"],
+          "url": "https://soundcloud.com/sirishsatyavolu/ludo-hero-raid-theme-2",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Ludo Hero — Raid Theme 2 by Sirish Satyavolu"
+        },
+        {
+          "title": "Ludo Hero — Raid Theme 3",
+          "year": "2024",
+          "label": "Ludo Hero",
+          "icon": "⚔️",
+          "desc": "Third raid cue — percussion-forward with melodic hooks for repeatability.",
+          "tags": ["Action", "Logic Pro", "Multiplayer"],
+          "url": "https://soundcloud.com/sirishsatyavolu/ludo-hero-raid-theme-3",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Ludo Hero — Raid Theme 3 by Sirish Satyavolu"
+        },
+        {
+          "title": "Ludo Hero — Raid Theme 4",
+          "year": "2024",
+          "label": "Ludo Hero",
+          "icon": "⚔️",
+          "desc": "Fourth raid cue — mid-energy bridge variant, transitions between intensity states.",
+          "tags": ["Action", "Logic Pro", "Multiplayer"],
+          "url": "https://soundcloud.com/sirishsatyavolu/ludo-hero-raid-theme-4",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Ludo Hero — Raid Theme 4 by Sirish Satyavolu"
+        },
+        {
+          "title": "Ludo Hero — Raid Theme 5",
+          "year": "2024",
+          "label": "Ludo Hero",
+          "icon": "⚔️",
+          "desc": "Fifth raid cue — cinematic sweep, peak intensity variant.",
+          "tags": ["Action", "Logic Pro", "Multiplayer"],
+          "url": "https://soundcloud.com/sirishsatyavolu/ludo-hero-raid-theme-5",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Ludo Hero — Raid Theme 5 by Sirish Satyavolu"
+        },
+        {
+          "title": "Ludo Hero — Raid Theme 6",
+          "year": "2024",
+          "label": "Ludo Hero",
+          "icon": "⚔️",
+          "desc": "Sixth raid cue — stripped-back rhythmic variant for shorter encounter windows.",
+          "tags": ["Action", "Logic Pro", "Multiplayer"],
+          "url": "https://soundcloud.com/sirishsatyavolu/ludo-hero-raid-theme-6",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Ludo Hero — Raid Theme 6 by Sirish Satyavolu"
+        },
+        {
+          "title": "Ludo Hero — Raid Theme 7",
+          "year": "2024",
+          "label": "Ludo Hero",
+          "icon": "⚔️",
+          "desc": "Final raid cue — resolving energy, bridges back to gameplay loop state.",
+          "tags": ["Action", "Logic Pro", "Multiplayer"],
+          "url": "https://soundcloud.com/sirishsatyavolu/ludo-hero-raid-theme-7",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Ludo Hero — Raid Theme 7 by Sirish Satyavolu"
+        },
+        {
+          "title": "Food Truck Chef — Main Theme",
+          "year": "2022",
+          "label": "Food Truck Chef",
+          "icon": "🚚",
+          "desc": "Upbeat, warm main theme for a globally distributed casual cooking game. Full audio pipeline.",
+          "tags": ["Game Music", "Logic Pro", "Casual"],
+          "url": "https://soundcloud.com/sirishsatyavolu/food-truck-chef-main-theme",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Food Truck Chef — Main Theme by Sirish Satyavolu"
+        }
+      ]
+    },
+    {
+      "id": "experimental",
+      "label": "Experimental",
+      "color": "#9B72CF",
+      "thumbBg": "linear-gradient(150deg,#0D1823 0%,#1A1430 100%)",
+      "tracks": [
+        {
+          "title": "Battle Squads — Main Menu Theme",
+          "year": "2023",
+          "label": "PBG Squads",
+          "icon": "🎮",
+          "desc": "Intense, cinematic main menu theme for a PUBG-style battle royale. Builds anticipation before the drop.",
+          "tags": ["Cinematic", "Logic Pro", "Battle Royale"],
+          "url": "https://soundcloud.com/sirishsatyavolu/pbg-squads-main-menu",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Battle Squads — Main Menu Theme by Sirish Satyavolu"
+        },
+        {
+          "title": "Battle Squads - Lobby Theme",
+          "year": "2023",
+          "label": "PBG Squads",
+          "icon": "🏪",
+          "desc": "Ambient lobby music for the store and pre-match waiting room. Same energy universe, lighter tension.",
+          "tags": ["Ambient", "Logic Pro", "Battle Royale"],
+          "url": "https://soundcloud.com/sirishsatyavolu/battle-squads-lobby-theme",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Battle Squads - Lobby Theme by Sirish Satyavolu"
+        },
+        {
+          "title": "Saffron & Smoke - Experimental Meta Loop",
+          "year": "2026",
+          "label": "Experimental",
+          "icon": "🌿",
+          "desc": "World-music-infused metagame loop. Warm orchestral textures, playful rhythmic pulse, designed for seamless repeat. 112 BPM.",
+          "tags": ["Experimental", "World Music", "Loop"],
+          "url": "https://soundcloud.com/sirishsatyavolu/saffron-smoke-experimental",
+          "thumb": "https://soundcloud.com/images/fb_placeholder.png",
+          "scTitle": "Saffron & Smoke - Experimental Meta Loop by Sirish Satyavolu"
+        },
+        {
+          "title": "Prompt DJ - Experiment",
+          "year": "2025",
+          "label": "AI Audio",
+          "icon": "🤖",
+          "desc": "AI-assisted DJ experiment exploring procedural music generation and real-time parameter control.",
+          "tags": ["AI", "Procedural", "Electronic"],
+          "url": "https://soundcloud.com/sirishsatyavolu/prompt-dj-experiment",
+          "thumb": "https://i1.sndcdn.com/artworks-A1tldsnBSrZDEzcW-WiuyCg-t500x500.jpg",
+          "scTitle": "Prompt DJ - Experiment by Sirish Satyavolu"
+        }
+      ]
+    }
+  ]
+}

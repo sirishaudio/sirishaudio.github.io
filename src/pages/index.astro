@@ -31,52 +31,21 @@ const aiAudio = [
   { title: "Sanskrit Phonetics Library", studio: "AI Phonetics Researcher", year: "2026–Present", desc: "Structured IPA-mapped phonetic dataset with articulation features for an API-ready speech and pronunciation platform.", tags: ["IPA Mapping","Dataset","API","Phonetics"], note: "Active" },
 ];
 
-// ── Listen section — category-structured track data ──────────────────────────
-// Categories: 0=Game Music, 1=Experimental, 2=Reel Music, 3=Ad Film Music
-// Add track URLs here; thumbnails are fetched at build time via SoundCloud oembed.
-const listenCatDef = [
-  {
-    label: "Game Music",
-    tracks: [
-      { title: "FXOverload",  year: "2016", label: "Game FX",   icon: "⚡", color: "#E8924A", thumbBg: "linear-gradient(150deg,#0D1823 0%,#271508 100%)", desc: "High-density FX layering experiment. Explores timbral saturation and controlled chaos.",    tags: ["FX","Experimental","Electronic"], url: "https://soundcloud.com/sirishsatyavolu/angst-september-13" },
-      { title: "Come On",     year: "2016", label: "Game Loop",  icon: "🔥", color: "#CF5F5F", thumbBg: "linear-gradient(150deg,#0D1823 0%,#220A0A 100%)", desc: "Energetic and propulsive loop. High-retention groove designed for continuous play.",         tags: ["Electronic","Groove","Loop"],     url: "https://soundcloud.com/sirishsatyavolu/come-on-at-freestylus" },
-      { title: "Jaywalk",     year: "2016", label: "Game Loop",  icon: "🚶", color: "#4FC4A8", thumbBg: "linear-gradient(150deg,#0D1823 0%,#071F1C 100%)", desc: "Loose, wandering groove. Laid-back loop suited for exploration or puzzle game states.",      tags: ["Groove","Electronic","Loop"],     url: "https://soundcloud.com/sirishsatyavolu/jaywalk-september-3" },
-    ],
-  },
-  {
-    label: "Experimental",
-    tracks: [
-      { title: "Prompt DJ — Experiment", year: "2025", label: "AI Audio",    icon: "🤖", color: "#9B72CF", thumbBg: "linear-gradient(150deg,#0D1823 0%,#1A1430 100%)", desc: "AI-assisted DJ experiment exploring procedural music generation and real-time parameter control.", tags: ["AI","Procedural","Electronic"], url: "https://soundcloud.com/sirishsatyavolu/prompt-dj-experiment" },
-      { title: "Contravention",          year: "2016", label: "Composition", icon: "🎹", color: "#3A8A65", thumbBg: "linear-gradient(150deg,#0D1823 0%,#1C2B3A 100%)", desc: "Electronic composition exploring rhythmic tension and melodic counterpoint.",                     tags: ["Electronic","Composition"],    url: "https://soundcloud.com/sirishsatyavolu/contravention-september-15" },
-      { title: "Mondhÿ",                 year: "2016", label: "Composition", icon: "🌙", color: "#6B5EA8", thumbBg: "linear-gradient(150deg,#0D1823 0%,#16102E 100%)", desc: "Nocturnal textural piece from the September 2016 daily composition series.",                     tags: ["Electronic","Atmospheric"],    url: "https://soundcloud.com/sirishsatyavolu/mond-september-14" },
-      { title: "Threesome",              year: "2016", label: "Composition", icon: "🎵", color: "#C4A84F", thumbBg: "linear-gradient(150deg,#0D1823 0%,#1E1507 100%)", desc: "Three-voice interplay exploring counterpoint and rhythmic displacement.",                        tags: ["Counterpoint","Electronic"],   url: "https://soundcloud.com/sirishsatyavolu/2-threesome-september-10" },
-    ],
-  },
-  {
-    label: "Reel Music",
-    tracks: [
-      { title: "Right and Ease", year: "2016", label: "Composition", icon: "🌊", color: "#4F7EF7", thumbBg: "linear-gradient(150deg,#0D1823 0%,#0D1628 100%)", desc: "Ambient-leaning piece with layered textures and evolving harmonic movement.", tags: ["Ambient","Texture"],    url: "https://soundcloud.com/sirishsatyavolu/right-and-ease" },
-      { title: "Contravention", year: "2016", label: "Composition", icon: "🎹", color: "#3A8A65", thumbBg: "linear-gradient(150deg,#0D1823 0%,#1C2B3A 100%)", desc: "Electronic composition exploring rhythmic tension and melodic counterpoint.",  tags: ["Electronic","Reel"],    url: "https://soundcloud.com/sirishsatyavolu/contravention-september-15" },
-    ],
-  },
-  {
-    label: "Ad Film Music",
-    tracks: [
-      { title: "I Miss You Thrice", year: "2016", label: "Cinematic", icon: "🎬", color: "#8A9BB0", thumbBg: "linear-gradient(150deg,#0D1823 0%,#1A1F2A 100%)", desc: "Emotionally driven composition with cinematic undertones and dynamic arc.",   tags: ["Cinematic","Emotional"],  url: "https://soundcloud.com/sirishsatyavolu/i-miss-you-thrice-september-19" },
-      { title: "FirstLove",        year: "2016", label: "Composition", icon: "💫", color: "#D47FA0", thumbBg: "linear-gradient(150deg,#0D1823 0%,#2A1020 100%)", desc: "Emotional melodic piece suited for tender, intimate ad film moments.",           tags: ["Melodic","Emotional"],    url: "https://soundcloud.com/sirishsatyavolu/firstlove-september-12" },
-    ],
-  },
-];
+// ── Listen section — loaded from src/data/sc-tracks.json ─────────────────────
+// To add/update tracks: edit sc-tracks.json then run: npm run sync-sc
+import scTracksData from '../data/sc-tracks.json';
 
 const listenCats = await Promise.all(
-  listenCatDef.map(async (cat, catIdx) => {
+  scTracksData.categories.map(async (cat, catIdx) => {
     const tracks = await Promise.all(cat.tracks.map(async (t) => {
+      // Use cached thumb from sync-sc if present, otherwise fetch live
+      if (t.thumb) return { ...t, color: cat.color, thumbBg: cat.thumbBg };
       try {
         const res = await fetch(`https://soundcloud.com/oembed?url=${encodeURIComponent(t.url)}&format=json`);
         const data = await res.json();
-        return { ...t, thumb: data.thumbnail_url ?? '' };
+        return { ...t, color: cat.color, thumbBg: cat.thumbBg, thumb: data.thumbnail_url ?? '' };
       } catch {
-        return { ...t, thumb: '' };
+        return { ...t, color: cat.color, thumbBg: cat.thumbBg, thumb: '' };
       }
     }));
     return { label: cat.label, tracks, catIdx };
@@ -598,10 +567,10 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
   /* ── WORK SECTION ── */
   .work-hdr { flex-shrink: 0; margin-bottom: 0.5rem; }
   .work-hdr .section-sub { margin-bottom: 1.5rem; }
-  #work-v2 .work-hdr .section-sub { margin-bottom: 0.75rem; }
-  #work-v2 .work-btn-row { margin-bottom: 0.5rem; }
+  #work .work-hdr .section-sub { margin-bottom: 0.75rem; }
+  #work .work-btn-row { margin-bottom: 0.5rem; }
   /* Category buttons — button prefab, same row as reel-btn-row */
-  .work-btn-row { display: flex; gap: 0.4rem; flex-shrink: 0; margin-bottom: 1rem; }
+  .work-btn-row { display: flex; flex-wrap: nowrap; gap: 0.4rem; flex-shrink: 0; margin-bottom: 1rem; max-width: var(--content-w); overflow: hidden; }
   .work-btn {
     display: inline-flex; align-items: center;
     background: #0D1823; border: 1px solid #1C2B3A; border-radius: 5px;
@@ -1219,12 +1188,13 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
     display: flex; flex-direction: row; height: 100%;
     overflow-x: auto; scrollbar-width: none;
     scroll-snap-type: x mandatory;
-    scroll-padding-left:  calc(var(--peek-x) + var(--card-gap));
-    scroll-padding-right: calc(var(--peek-x) + var(--card-gap));
     align-items: center;
-    /* Symmetric leading/trailing = peek+gap so first/last card can center */
-    padding-left:  calc(var(--peek-x) + var(--card-gap));
-    padding-right: calc(var(--peek-x) + var(--card-gap));
+    /* True centering: (panel-w - card-w) / 2 = (28u - 16u) / 2 = 6u each side */
+    --htrack-side-pad: calc((var(--panel-w) - var(--card-w)) / 2);
+    scroll-padding-left:  var(--htrack-side-pad);
+    scroll-padding-right: var(--htrack-side-pad);
+    padding-left:  var(--htrack-side-pad);
+    padding-right: var(--htrack-side-pad);
     padding-top:   var(--card-gap);
     padding-bottom: var(--card-gap);
     gap: calc(var(--card-gap) * 2);
@@ -1237,8 +1207,12 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
     overflow-y: auto; scrollbar-width: none;
     scroll-snap-type: y mandatory;
     align-items: center;
-    padding-top:    calc(var(--peek-y) + var(--card-gap));
-    padding-bottom: calc(var(--peek-y) + var(--card-gap));
+    /* True vertical centering: (panel-h - card-h) / 2 */
+    --vtrack-side-pad: calc((var(--panel-h) - var(--lc2-card-h)) / 2);
+    scroll-padding-top:    var(--vtrack-side-pad);
+    scroll-padding-bottom: var(--vtrack-side-pad);
+    padding-top:    var(--vtrack-side-pad);
+    padding-bottom: var(--vtrack-side-pad);
     padding-left:   var(--card-gap);
     padding-right:  var(--card-gap);
     gap: calc(var(--card-gap) * 2);
@@ -1261,6 +1235,10 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
     transform: scale(1.02);
     box-shadow: 0 6px 22px rgba(0,0,0,0.55), 0 0 14px rgba(58,138,101,0.18);
   }
+  .v2-card-h.v2-active {
+    border-color: #2D6A4F;
+    box-shadow: 0 0 0 1px #2D6A4F, 0 0 14px rgba(45,106,79,0.5), 0 0 32px rgba(45,106,79,0.2);
+  }
 
   /* ── Card slot — vertical (Listen V2) ── */
   .v2-card-v2 {
@@ -1277,6 +1255,10 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
   .v2-card-v2:hover {
     transform: scale(1.01);
     box-shadow: 0 3px 12px rgba(0,0,0,0.5), 0 0 10px rgba(58,138,101,0.16);
+  }
+  .v2-card-v2.v2-active {
+    border-color: #2D6A4F;
+    box-shadow: 0 0 0 1px #2D6A4F, 0 0 12px rgba(45,106,79,0.45), 0 0 28px rgba(45,106,79,0.18);
   }
 
   /* ── REEL V2 card internals ── */
@@ -1584,17 +1566,15 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
     transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
   }
   /* ── Work V2 category buttons + section layout ── */
-  #work-v2 .section-inner,
-  #listen-v2 .section-inner,
-  #listen-v3 .section-inner {
+  #work   .section-inner,
+  #listen .section-inner {
     display: flex; flex-direction: column;
     width: var(--content-w); max-width: 100%; margin: 0 auto; padding: 0;
   }
-  #work-v2   { justify-content: center; padding-top: calc(var(--nav-h) + 1rem); }
-  #listen-v2 { justify-content: center; padding-top: calc(var(--nav-h) + 1rem); }
-  #listen-v3 { justify-content: center; padding-top: calc(var(--nav-h) + 1rem); }
-  #listen-v2 .section-sub, #listen-v3 .section-sub { margin-bottom: 0.75rem; }
-  #listen-v2 .work-btn-row, #listen-v3 .work-btn-row { margin-bottom: 0.5rem; }
+  #work   { justify-content: center; padding-top: calc(var(--nav-h) + 1rem); }
+  #listen { justify-content: center; padding-top: calc(var(--nav-h) + 1rem); }
+  #listen .section-sub { margin-bottom: 0.75rem; }
+  #listen .work-btn-row { margin-bottom: 0.5rem; }
   /* Per-letter H2 animations */
   @keyframes lc3-letter-in  { from { opacity:0; transform:translateY(7px);  } to { opacity:1; transform:translateY(0); } }
   @keyframes lc3-letter-out { from { opacity:1; transform:translateY(0);    } to { opacity:0; transform:translateY(-5px); } }
@@ -1612,8 +1592,18 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
   }
 
   /* ── PROJECTS V2 — portrait (5:7) card overrides ── */
-  #work-v2 {
+  #work {
     --panel-w: calc(var(--panel-h) * 18.5 / 16); /* card 8.5u + 2×gap 1u + 2×peek 4u = 18.5u */
+  }
+  /* Portrait-card tracks need side-pad based on portrait card width, not --card-w (16u) */
+  #work   .v2-htrack,
+  #listen .v2-htrack {
+    --portrait-card-w: calc(var(--unit) * 8.5);
+    --htrack-side-pad: calc((var(--panel-w) - var(--portrait-card-w)) / 2);
+    scroll-padding-left:  var(--htrack-side-pad);
+    scroll-padding-right: var(--htrack-side-pad);
+    padding-left:  var(--htrack-side-pad);
+    padding-right: var(--htrack-side-pad);
   }
   .v2-card-portrait {
     flex-shrink: 0;
@@ -1630,6 +1620,10 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
   .v2-card-portrait:hover {
     transform: scale(1.03);
     box-shadow: 0 8px 26px rgba(0,0,0,0.6), 0 0 16px rgba(58,138,101,0.2);
+  }
+  .v2-card-portrait.v2-active {
+    border-color: #2D6A4F;
+    box-shadow: 0 0 0 1px #2D6A4F, 0 0 14px rgba(45,106,79,0.5), 0 0 32px rgba(45,106,79,0.2);
   }
 
   /* ── PATH TIMELINE ── */
@@ -1757,7 +1751,6 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
   <!-- Right: links + toggles -->
   <div class="nav-right">
     <div class="nav-links">
-      <a href="#reel">Reel</a>
       <a href="#work">Work</a>
       <a href="#listen">Listen</a>
       <a href="#path">Path</a>
@@ -1976,8 +1969,8 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
       </div>
 
       <div class="reveal reveal-delay-3" style="display:flex;gap:0.875rem;flex-wrap:wrap;">
-        <a href="#reel" class="btn-primary">Watch Reel</a>
-        <a href="#work" class="btn-ghost">View Work</a>
+        <a href="#work" class="btn-primary">View Work</a>
+        <a href="#listen" class="btn-ghost">Listen</a>
       </div>
     </div>
   </div>
@@ -2064,7 +2057,8 @@ const reelsV2 = await Promise.all(reelsV2Def.map(async (r) => {
 </section>
 PARKED -->
 
-<!-- ══════════════════ REEL V2 ══════════════════ -->
+<!-- ══════════════════ REEL V2 — PARKED ══════════════════ -->
+<!-- PARKED: reels not ready for launch — restore when demo reels are uploaded
 <section id="reel" class="section-pad">
   <div class="glyph-strip" aria-hidden="true">
     <svg class="glyph g-beam"    style="left:9%;top:35%"  viewBox="0 0 28 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="5"  cy="30" rx="4.5" ry="3.2" transform="rotate(-12 5 30)"  fill="currentColor" stroke="none"/><ellipse cx="22" cy="30" rx="4.5" ry="3.2" transform="rotate(-12 22 30)" fill="currentColor" stroke="none"/><line x1="9"  y1="28" x2="9"  y2="5" stroke-width="1.8"/><line x1="26" y1="28" x2="26" y2="5" stroke-width="1.8"/><rect x="9" y="4" width="17" height="3.5" rx="0.5" fill="currentColor" stroke="none"/></svg>
@@ -2144,6 +2138,7 @@ PARKED -->
     </div>
   </div>
 </section>
+-->
 
 <!-- ══════════════════ WORK V1 — PARKED ══════════════════ -->
 <!-- PARKED: kept for reference, not rendered
@@ -2523,10 +2518,9 @@ PARKED -->
     <p class="section-sub reveal reveal-delay-2">Selected tracks — game audio, adaptive music, film scores.</p>
 
     <div class="work-btn-row reveal reveal-delay-3">
-      <button class="work-btn active" data-lc2-cat="0">Game Music</button>
-      <button class="work-btn" data-lc2-cat="1">Experimental</button>
-      <button class="work-btn" data-lc2-cat="2">Reel Music</button>
-      <button class="work-btn" data-lc2-cat="3">Ad Film</button>
+      {listenCats.map((cat, i) => (
+        <button class={`work-btn${i === 0 ? ' active' : ''}`} data-lc2-cat={String(i)}>{cat.label}</button>
+      ))}
     </div>
 
     <div class="v2-carousel-wrap v2-vertical reveal" style="flex-shrink:0;">
@@ -2586,15 +2580,14 @@ PARKED -->
   </div>
   <div class="section-inner">
     <p class="eyebrow reveal">Audio</p>
-    <h2 class="section-h2 reveal reveal-delay-1">Listen<span class="coming-soon-tag">Coming Soon</span></h2>
+    <h2 class="section-h2 reveal reveal-delay-1">Listen to my works</h2>
     <p class="section-sub reveal reveal-delay-2">Selected tracks — game audio, adaptive music, film scores.</p>
 
-    <!-- Category buttons -->
+    <!-- Category buttons — generated from sc-tracks.json -->
     <div class="work-btn-row reveal reveal-delay-3">
-      <button class="work-btn active" data-lc3-cat="0">Game Music</button>
-      <button class="work-btn" data-lc3-cat="1">Experimental</button>
-      <button class="work-btn" data-lc3-cat="2">Reel Music</button>
-      <button class="work-btn" data-lc3-cat="3">Ad Film</button>
+      {listenCats.map((cat, i) => (
+        <button class={`work-btn${i === 0 ? ' active' : ''}`} data-lc3-cat={String(i)}>{cat.label}</button>
+      ))}
     </div>
 
     <!-- Horizontal centered carousel — JS populates the track -->
@@ -3803,19 +3796,20 @@ Max-width: 600px, centered</div></div>
     function lcScrollToCard(idx) {
       if (!lcTray || !lcCardEls[idx]) return;
       const card = lcCardEls[idx];
-      lcTray.scrollTo({ top: card.offsetTop - lcTray.offsetTop, behavior: 'smooth' });
+      const center = card.offsetTop - lcTray.offsetTop - (lcTray.clientHeight - card.offsetHeight) / 2;
+      lcTray.scrollTo({ top: center, behavior: 'smooth' });
     }
 
-    // Stepped animation — reel standard + wrap
+    // Stepped animation — clamped (no wrap)
     async function lcGoTo(target) {
       if (lcIsAnimating || isModalOpen) return;
-      const norm = ((target % LC_COUNT) + LC_COUNT) % LC_COUNT;
+      const norm = Math.max(0, Math.min(LC_COUNT - 1, target));
       if (norm === lcIdx) return;
       lcIsAnimating = true;
 
-      const wrappingForward  = lcIdx === LC_COUNT - 1 && norm === 0;
-      const wrappingBackward = lcIdx === 0 && norm === LC_COUNT - 1;
-      const steps = (wrappingForward || wrappingBackward) ? LC_COUNT - 1 : Math.abs(norm - lcIdx);
+      const wrappingForward  = false;
+      const wrappingBackward = false;
+      const steps = Math.abs(norm - lcIdx);
       const msPerStep = Math.round(350 / steps);
 
       lcScrollToCard(norm); // start scroll immediately, concurrent with knob
@@ -3898,14 +3892,14 @@ Max-width: 600px, centered</div></div>
         if (!lcDragging) return;
         lcDragAccum += (e.clientX - lcDragX) * 0.6; lcDragX = e.clientX;
         const raw = Math.round(lcIdx + lcDragAccum / 45);
-        const t = raw < 0 ? LC_COUNT - 1 : raw >= LC_COUNT ? 0 : raw;
+        const t = Math.max(0, Math.min(LC_COUNT - 1, raw));
         if (t !== lcIdx) { lcDragAccum = 0; lcGoTo(t); }
       });
       document.addEventListener('touchmove', (e) => {
         if (!lcDragging) return; e.preventDefault();
         lcDragAccum += (e.touches[0].clientX - lcDragX) * 0.6; lcDragX = e.touches[0].clientX;
         const raw = Math.round(lcIdx + lcDragAccum / 45);
-        const t = raw < 0 ? LC_COUNT - 1 : raw >= LC_COUNT ? 0 : raw;
+        const t = Math.max(0, Math.min(LC_COUNT - 1, raw));
         if (t !== lcIdx) { lcDragAccum = 0; lcGoTo(t); }
       }, { passive: false });
       document.addEventListener('mouseup', () => { lcDragging = false; });
@@ -4034,6 +4028,8 @@ Max-width: 600px, centered</div></div>
       if (state.indicator) state.indicator.style.transitionDuration = '';
       state.isAnimating = false;
     }
+    // Highlight active card
+    state.cardEls.forEach((c, i) => c.classList.toggle('v2-active', i === state.idx));
   }
 
   // Shared V2 stepped goto — clamped (no wrap): Work V2
@@ -4046,8 +4042,9 @@ Max-width: 600px, centered</div></div>
     const steps = Math.abs(target - state.idx);
     const msPerStep = Math.round(350 / steps);
     if (state.indicator) state.indicator.style.transitionDuration = `${msPerStep}ms`;
-    const slotW = state.cardEls[0] ? state.cardEls[0].offsetWidth + parseFloat(getComputedStyle(state.track).gap || '0') : 0;
-    state.track.scrollTo({ left: target * slotW, behavior: 'smooth' });
+    if (state.cardEls[target]) {
+      state.cardEls[target].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
     try {
       const dir = target > state.idx ? 1 : -1;
       while (state.idx !== target) {
@@ -4059,6 +4056,8 @@ Max-width: 600px, centered</div></div>
       if (state.indicator) state.indicator.style.transitionDuration = '';
       state.isAnimating = false;
     }
+    // Highlight active card
+    state.cardEls.forEach((c, i) => c.classList.toggle('v2-active', i === state.idx));
   }
 
   // Shared drag wiring for horizontal V2 carousels
@@ -4103,10 +4102,9 @@ Max-width: 600px, centered</div></div>
       const n = state.dots.length; if (n <= 1) return;
       const sp  = isVertical ? track.scrollTop  : track.scrollLeft;
       const max = isVertical ? (track.scrollHeight - track.clientHeight) : (track.scrollWidth - track.clientWidth);
-      // Swiped "next" at last card → wrap to first
-      if (delta < 0 && sp >= max - 5 && state.idx === n - 1) goFn(0);
-      // Swiped "prev" at first card → wrap to last
-      if (delta > 0 && sp <=     5   && state.idx === 0)     goFn(n - 1);
+      // Clamped — no wrap at boundaries
+      if (delta < 0 && state.idx < n - 1) goFn(state.idx + 1);
+      if (delta > 0 && state.idx > 0)     goFn(state.idx - 1);
     };
     track.addEventListener('touchstart', (e) => onStart(e.touches[0][key]),        { passive: true });
     track.addEventListener('touchend',   (e) => onEnd(e.changedTouches[0][key]),   { passive: true });
@@ -4203,6 +4201,7 @@ Max-width: 600px, centered</div></div>
           if (newIdx !== state.idx) {
             state.idx = newIdx;
             v2SnapVisuals(newIdx, state.stops, state.dots, state.indicator, state.progress, buildArcPath, state.ledGlowId);
+            state.cardEls.forEach((c, i) => c.classList.toggle('v2-active', i === newIdx));
           }
         }
         ticking = false;
@@ -4294,6 +4293,8 @@ Max-width: 600px, centered</div></div>
     // Init visuals + infinite clones
     v2SnapVisuals(0, stops, dotEls, indicator, progress, buildArcPath, 'r2-led-glow');
     v2InitInfiniteClones(track, state, false);
+    // Mark card 0 active on init
+    state.cardEls.forEach((c, i) => c.classList.toggle('v2-active', i === 0));
   })();
 
   // ══════════════════════════════════════════════
@@ -4385,6 +4386,8 @@ Max-width: 600px, centered</div></div>
         v2SnapVisuals(0, stops, dots, indicator, progress, buildArcPath, 'w2-led-glow');
         v2InitInfiniteClones(track, state, false);
       }
+      // Mark card 0 active on init
+      state.cardEls.forEach((c, i) => c.classList.toggle('v2-active', i === 0));
     }
 
     const goTo = (t) => v2GoToWrapped(t, state);
@@ -4521,19 +4524,21 @@ Max-width: 600px, centered</div></div>
         if (indicLine) indicLine.setAttribute('stroke','#8A9BB0');
         if (indicDot)  indicDot.setAttribute('fill','#3A8A65');
         v2SnapVisuals(0, stops, dots, indicator, progress, buildArcPath, 'lc2-led-glow');
-        v2InitInfiniteClones(track, state, true);
+        // no infinite clones — clamped
       }
+      // Mark card 0 active on init
+      state.cardEls.forEach((c, i) => c.classList.toggle('v2-active', i === 0));
       requestAnimationFrame(() => wireLc2Playback());
     }
 
-    const lc2GoTo = t => v2GoToWrapped(t, state);
+    const lc2GoTo = t => v2GoToClamped(t, state);
     catBtns.forEach(b => b.addEventListener('click', () => {
       catBtns.forEach(x => x.classList.remove('active'));
       b.classList.add('active');
       track.scrollTo({ top: 0, behavior: 'instant' });
       buildLc2Track(Number(b.dataset.lc2Cat));
     }));
-    wireV2HorizDrag(knobBody, state, lc2GoTo, true);
+    wireV2HorizDrag(knobBody, state, lc2GoTo, false);
     wireV2ScrollSnap(track, state, true);
     buildLc2Track(0);
   })();
@@ -4556,8 +4561,8 @@ Max-width: 600px, centered</div></div>
     let lc3Players = [], lc3Playing = -1;
     let state = { idx: 0, isAnimating: false, dots: [], stops: [], cardEls: [], track, indicator, progress, ledGlowId: 'lc3-led-glow', active: false };
 
-    const lc3H2 = document.querySelector('#listen-v3 .section-h2');
-    const lc3H2Base = lc3H2 ? lc3H2.textContent.trim() : 'Listen';
+    const lc3H2 = document.querySelector('#listen .section-h2');
+    const lc3H2Base = 'Listen to my works';
     let lc3H2Timer = null;
 
     function setLc3H2Playing(title) {
@@ -4691,19 +4696,21 @@ Max-width: 600px, centered</div></div>
         if (indicLine) indicLine.setAttribute('stroke','#8A9BB0');
         if (indicDot)  indicDot.setAttribute('fill','#3A8A65');
         v2SnapVisuals(0, stops, dots, indicator, progress, buildArcPath, 'lc3-led-glow');
-        v2InitInfiniteClones(track, state, false);
+        // no infinite clones — clamped
       }
+      // Mark card 0 active on init
+      state.cardEls.forEach((c, i) => c.classList.toggle('v2-active', i === 0));
       requestAnimationFrame(() => wireLc3Playback());
     }
 
-    const lc3GoTo = t => v2GoToWrapped(t, state);
+    const lc3GoTo = t => v2GoToClamped(t, state);
     catBtns.forEach(b => b.addEventListener('click', () => {
       catBtns.forEach(x => x.classList.remove('active'));
       b.classList.add('active');
       track.scrollTo({ left: 0, behavior: 'instant' });
       buildLc3Track(Number(b.dataset.lc3Cat));
     }));
-    wireV2HorizDrag(knobBody, state, lc3GoTo, true);
+    wireV2HorizDrag(knobBody, state, lc3GoTo, false);
     wireV2ScrollSnap(track, state, false);
     buildLc3Track(0);
   })();
